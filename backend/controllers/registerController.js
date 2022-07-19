@@ -1,8 +1,8 @@
-import Customer from "./models/customer.js"
+import Customer from "../models/customer.js"
 import createError from "http-errors"
 import jwt from "jsonwebtoken"
 
-export const registerCustomer = async(req, res) => {
+export const registerCustomer = async(req, res, next) => {
     const {userName, password, emailAddress} = req.body
 
     let foundCustomer
@@ -35,12 +35,12 @@ export const registerCustomer = async(req, res) => {
             userName:userName,
             password:password,
             emailAddress: emailAddress,
-            idAdmin: false
+          //  idAdmin: false
             // products: []
         })
 
         try {  
-            await newCustomer.save()
+            await newCustomer.save();
         } catch  {
             return next(createError(500, "User could not be created. Please try again"));
         }
@@ -49,6 +49,7 @@ export const registerCustomer = async(req, res) => {
 
         try {
             newToken = jwt.sign({ id: newCustomer.id }, process.env.SECRET_KEY, { expiresIn: "1h" } )
+            res.cookie("dataCookie", newToken, { httpOnly: true, sameSite: "Strict" });
         } catch  {
             return next(createError(500, "Signup could not be completed. Please try again"));
 
