@@ -8,15 +8,16 @@ import dotenv from "dotenv";
 import globalErrorHandler from "./middleware/globalErrorHandler.js";
 import adminRouter from "./routes/admin.js";
 import registerRouter from "./routes/register.js"
-import loginRouter from "./routes/login"
+import loginRouter from "./routes/login.js"
 
 const app = express();
 dotenv.config();
 
 //bava.dci@gmail.com
 //password: YX111222!
-//DataBasePassword:Yx111222
+//DataBasePassword:aashopping1234
 //mongodb+srv://bava:<password>@cluster0.tedzt.mongodb.net/?retryWrites=true&w=majority
+
 
 mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.tedzt.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`);
 mongoose.connection.on("open", () => console.log("Database connection established"));
