@@ -4,6 +4,7 @@ const Register = props => {
   const [userName, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
+  //const [isAdmin, setIsAdmin] = useState(false);
 
   const updateData = event => {
     switch (event.target.name) {
@@ -25,7 +26,8 @@ const Register = props => {
     const newCustomer = {
       userName: userName,
       password: password,
-      emailAddress: emailAddress
+      emailAddress: emailAddress,
+     // isAdmin: isAdmin
     }
     const settings = {
       method: "POST",
@@ -59,7 +61,7 @@ const Register = props => {
 
       <form onSubmit={registerUser}>
         <div>
-          <label>Username</label>
+          <label>User Name</label>
           <input name="userName" onChange={updateData} value={userName} minLength={3} maxLength={15} />
         </div>
         <div>
@@ -71,10 +73,10 @@ const Register = props => {
           <input name="emailAddress" onChange={updateData} value={emailAddress} />
         </div>
 
-        <button>Register an account</button>
+        <button>Sign Up</button>
       </form>
 
-      <button onClick={updateShowLogin}>Already registered? Log in to your account!</button>
+      <button onClick={updateShowLogin}>Account Is There</button>
     </div>
   )
 }
