@@ -1,18 +1,59 @@
 import Customer from "./models/customer.js"
-const registerCustomer = async(req, res) => {
-    const {username, password, emailAddress} = req.body
+import createError from "http-errors"
+import jwt from "jsonwebtoken"
 
-    const foundUsername = await Customer.findOne({username: username})
+export const registerCustomer = async(req, res) => {
+    const {userName, password, emailAddress} = req.body
 
-    if(!foundUsername){
-        const newUser = new User({
-            username:username,
-            password:password,
-            emailAddress: emailAddress
-            // products: []
-        })
-        await newUser.save()
+    let foundCustomer
+
+    try { 
+        foundCustomer = await Customer.findOne({userName: userName})
+    } catch {
+        return next(createError(500, "Database could not be queried. Please try again"));
     }
 
-    res.status(201).json(newUser)
+    if(foundCustomer){
+        return next(createError(500, "Username has already been taken. Please try a different username"))
+    }
+
+    let foundEmail
+
+    try {
+        foundEmail = await Customer.findOne({emailAddress: emailAddress})
+    } catch {
+        return next(createError(500, "Database could not be queried. Please try again"))
+    }
+
+    if(foundEmail){
+        return next(createError(412, "Email address has already been used to create an account. Please try a different email address"));
+    }
+
+
+
+        const newCustomer = new Customer({
+            userName:userName,
+            password:password,
+            emailAddress: emailAddress,
+            idAdmin: false
+            // products: []
+        })
+
+        try {  
+            await newCustomer.save()
+        } catch  {
+            return next(createError(500, "User could not be created. Please try again"));
+        }
+
+        let newToken;
+
+        try {
+            newToken = jwt.sign({ id: newCustomer.id }, process.env.SECRET_KEY, { expiresIn: "1h" } )
+        } catch  {
+            return next(createError(500, "Signup could not be completed. Please try again"));
+
+        }
+
+
+    res.status(201).json({id: newCustomer._id, token: newToken})
 }
