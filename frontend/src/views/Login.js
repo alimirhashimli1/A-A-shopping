@@ -59,7 +59,7 @@ const Login = props => {
 
       <form onSubmit={attemptLogin}>
         <div>
-          <label>Email</label>
+          <label>Email Address</label>
           <input name="emailAddress" onChange={updateData} value={emailAddress} />
         </div>
         <div>
@@ -70,7 +70,7 @@ const Login = props => {
         <button>Sign In</button>
       </form>
 
-      <button onClick={updateShowLogin}>Not registered yet? Register for an account!</button>
+      <button onClick={updateShowLogin}>First Sign Up</button>
     </div>
   )
 }
