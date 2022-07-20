@@ -3,12 +3,13 @@ import Register from "./views/Register";
 import Login from "./views/Login";
 import Products from "./views/Products";
 import "./App.css";
-
+import Contact from "./views/Contact";
 const App = () => {
     const [ isLoggedIn, setIsLoggedIn ] = useState(false);
     const [ currentCustomerId, setCurrentCustomerId ] = useState("");
     const [ showLogin, setShowLogin ] = useState(true);
     const [ token, setToken ] = useState(false);
+    // const [showContact, setShowContact] = useState(false)
 
     useEffect(() => {
         const data = JSON.parse(localStorage.getItem("data"));
@@ -38,7 +39,6 @@ const App = () => {
         setIsLoggedIn(false);
         setShowLogin(true);
     }
-
     if (!isLoggedIn) {
 
         if (showLogin) {
@@ -47,7 +47,13 @@ const App = () => {
             return <Register setShowLogin={setShowLogin} login={login} />
         }
    }else {
-    return <Products currentCustomerId={currentCustomerId} token={token} logout={logout}  />
+    return (
+        <>
+        <Products currentCustomerId={currentCustomerId} token={token} logout={logout}  />
+        
+        <Contact/>
+        </>
+    )
 }
 
 

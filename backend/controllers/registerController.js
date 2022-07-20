@@ -39,7 +39,7 @@ export const registerCustomer = async(req, res, next) => {
             products: []
             
 
-
+        })
         try {  
             await newCustomer.save();
         } catch  {
