@@ -35,7 +35,7 @@ export const registerCustomer = async(req, res, next) => {
             userName:userName,
             password:password,
             emailAddress: emailAddress,
-          //  idAdmin: false
+        //    idAdmin: false
             // products: []
         })
 
