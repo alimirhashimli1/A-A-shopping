@@ -3,6 +3,7 @@ import cors from "cors";
 import morgan from "morgan";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 
 
 import globalErrorHandler from "./middleware/globalErrorHandler.js";
@@ -16,7 +17,8 @@ const app = express();
 dotenv.config();
 
 //bava.dci@gmail.com
-//password: YX111222!
+//gmailpassword: Yx111222!
+//MondoDBAcountPassword: YX111222!
 //DataBasePassword:aashopping1234
 //mongodb+srv://bava:<password>@cluster0.tedzt.mongodb.net/?retryWrites=true&w=majority
 
@@ -29,7 +31,7 @@ app.use(cors({
     origin: "http://localhost:3000",
     credentials: true
 }));
-
+app.use(cookieParser());
 app.use(express.json());
 app.use(morgan("tiny"));
 
