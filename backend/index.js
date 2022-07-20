@@ -9,6 +9,8 @@ import globalErrorHandler from "./middleware/globalErrorHandler.js";
 import adminRouter from "./routes/admin.js";
 import registerRouter from "./routes/register.js"
 import loginRouter from "./routes/login.js"
+import customersRouter from "./routes/customers.js";
+import productsRouter from "./routes/products.js";
 import contactRouter from "./routes/contact.js"
 
 const app = express();
@@ -35,7 +37,9 @@ app.use(morgan("tiny"));
 app.use("/admin", adminRouter);
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
-app.use("/contact", contactRouter)
+app.use("/customers", customersRouter);
+app.use("/products", productsRouter);
+app.use("/contact", contactRouter);
 
 
 

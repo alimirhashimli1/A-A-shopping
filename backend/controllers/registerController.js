@@ -33,11 +33,12 @@ export const registerCustomer = async(req, res, next) => {
 
         const newCustomer = new Customer({
             userName:userName,
-            password:password,
             emailAddress: emailAddress,
-        //    idAdmin: false
-            // products: []
-        })
+            password:password,
+            isAdmin: false,
+            products: []
+            
+
 
         try {  
             await newCustomer.save();
