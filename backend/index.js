@@ -9,6 +9,7 @@ import globalErrorHandler from "./middleware/globalErrorHandler.js";
 import adminRouter from "./routes/admin.js";
 import registerRouter from "./routes/register.js"
 import loginRouter from "./routes/login.js"
+import contactRouter from "./routes/contact.js"
 
 const app = express();
 dotenv.config();
@@ -34,6 +35,7 @@ app.use(morgan("tiny"));
 app.use("/admin", adminRouter);
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
+app.use("/contact", contactRouter)
 
 
 
