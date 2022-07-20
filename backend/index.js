@@ -12,6 +12,7 @@ import registerRouter from "./routes/register.js"
 import loginRouter from "./routes/login.js"
 import customersRouter from "./routes/customers.js";
 import productsRouter from "./routes/products.js";
+import contactRouter from "./routes/contact.js"
 
 const app = express();
 dotenv.config();
@@ -40,6 +41,7 @@ app.use("/register", registerRouter);
 app.use("/login", loginRouter);
 app.use("/customers", customersRouter);
 app.use("/products", productsRouter);
+
 
 
 app.use(globalErrorHandler);
