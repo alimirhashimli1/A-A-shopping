@@ -36,8 +36,8 @@ app.use(morgan("tiny"));
 app.use("/admin", adminRouter);
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
-app.use("/users", customersRouter);
-app.use("/albums", productsRouter);
+app.use("/customers", customersRouter);
+app.use("/products", productsRouter);
 
 
 app.use(globalErrorHandler);

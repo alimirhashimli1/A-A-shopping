@@ -85,6 +85,7 @@ const Products = props => {
                 }
                 const secondResponse = await fetch(process.env.REACT_APP_SERVER_URL + `/customers/${props.currentCustomerId}/products`, settings);
                 const secondParsedRes = await secondResponse.json();
+                console.log("secondResponse: ", secondResponse)
                 if (secondResponse.ok) {
                     setProducts(secondParsedRes.products);
                     setProductName("");
