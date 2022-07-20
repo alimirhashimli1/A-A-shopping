@@ -25,9 +25,9 @@ const Register = props => {
     event.preventDefault();
     const newCustomer = {
       userName: userName,
-      password: password,
       emailAddress: emailAddress,
-     // isAdmin: isAdmin
+      password: password
+    
     }
     const settings = {
       method: "POST",

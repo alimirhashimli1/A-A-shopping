@@ -12,6 +12,8 @@ export const loginCustomer = async (req, res, next) =>{
     }catch{
         return next(createErr(500, "Email is not found in database"));
     }
+
+
     if(customerFound){
         let customerPassword;
         try{   
@@ -19,6 +21,10 @@ export const loginCustomer = async (req, res, next) =>{
         }catch{
             return next(createErr(500, "Password is not correct. Please try again"));
         }
+
+
+
+        
         let newToken;
 
         try {

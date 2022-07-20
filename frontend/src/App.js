@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Register from "./views/Register";
 import Login from "./views/Login";
+import Products from "./views/Products";
 import "./App.css";
 
 const App = () => {
     const [ isLoggedIn, setIsLoggedIn ] = useState(false);
-    const [ currentUserId, setCurrentUserId ] = useState("");
+    const [ currentCustomerId, setCurrentCustomerId ] = useState("");
     const [ showLogin, setShowLogin ] = useState(true);
     const [ token, setToken ] = useState(false);
 
@@ -26,14 +27,14 @@ const App = () => {
 
     const login = (token, id) => {
         setToken(token);
-        setCurrentUserId(id);
+        setCurrentCustomerId(id);
         setIsLoggedIn(true);
     }
 
     const logout = () => {
         localStorage.removeItem("data");
         setToken(false);
-        setCurrentUserId("");
+        setCurrentCustomerId("");
         setIsLoggedIn(false);
         setShowLogin(true);
     }
@@ -45,8 +46,11 @@ const App = () => {
         } else {
             return <Register setShowLogin={setShowLogin} login={login} />
         }
-   
+   }else {
+    return <Products currentCustomerId={currentCustomerId} token={token} logout={logout}  />
+}
 
-}}
+
+}
 
 export default App;
