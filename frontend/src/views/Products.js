@@ -9,6 +9,7 @@ const Products = props => {
     const [productDescription, setProductDescription] = useState("");
     const [products, setProducts] = useState([]);
     const [isAdmin, setIsAdmin] = useState(false);
+    const [userName1, setUserName1] = useState([]);
 
     useEffect(() => {
         const fetchCustomerData = async () => {
@@ -16,12 +17,11 @@ const Products = props => {
                 credentials: "include"
             }    
             const response = await fetch(process.env.REACT_APP_SERVER_URL + `/customers/${props.currentCustomerId}`, settings);
-            console.log("response:", response)
             const parsedRes = await response.json();
             
             try {
                 if (response.ok) {
-                    console.log("parsedRes userName", parsedRes.userName)
+                   
                     setUserName(parsedRes.userName);
                     setProducts(parsedRes.products);
                     setIsAdmin(parsedRes.isAdmin);
@@ -35,6 +35,104 @@ const Products = props => {
 
         fetchCustomerData();
     }, [props.currentCustomerId])
+
+
+
+
+    useEffect(  ()=>{
+        const getCustomers = async () => {
+            
+        if(isAdmin){
+            const settings = {                
+                credentials: "include"
+            }
+            const response = await fetch(process.env.REACT_APP_SERVER_URL + `/customers`, settings);
+                const parsedRes = await response.json();
+                try {
+                    if (response.ok) {
+                        console.log("parsedRes UserName1", parsedRes);
+                        setUserName1(parsedRes);
+                       
+                    } else {
+                        throw new Error(parsedRes.message);
+                    }
+                } catch (err) {
+                    alert(err.message);
+                }
+        }
+        }
+        getCustomers();
+       }, [isAdmin])
+    
+
+
+       useEffect(  ()=>{
+        const getCustomers = async () => {
+            
+        if(!isAdmin){
+            const settings = {                
+                credentials: "include"
+            }
+            const response = await fetch(process.env.REACT_APP_SERVER_URL + `/customers`, settings);
+                const parsedRes = await response.json();
+                try {
+                    if (response.ok) {
+                        console.log("parsedRes UserName1", parsedRes);
+                        setUserName1(parsedRes);
+                       
+                    } else {
+                        throw new Error(parsedRes.message);
+                    }
+                } catch (err) {
+                    alert(err.message);
+                }
+        }
+        }
+        getCustomers();
+       }, [isAdmin])
+    
+
+
+
+
+
+
+
+
+    //    useEffect(  ()=>{
+    //     const getProducts = async () => {
+            
+    //     if(isAdmin){
+    //         const settings = {                
+    //             credentials: "include"
+    //         }
+    //         const response = await fetch(process.env.REACT_APP_SERVER_URL + `/products`, settings);
+    //             const parsedRes = await response.json();
+    //             try {
+    //                 if (response.ok) {
+    //                     console.log("parsedRes UserName1", parsedRes);
+    //                     setProducts(parsedRes.products);
+                       
+    //                 } else {
+    //                     throw new Error(parsedRes.message);
+    //                 }
+    //             } catch (err) {
+    //                 alert(err.message);
+    //             }
+    //     }
+    //     }
+    //     getProducts();
+    //    }, [isAdmin])
+    
+
+
+
+
+
+
+
+
+
 
     const updateData = event => {
         switch (event.target.name) {
@@ -85,6 +183,7 @@ const Products = props => {
                 }
                 const secondResponse = await fetch(process.env.REACT_APP_SERVER_URL + `/customers/${props.currentCustomerId}/products`, settings);
                 const secondParsedRes = await secondResponse.json();
+                console.log("secondResponse: ", secondResponse)
                 if (secondResponse.ok) {
                     setProducts(secondParsedRes.products);
                     setProductName("");
@@ -141,30 +240,34 @@ const Products = props => {
 
     return (
         <div>
-            <h2>Hi {userName}!</h2>
-            <Logout logout={props.logout} />
-    
-            { isAdmin && <Products currentCustomerId={props.currentCustomerId} token={props.token}/> }
-            <h1>Add A New Product</h1>
-
-            <form onSubmit={submitProduct}>
-                <div>
-                    <label>Product Name</label>
-                    <input name="productName" onChange={updateData} value={productName} />
-                </div>
-                <div>
-                    <label>Price</label>
-                    <input name="price" onChange={updateData} value={price} />
-                </div>
-                <div>
-                    <label>Description</label>
-                    <input name="productDescription" onChange={updateData} value={productDescription} />
-                </div>
-                <button>Submit Product</button>
-            </form>
-            <button onClick={deleteAllProducts}>Delete all Products!</button>
-
+           
+                        <h2>Hi {userName}!</h2>
+                        <Logout logout={props.logout} />
+                        {/* <Products currentCustomerId={props.currentCustomerId} token={props.token}/> */}
+                        
+              { isAdmin && (  
+                    <div>
+                    <h1>Add A New Product</h1>
+                     <form onSubmit={submitProduct}>
+                        <div>
+                          <label>Product Name</label>
+                          <input name="productName" onChange={updateData} value={productName} />
+                        </div>
+                        <div>
+                          <label>Price</label>
+                          <input name="price" onChange={updateData} value={price} />
+                        </div>
+                        <div>
+                          <label>Description</label>
+                          <input name="productDescription" onChange={updateData} value={productDescription} />
+                        </div> 
+                        <button>Submit Product</button>
+                     </form>
+                     <button onClick={deleteAllProducts}>Delete all Products!</button>
+                    </div>
+        )} 
             <div>
+
                 <h2>Current Products</h2>
                 <ul>
                     {
@@ -176,8 +279,17 @@ const Products = props => {
                     }
                 </ul>
             </div>
+            
+            
         </div>
     )
 }
+
+
+
+
+
+
+
 
 export default Products;
