@@ -9,6 +9,11 @@ const App = () => {
     const [ currentCustomerId, setCurrentCustomerId ] = useState("");
     const [ showLogin, setShowLogin ] = useState(true);
     const [ token, setToken ] = useState(false);
+   
+
+
+
+
 
     useEffect(() => {
         const data = JSON.parse(localStorage.getItem("data"));
@@ -24,6 +29,11 @@ const App = () => {
             logout();
         }
     }, [])
+
+
+
+  
+
 
     const login = (token, id) => {
         setToken(token);
@@ -42,14 +52,17 @@ const App = () => {
     if (!isLoggedIn) {
 
         if (showLogin) {
-            return <Login setShowLogin={setShowLogin} login={login} />
+            return <Login currentCustomerId={currentCustomerId} token={token} logout={logout}  setShowLogin={setShowLogin} login={login} />
         } else {
             return <Register setShowLogin={setShowLogin} login={login} />
         }
-   }else {
+   }
     return <Products currentCustomerId={currentCustomerId} token={token} logout={logout}  />
-}
+  
 
+    
+
+    
 
 }
 
