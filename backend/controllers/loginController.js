@@ -2,6 +2,7 @@ import createErr from "http-errors";
 import bcrypt from "bcryptjs"
 import jwt  from "jsonwebtoken";
 import Customer from "../models/customer.js";
+import loginProduct from "../models/product.js";
 
 export const loginCustomer = async (req, res, next) =>{
     const { emailAddress, password} = req.body
@@ -37,6 +38,22 @@ export const loginCustomer = async (req, res, next) =>{
         res.json({ id: customerFound._id, token: newToken });
     } else {
         next(createErr(404, "Customer with this email is not exist. Please try again"));
+    }
+}
+
+
+export const getLoginProductData = async (req, res, next) => {
+    let foundProduct; 
+    try {
+        foundProduct = await loginProduct.find({});
+    } catch {
+        return next(createError(500, "Couldn't query database. Please try again"));
+    }
+    if (foundProduct) {
+        
+        res.json(foundProduct);
+     } else {
+        next(createError(404, "User could not be found"));
     }
 }
 

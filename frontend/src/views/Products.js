@@ -9,6 +9,7 @@ const Products = props => {
     const [productDescription, setProductDescription] = useState("");
     const [products, setProducts] = useState([]);
     const [isAdmin, setIsAdmin] = useState(false);
+    const [product1, setProduct1] = useState([]);
     const [userName1, setUserName1] = useState([]);
 
     useEffect(() => {
@@ -65,20 +66,20 @@ const Products = props => {
        }, [isAdmin])
     
 
-
+    
        useEffect(  ()=>{
-        const getCustomers = async () => {
+        const getProducts = async () => {
             
-        if(!isAdmin){
+      
             const settings = {                
                 credentials: "include"
             }
-            const response = await fetch(process.env.REACT_APP_SERVER_URL + `/customers`, settings);
+            const response = await fetch(process.env.REACT_APP_SERVER_URL + `/products`, settings);
                 const parsedRes = await response.json();
                 try {
                     if (response.ok) {
-                        console.log("parsedRes UserName1", parsedRes);
-                        setUserName1(parsedRes);
+                        console.log("parsedRes Product", parsedRes);
+                        setProduct1(parsedRes);
                        
                     } else {
                         throw new Error(parsedRes.message);
@@ -86,11 +87,10 @@ const Products = props => {
                 } catch (err) {
                     alert(err.message);
                 }
+        
         }
-        }
-        getCustomers();
-       }, [isAdmin])
-    
+        getProducts();
+       }, [])
 
 
 
@@ -270,7 +270,7 @@ const Products = props => {
                 <h2>Current Products</h2>
                 <ul>
                     {
-                        products.map(product => {
+                        product1.map(product => {
                             return <li key={product._id} id={product._id}>{product.productName} ___ {product.price} ____ ({product.productDescription})
                             <span onClick={deleteOneProduct}>X</span>
                             </li>
