@@ -13,7 +13,6 @@ import loginRouter from "./routes/login.js"
 import customersRouter from "./routes/customers.js";
 import productsRouter from "./routes/products.js";
 import contactRouter from "./routes/contact.js"
-import cookieParser from "cookie-parser";
 
 const app = express();
 dotenv.config();

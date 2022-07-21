@@ -99,30 +99,29 @@ const Products = props => {
 
 
 
-    //    useEffect(  ()=>{
-    //     const getProducts = async () => {
+       useEffect(  ()=>{
+        const getProducts = async () => {
             
-    //     if(isAdmin){
-    //         const settings = {                
-    //             credentials: "include"
-    //         }
-    //         const response = await fetch(process.env.REACT_APP_SERVER_URL + `/products`, settings);
-    //             const parsedRes = await response.json();
-    //             try {
-    //                 if (response.ok) {
-    //                     console.log("parsedRes UserName1", parsedRes);
-    //                     setProducts(parsedRes.products);
+    
+            const settings = {                
+                credentials: "include"
+            }
+            const response = await fetch(process.env.REACT_APP_SERVER_URL + `/products`, settings);
+                const parsedRes = await response.json();
+                try {
+                    if (response.ok) {
+                        console.log("parsedRes UserName1", parsedRes);
+                        setProducts(parsedRes.products);
                        
-    //                 } else {
-    //                     throw new Error(parsedRes.message);
-    //                 }
-    //             } catch (err) {
-    //                 alert(err.message);
-    //             }
-    //     }
-    //     }
-    //     getProducts();
-    //    }, [isAdmin])
+                    } else {
+                        throw new Error(parsedRes.message);
+                    }
+                } catch (err) {
+                    alert(err.message);
+                }
+        }
+        getProducts();
+       }, [])
     
 
 
