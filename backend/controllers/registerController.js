@@ -35,10 +35,11 @@ export const registerCustomer = async(req, res, next) => {
             userName:userName,
             emailAddress: emailAddress,
             password:password,
-          isAdmin: false,
+            isAdmin: false,
             products: []
-        });
+            
 
+        })
         try {  
             await newCustomer.save();
         } catch  {

@@ -12,6 +12,8 @@ import registerRouter from "./routes/register.js"
 import loginRouter from "./routes/login.js"
 import customersRouter from "./routes/customers.js";
 import productsRouter from "./routes/products.js";
+import contactRouter from "./routes/contact.js"
+import cookieParser from "cookie-parser";
 
 const app = express();
 dotenv.config();
@@ -32,6 +34,7 @@ app.use(cors({
     credentials: true
 }));
 app.use(cookieParser());
+
 app.use(express.json());
 app.use(morgan("tiny"));
 
@@ -40,6 +43,7 @@ app.use("/register", registerRouter);
 app.use("/login", loginRouter);
 app.use("/customers", customersRouter);
 app.use("/products", productsRouter);
+
 
 
 app.use(globalErrorHandler);
