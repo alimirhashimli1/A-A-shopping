@@ -2,8 +2,12 @@ import React, { useEffect, useState } from "react";
 import Register from "./views/Register";
 import Login from "./views/Login";
 import Products from "./views/Products";
+import Cart from "./views/Cart";
+import Logo from "./views/Logo"
 import "./App.css";
 import Contact from "./views/Contact";
+import About from "./views/About"
+import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"
 const App = () => {
     const [ isLoggedIn, setIsLoggedIn ] = useState(false);
     const [ currentCustomerId, setCurrentCustomerId ] = useState("");
@@ -44,33 +48,73 @@ const App = () => {
         setIsLoggedIn(false);
         setShowLogin(true);
     }
-    if (!isLoggedIn) {
 
-        if (showLogin) {
-            return <Login currentCustomerId={currentCustomerId} token={token} logout={logout}  setShowLogin={setShowLogin} login={login} />
-        } else {
-            return <Register setShowLogin={setShowLogin} login={login} />
-        }
+//     if (!isLoggedIn) {
 
-   }else{
-    return <Products currentCustomerId={currentCustomerId} token={token} logout={logout}  />
+//         if (showLogin) {
+//             return <Login currentCustomerId={currentCustomerId} token={token} logout={logout}  setShowLogin={setShowLogin} login={login} />
+//         } else {
+//             return <Register setShowLogin={setShowLogin} login={login} />
+//         }
+
+//    }else{
+    return (
+    <>
+    <Router>
+            <nav className="navbar">
+                <ul>
+                    <li>
+                    <Link to="/">
+                        Logo
+                    </Link>
+                    </li>
+                    <li>
+                    <Link to="/products">
+                        Products
+                    </Link>
+                    </li>
+                    <li>
+                    <Link to="/contact">
+                        Contact
+                    </Link>
+                    </li>
+                    <li>
+                    <Link to="/about">
+                        About
+                    </Link>
+                    </li>
+                    <li>
+                    <Link to="/login">
+                        Login
+                    </Link>
+                    </li>
+                    <li>
+                    <Link to="/cart">
+                        Cart
+                    </Link>
+                    </li>
+                </ul>
+            </nav>
+        <main>
+        <Routes>
+            <Route path="/products" exact element={<Products currentCustomerId={currentCustomerId} token={token} logout={logout} />}/>
+            <Route path="/contact" exact element={<Contact/>}/>
+            <Route path="/about" exact element={<About/>}/>
+            <Route path="/Login" exact element={<Login currentCustomerId={currentCustomerId} token={token} logout={logout} setShowLogin={setShowLogin} login={login} />}/>
+            <Route path="/Cart" exact element={<Cart/>}/>
+        </Routes>
+        </main>
+    </Router>
+    
+    
+    </>
+    )
   }
 
-    
-
-   }else {
-    return (
-        <>
-        <Products currentCustomerId={currentCustomerId} token={token} logout={logout}  />
-        
-        <Contact/>
-        </>
-    )
-}
 
 
     
 
-}
+// }
 
 export default App;
