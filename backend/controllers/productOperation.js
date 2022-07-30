@@ -16,7 +16,9 @@ export const getCustomerData = async (req, res, next) => {
             _id: 1,
             productName: 1,
             price: 1,
-            productDescription: 1
+            productDescription: 1,
+            brand: 1,
+            productImage: 1
         });
         const customerData = {
             userName: foundCustomer.userName,
@@ -37,6 +39,23 @@ export const getProductData = async (req, res, next) => {
     let foundProduct; 
     try {
         foundProduct = await Product.find({});
+    } catch {
+        return next(createError(500, "Couldn't query database. Please try again"));
+    }
+    if (foundProduct) {
+        
+        res.json(foundProduct);
+     } else {
+        next(createError(404, "User could not be found"));
+    }
+}
+
+
+export const getProductData1 = async (req, res, next) => {
+    let foundProduct; 
+    try {
+        foundProduct = await Product.find({});
+        // res.status(200).send(foundProduct)
     } catch {
         return next(createError(500, "Couldn't query database. Please try again"));
     }

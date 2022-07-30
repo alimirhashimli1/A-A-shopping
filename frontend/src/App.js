@@ -8,11 +8,23 @@ import "./App.css";
 import Contact from "./views/Contact";
 import About from "./views/About"
 import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"
+import Carousel from "./views/Carousel";
+import Footer from "./views/Footer";
 const App = () => {
+
+    
+
+
+
     const [ isLoggedIn, setIsLoggedIn ] = useState(false);
     const [ currentCustomerId, setCurrentCustomerId ] = useState("");
     const [ showLogin, setShowLogin ] = useState(true);
     const [ token, setToken ] = useState(false);
+  
+
+
+
+
 
 
     useEffect(() => {
@@ -49,15 +61,6 @@ const App = () => {
         setShowLogin(true);
     }
 
-//     if (!isLoggedIn) {
-
-//         if (showLogin) {
-//             return <Login currentCustomerId={currentCustomerId} token={token} logout={logout}  setShowLogin={setShowLogin} login={login} />
-//         } else {
-//             return <Register setShowLogin={setShowLogin} login={login} />
-//         }
-
-//    }else{
     return (
     <>
     <Router>
@@ -96,14 +99,21 @@ const App = () => {
                 </ul>
             </nav>
         <main>
-        <Routes>
-            <Route path="/products" exact element={<Products currentCustomerId={currentCustomerId} token={token} logout={logout} />}/>
-            <Route path="/contact" exact element={<Contact/>}/>
-            <Route path="/about" exact element={<About/>}/>
-            <Route path="/Login" exact element={<Login currentCustomerId={currentCustomerId} token={token} logout={logout} setShowLogin={setShowLogin} login={login} />}/>
-            <Route path="/Cart" exact element={<Cart/>}/>
-        </Routes>
+            <Routes>
+                <Route path="/" exact element={<Carousel />}/>
+                <Route path="/products" exact element={<Products currentCustomerId={currentCustomerId} token={token} logout={logout} />}/>
+                <Route path="/contact" exact element={<Contact/>}/>
+                <Route path="/about" exact element={<About/>}/>
+                <Route path="/login" exact element={
+                    !isLoggedIn ? showLogin ? <Login currentCustomerId={currentCustomerId} token={token} logout={logout} setShowLogin={setShowLogin} showLogin={showLogin} login={login}/> : <Register setShowLogin={setShowLogin}/> : <Products currentCustomerId={currentCustomerId} token={token} logout={logout} />}
+                />
+                <Route path="/Cart" exact element={<Cart/>}/>
+            </Routes>
         </main>
+        <footer>
+            <Footer/>
+        </footer>
+
     </Router>
     
     
@@ -113,8 +123,16 @@ const App = () => {
 
 
 
-    
 
-// }
+
+
+
+
+
+
+
+
+
+
 
 export default App;

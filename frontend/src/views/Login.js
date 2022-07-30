@@ -1,39 +1,11 @@
 import React, { useEffect, useState } from "react";
 
+
 const Login = props => {
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
   const [product2, setProduct2] = useState([]);
 
-
-//   const [userName, setUserName] = useState("");
-//   const [products, setProducts] = useState([]);
-//   const [isAdmin, setIsAdmin] = useState(false);
-  
-//   useEffect(() => {
-//     const fetchCustomerData = async () => {
-//         const settings = {
-//             credentials: "include"
-//         }    
-//         const response = await fetch(process.env.REACT_APP_SERVER_URL + `/customers/${props.currentCustomerId}`, settings);
-//         const parsedRes = await response.json();
-        
-//         try {
-//             if (response.ok) {
-               
-//                 setUserName(parsedRes.userName);
-//                 setProducts(parsedRes.products);
-//                 setIsAdmin(parsedRes.isAdmin);
-//             } else {
-//                 throw new Error(parsedRes.message);
-//             }
-//         } catch (err) {
-//             alert(err.message);
-//         }
-//     }
-
-//     fetchCustomerData();
-// }, [props.currentCustomerId])
 
     
   useEffect(  ()=>{
@@ -99,6 +71,7 @@ const Login = props => {
     try {
       if (response.ok) {
         props.login(parsedRes.token, parsedRes.id);
+        // props.setShowLogin(false)
       } else {
         throw new Error(parsedRes.message);
       }
@@ -134,17 +107,25 @@ const Login = props => {
 
 
       <div>
-
+      <div className="contentContiner">
 <h2>Current Products</h2>
-<ul>
+<ul className="General">
     {
+        
+
+
+
+
         product2.map(product => {
-            return <li key={product._id} id={product._id}>{product.productName} ___ {product.price} ____ ({product.productDescription})
-            {/* <span onClick={deleteOneProduct}>X</span> */}
-            </li>
-        })
+                            return <li className="content" key={product._id} id={product._id}> 
+                            <img className="productImg" src={product.productImage.avatar} alt="productPhoto" /><br></br>
+                            {product.productName}<br></br>{product.productDescription}<br></br>{product.price}
+                            {/* <span onClick={deleteOneProduct}>X</span> */}
+                            </li>
+                        })
     }
 </ul>
+</div>
 </div>
 
 
