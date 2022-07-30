@@ -13,6 +13,7 @@ import registerRouter from "./routes/register.js"
 import loginRouter from "./routes/login.js"
 import customersRouter from "./routes/customers.js";
 import productsRouter from "./routes/products.js";
+import contactRouter from "./routes/contact.js"
 import multer from "multer";
 import upload from "./utils/multer.js";
 //import path from "path";

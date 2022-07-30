@@ -64,6 +64,46 @@ const Products = props => {
        }, [])
 
 
+
+
+
+
+
+
+       useEffect(  ()=>{
+        const getProducts = async () => {
+            
+    
+            const settings = {                
+                credentials: "include"
+            }
+            const response = await fetch(process.env.REACT_APP_SERVER_URL + `/products`, settings);
+                const parsedRes = await response.json();
+                try {
+                    if (response.ok) {
+                        console.log("parsedRes UserName1", parsedRes);
+                        setProducts(parsedRes.products);
+                       
+                    } else {
+                        throw new Error(parsedRes.message);
+                    }
+                } catch (err) {
+                    alert(err.message);
+                }
+        }
+        getProducts();
+       }, [])
+    
+
+
+
+
+
+
+
+
+
+
     const updateData = event => {
         switch (event.target.name) {
             case "productName":

@@ -72,6 +72,7 @@ const Login = props => {
     try {
       if (response.ok) {
         props.login(parsedRes.token, parsedRes.id);
+        // props.setShowLogin(false)
       } else {
         throw new Error(parsedRes.message);
       }

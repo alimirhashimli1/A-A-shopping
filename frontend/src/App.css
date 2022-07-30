@@ -144,6 +144,18 @@ font-weight: 900;
 
 
 
+.navbar ul{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    font-size: large;
+    list-style: none;
+}
+.navbar ul li a{
+    text-decoration: none;
+    font-size: larger;
+}
 
 button {
     margin-top: 10px;

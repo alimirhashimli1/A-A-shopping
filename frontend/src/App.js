@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
 import Register from "./views/Register";
 import Login from "./views/Login";
 import Products from "./views/Products";
+import Cart from "./views/Cart";
+import Logo from "./views/Logo"
 import "./App.css";
 import Contact from "./views/Contact";
+import About from "./views/About"
+import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"
+import Carousel from "./views/Carousel";
+import Footer from "./views/Footer";
 const App = () => {
 
     
@@ -55,75 +60,66 @@ const App = () => {
         setIsLoggedIn(false);
         setShowLogin(true);
     }
-    if (!isLoggedIn) {
 
-        if (showLogin) {
-            return <Login currentCustomerId={currentCustomerId} token={token} logout={logout}  setShowLogin={setShowLogin} login={login} />
-        } else {
-            return <Register setShowLogin={setShowLogin} login={login} />
-        }
+    return (
+    <>
+    <Router>
+            <nav className="navbar">
+                <ul>
+                    <li>
+                    <Link to="/">
+                        Logo
+                    </Link>
+                    </li>
+                    <li>
+                    <Link to="/products">
+                        Products
+                    </Link>
+                    </li>
+                    <li>
+                    <Link to="/contact">
+                        Contact
+                    </Link>
+                    </li>
+                    <li>
+                    <Link to="/about">
+                        About
+                    </Link>
+                    </li>
+                    <li>
+                    <Link to="/login">
+                        Login
+                    </Link>
+                    </li>
+                    <li>
+                    <Link to="/cart">
+                        Cart
+                    </Link>
+                    </li>
+                </ul>
+            </nav>
+        <main>
+            <Routes>
+                <Route path="/" exact element={<Carousel />}/>
+                <Route path="/products" exact element={<Products currentCustomerId={currentCustomerId} token={token} logout={logout} />}/>
+                <Route path="/contact" exact element={<Contact/>}/>
+                <Route path="/about" exact element={<About/>}/>
+                <Route path="/login" exact element={
+                    !isLoggedIn ? showLogin ? <Login currentCustomerId={currentCustomerId} token={token} logout={logout} setShowLogin={setShowLogin} showLogin={showLogin} login={login}/> : <Register setShowLogin={setShowLogin}/> : <Products currentCustomerId={currentCustomerId} token={token} logout={logout} />}
+                />
+                <Route path="/Cart" exact element={<Cart/>}/>
+            </Routes>
+        </main>
+        <footer>
+            <Footer/>
+        </footer>
 
-   }else{
-    return( 
-    <div>
-    <Products currentCustomerId={currentCustomerId} token={token} logout={logout}  />
-    <Contact />
-    </div>
+    </Router>
+    
+    
+    </>
     )
-    
-
-    }
-
-
-
-
-
-// return(
-//         <Router>
-//                     <nav className="nav">
-//                         <div className="nav-brand">Logo</div>
-//                         <ul className="nav-items">
-//                         <li className="nav-item">
-//                                 <Link to="/login">Login</Link>
-//                         </li>
-//                         <li className="nav-item">
-//                                 <Link to="/register">Register</Link>
-//                         </li>
-//                         <li className="nav-item">
-//                                 <Link to="/Products">upload new Product</Link>
-//                         </li>
-//                         </ul>
-//                     </nav>
-//                     <Switch>
-//                 {/* {  (!isLoggedIn) && (showLogin) && (  */}
-//                     <Route  path="/login">
-//                         <Login currentCustomerId={currentCustomerId} token={token} logout={logout}  setShowLogin={setShowLogin} login={login} />
-//                     </Route>
-                    
-//                     {/* )  */}
-//                 {/* (!showLogin) && ( */}
-                    
-//                     <Route path="/register">
-//                         <Register setShowLogin={setShowLogin} login={login} />
-//                     </Route> 
-//                     {/* ) */}
-                
-
-//                 {/* (isLoggedIn) && ( */}
-//                     <Route  path="/products">
-//                         <Products currentCustomerId={currentCustomerId} token={token} logout={logout} />
-//                     </Route>  
-//                     {/* ) 
-//                     } */}
-//                         </Switch>
-                   
-//          </Router>
-    
-// )
-    
-
-
-                
+  }
 
 
 
@@ -138,50 +134,5 @@ const App = () => {
 
 
 
-
-
-
-
-
-
-
-// return(
-// <div>
-//     <Router>
-//                 <nav className="nav">
-//                     <div className="nav-brand">Logo</div>
-//                     <ul className="nav-items">
-//                     <li className="nav-item">
-//                             <Link to="/login">Login</Link>
-//                     </li>
-//                     <li className="nav-item">
-//                             <Link to="/register">Register</Link>
-//                     </li>
-//                     <li className="nav-item">
-//                             <Link to="/Products">upload new Product</Link>
-//                     </li>
-//                     </ul>
-//                 </nav>
-//                 <Switch>
-                     
-//                 <Route  path="/login">
-//                     <Login currentCustomerId={currentCustomerId} token={token} logout={logout}  setShowLogin={setShowLogin} login={login} />
-//                 </Route> 
-//                 <Route path="/register">
-//                     <Register setShowLogin={setShowLogin} login={login} />
-//                 </Route> 
-
-//                 <Route  path="/products">
-//                     <Products currentCustomerId={currentCustomerId} token={token} logout={logout} />
-//                 </Route>  
-//                     </Switch>
-               
-//             </Router>
-
-
-//             </div>
-// )
-
-}
 
 export default App;
