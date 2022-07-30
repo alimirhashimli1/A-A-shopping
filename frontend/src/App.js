@@ -55,24 +55,24 @@ const App = () => {
         setIsLoggedIn(false);
         setShowLogin(true);
     }
-//     if (!isLoggedIn) {
+    if (!isLoggedIn) {
 
-//         if (showLogin) {
-//             return <Login currentCustomerId={currentCustomerId} token={token} logout={logout}  setShowLogin={setShowLogin} login={login} />
-//         } else {
-//             return <Register setShowLogin={setShowLogin} login={login} />
-//         }
+        if (showLogin) {
+            return <Login currentCustomerId={currentCustomerId} token={token} logout={logout}  setShowLogin={setShowLogin} login={login} />
+        } else {
+            return <Register setShowLogin={setShowLogin} login={login} />
+        }
 
-//    }else{
-//     return( 
-//     <div>
-//     <Products currentCustomerId={currentCustomerId} token={token} logout={logout}  />
-//     <Contact />
-//     </div>
-//     )
+   }else{
+    return( 
+    <div>
+    <Products currentCustomerId={currentCustomerId} token={token} logout={logout}  />
+    <Contact />
+    </div>
+    )
     
 
-//     }
+    }
 
 
 

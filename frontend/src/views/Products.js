@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Logout from "../components/Logout";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Products = props => {
 
@@ -8,17 +10,12 @@ const Products = props => {
     const [price, setPrice] = useState("");
     const [productDescription, setProductDescription] = useState("");
     const [brand, setBrand] = useState("");
-    //const [productImage, setProductImage]=useState("");
-    //const [file, setFile] = useState("");
-    //const [uploadedImage, setUploadedImage]= useState("");
     const [previewSource, setPreviewSource]= useState("");
     const [selectedFile, setSelectedFile]= useState("");
     const [products, setProducts] = useState([]);
     const [isAdmin, setIsAdmin] = useState(false);
     const [product1, setProduct1] = useState([]);
-    //const [userName1, setUserName1] = useState([]);
     const [fileInputState, setFileInputState] = useState('');
-    //const [imageIds, setImageIds] = useState([]);
 
     useEffect(() => {
         const fetchCustomerData = async () => {
@@ -51,7 +48,6 @@ const Products = props => {
             }
             const response = await fetch(process.env.REACT_APP_SERVER_URL + `/products`, settings);
                 const parsedRes = await response.json();
-               //setImageIds(parsedRes)
                 try {
                     if (response.ok) {
                         console.log("parsedRes Product", parsedRes);
@@ -205,9 +201,6 @@ const previewFiles=(file)=>{
                             <option value="xiomi">Xiomi</option>
                           </select>
                         </div>
-                        
-
-
                         <div>
                           <label>Price</label>
                           <input name="price" onChange={updateData} value={price} />
@@ -221,23 +214,53 @@ const previewFiles=(file)=>{
                      {previewSource && (
                         <img src={previewSource} alt="chosen"  style={{ height: '300px' }} />
                      )}
-
-                     {/* <button onClick={deleteAllProducts}>Delete all Products!</button> */}
                     </div>
         )} 
             <div className="contentContiner">
 
                 <h2>Current Products</h2>
                 <ul className="General">
-                    {
+                {
                         product1.map(product => {
-                            return <li className="content" key={product._id} id={product._id}> 
+                            return <li className="product" key={product._id} id={product._id}> 
                             <img className="productImg" src={product.productImage.avatar} alt="productPhoto" /><br></br>
-                            {product.productName}<br></br>{product.productDescription}<br></br>{product.price}
-                            {/* <span onClick={deleteOneProduct}>X</span> */}
+                            <div className="ProdactData">
+                            <div className="productName">{product.productName}</div>
+                            <div className="productDescription">{product.productDescription}</div>
+                            <div className="productPrice">$ {product.price}</div>
+                            <div className="productName"><button  onClick={  ()=>{
+    toast.success(`${product.productName} Added to Card`, {
+        position: "bottom-left",
+autoClose: 5000,
+hideProgressBar: false,
+closeOnClick: true,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+});
+}}>Add to card </button>
+                           
+                            </div>
+                   
+                           
+
+                
+                            </div>
+                           
                             </li>
                         })
                     }
+                    <ToastContainer 
+                    position="bottom-left"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+                    />
                 </ul>
             </div>
             

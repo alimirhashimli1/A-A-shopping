@@ -20,6 +20,13 @@ export const getCustomerData = async (req, res, next) => {
             brand: 1,
             productImage: 1
         });
+
+        // await foundCustomer.populate("products", {
+        //     _id: 1,
+        //     productName: 1,
+        //     price: 1,
+        //     productDescription: 1
+        // });
         const customerData = {
             userName: foundCustomer.userName,
            products: foundCustomer.products,

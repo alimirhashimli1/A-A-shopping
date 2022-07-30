@@ -27,7 +27,8 @@
     "path": "^0.12.7",
     "react-router-dom": "^6.3.0",
     "react-toastify": "^9.0.7",
-    "redux": "^4.2.0"
+    "redux": "^4.2.0",
+    "stripe": "^9.16.0"
   },
   "type": "module"
 }
