@@ -1,3 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.nav-bar{
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #a1ceec;
+  padding: 2.2rem;
+}
+.nav-brand{
+  flex: 1;
+}
+.nav-items{
+  flex: 3;
+  display: flex;
+  justify-content: space-between;
+
+  align-items: center;
+}
+.nav-card{
+  display: flex;
+  align-items: center;
+  color: blue;
+
+}
+.nav-card a{
+  text-decoration: none;
+  color: red;
+}
+.card-quantity{
+  font-size: .7rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  width: 20px;
+  background-color: #e00808;
+  border-radius: 50%;
+}
+
+
+
+
+
+.productContiner{
+  width: 80%;
+  margin: auto;
+}
+
+.products{
+ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  list-style: none;
+}
+.product{
+ 
+  width: 19%;
+  max-width: 100%;
+  height: 370px;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: -5px -5px 10px rgba(255, 255, 255, 0.5), 1px 2px 5px 3px rgba(94, 104, 121, 0.3);
+}
+.productImg{
+  
+  width: 50%;
+  margin: auto;
+  margin-top: 1rem;
+  margin-left: 5%;
+  margin-bottom: 1rem;
+  
+}
+.ProdactData{
+margin-left: 10%;
+}
+.productName{
+font-size: 1.2rem;
+font-weight: 900;
+}
+.productPrice{
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.ProdactData button{
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 1.5rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #4b70e2;
+  color: white;
+  letter-spacing: 1.15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .navbar ul{
     display: flex;
     flex-direction: row;
@@ -39,42 +185,6 @@ button {
     margin: auto;
   }
   
-  
-  
-  .fadeInUp {
-    -webkit-animation-name: fadeInUp;
-    animation-name: fadeInUp;
-    animation-duration: 2s;
-  }
-  
-  
-  @-webkit-keyframes fadeInUp {
-    from {
-      opacity: 0;
-      -webkit-transform: translate3d(0, 100%, 0);
-      transform: translate3d(0, 100%, 0);
-    }
-  
-    to {
-      opacity: 1;
-      -webkit-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0);
-    }
-  }
-  
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      -webkit-transform: translate3d(0, 100%, 0);
-      transform: translate3d(0, 100%, 0);
-    }
-  
-    to {
-      opacity: 1;
-      -webkit-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0);
-    }
-  }
   
   body {
     /* background-color: rgba(199, 43, 43, 0.788); */
