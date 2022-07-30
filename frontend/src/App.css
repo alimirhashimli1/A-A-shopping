@@ -147,7 +147,8 @@ font-weight: 900;
 .navbar ul{
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: 80%;
+    margin: auto;
     justify-content: space-between;
     font-size: large;
     list-style: none;
