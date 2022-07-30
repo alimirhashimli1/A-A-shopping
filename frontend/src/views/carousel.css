@@ -1,14 +1,26 @@
 .slider {
     position: relative;
     height: 100vh;
+    width: 80%;
+    margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  
+  .slide.active {
+    width: 30%;
+    height: 60vh;
+    margin: auto;
+    opacity: 1;
+    transition-duration: 1s;
+    transform: scale(1.7);
+  }
   .image {
-    width: 1000px;
-    height: 600px;
+    width: 80%;
+    /* margin: auto; */
+    
+    height: 40vh;
+    margin-top: 100px;
     border-radius: 10px;
   }
   
@@ -39,8 +51,4 @@
     transition-duration: 1s ease;
   }
   
-  .slide.active {
-    opacity: 1;
-    transition-duration: 1s;
-    transform: scale(1.7);
-  }
+  

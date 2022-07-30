@@ -29,7 +29,7 @@ dotenv.config();
 //DataBasePassword:aashopping1234
 //mongodb+srv://bava:<password>@cluster0.tedzt.mongodb.net/?retryWrites=true&w=majority
 //stripePassword:QWyx111222!
-
+// last edit
 //mongodb+srv://aashopping:<password>@cluster0.bzvfds3.mongodb.net/?retryWrites=true&w=majority
 //cloudinaryPassword: Yx111222!
 
