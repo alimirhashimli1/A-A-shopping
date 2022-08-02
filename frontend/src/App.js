@@ -1,21 +1,11 @@
 import React, { useEffect, useState } from "react";
-import {BrowserRouter as Router, Routes, Route, Switch, Link} from "react-router-dom"
 import Register from "./views/Register";
 import Login from "./views/Login";
 import Products from "./views/Products";
-
-import Cart from "./views/Cart";
-import Logo from "./views/Logo"
 import "./App.css";
 import Contact from "./views/Contact";
 import About from "./views/About";
 import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"
-
-
-import "./App.css";
-import Contact from "./views/Contact";
-import About from "./views/About"
-
 import Carousel from "./views/Carousel";
 import Footer from "./views/Footer";
 import Card from "./components/Card";
