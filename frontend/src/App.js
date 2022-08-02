@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Register from "./views/Register";
 import Login from "./views/Login";
 import Products from "./views/Products";
+import Navbar from "./views/Navbar"
 import Cart from "./views/Cart";
 import Logo from "./views/Logo"
 import "./App.css";
@@ -64,40 +65,7 @@ const App = () => {
     return (
     <>
     <Router>
-            <nav className="navbar">
-                <ul>
-                    <li>
-                    <Link to="/">
-                        Logo
-                    </Link>
-                    </li>
-                    <li>
-                    <Link to="/products">
-                        Products
-                    </Link>
-                    </li>
-                    <li>
-                    <Link to="/contact">
-                        Contact
-                    </Link>
-                    </li>
-                    <li>
-                    <Link to="/about">
-                        About
-                    </Link>
-                    </li>
-                    <li>
-                    <Link to="/login">
-                        Login
-                    </Link>
-                    </li>
-                    <li>
-                    <Link to="/cart">
-                        Cart
-                    </Link>
-                    </li>
-                </ul>
-            </nav>
+            <Navbar/>
         <main>
             <Routes>
                 <Route path="/" exact element={<Carousel />}/>
