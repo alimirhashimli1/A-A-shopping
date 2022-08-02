@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import slides from '../components/SliderData';
-import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
+import {  FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import "./carousel.css"
 
 const Carousel = () => {
@@ -14,28 +14,71 @@ const Carousel = () => {
     const prevSlide = () => {
       setCurrent(current === 0 ? length - 1 : current - 1);
     };
-  
+
+    const goToSlide = (slideIndex) => {
+      setCurrent(slideIndex);
+    };
+
+    const dotsContainerStyles = {
+      display: "flex",
+      justifyContent: "center",
+    };
+    
+    const dotStyle = {
+      margin: "0 3px",
+      cursor: "pointer",
+      fontSize: "20px",
+    };
+
     if (!Array.isArray(slides) || slides.length <= 0) {
       return null;
     }
   
     return (
+      <>
       <section className='slider'>
-        <FaArrowAltCircleLeft className='left-arrow' onClick={prevSlide} />
-        <FaArrowAltCircleRight className='right-arrow' onClick={nextSlide} />
+        <div className='icon-back-left'>
+        <FaArrowLeft className='left-arrow' onClick={prevSlide} />
+        </div>
+        <div className='icon-back-right'>
+        <FaArrowRight className='right-arrow' onClick={nextSlide} />
+        </div>
         {slides.map((slide, index) => {
+
+        let position = "nextSlide"
+        if(index === current)   {
+            position = "activeSlide"
+        }
+        if(index === current - 1 || (current === 0 && index === slides.length - 1)){
+            position = "lastSlide"
+        }
+
           return (
             <div
-              className={index === current ? 'slide active' : 'slide'}
+            className={`slide ${position}`}
+            //   className={index === current ? 'slide active' : 'slide'}
               key={index}
             >
               {index === current && (
-                <img src={slide.image} alt='travel image' className='image' />
+                <img src={slide.image} alt='travel' className='image' />
               )}
             </div>
           );
         })}
+        
       </section>
+      <div style={dotsContainerStyles}>
+      {slides.map((slide, slideIndex) => (
+        <div 
+          className={`${slideIndex === current ? "dot-active" : "dot-passive"}`}
+          key={slideIndex}
+          onClick={() => goToSlide(slideIndex)}
+        >
+           
+        </div>
+      ))}
+      </div>
+    </>
     );
   };
   

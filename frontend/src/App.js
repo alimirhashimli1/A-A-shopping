@@ -4,12 +4,11 @@ import Register from "./views/Register";
 import Login from "./views/Login";
 import Products from "./views/Products";
 
-import { CartProvider } from "react-use-cart";
+import "./App.css";
 import Contact from "./views/Contact";
 import About from "./views/About"
 import Carousel from "./views/Carousel";
 import Footer from "./views/Footer";
-//import NavBar from "./components/NavBar";
 import Card from "./components/Card";
 import Header from "./components/Header";
 import { ToastContainer, toast } from 'react-toastify';
@@ -150,7 +149,7 @@ const App = () => {
     <header>
     <Header cart={cart} setShow={setShow} size={cart.length} />
     </header>
-            
+          
         <main>
             <Routes>
                 <Route path="/" exact element={<Carousel />}/>
