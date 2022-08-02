@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Logout from "../components/Logout";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './products.css'
 
 const Products = props => {
 
@@ -18,28 +19,33 @@ const Products = props => {
     const [fileInputState, setFileInputState] = useState('');
 
     useEffect(() => {
-        const fetchCustomerData = async () => {
-            const settings = {
-                credentials: "include"
-            }    
-            const response = await fetch(process.env.REACT_APP_SERVER_URL + `/customers/${props.currentCustomerId}`, settings);
-            const parsedRes = await response.json();            
-            try {
-                if (response.ok) {
-                   
-                    setUserName(parsedRes.userName);
-                    setProducts(parsedRes.products);
-                    setIsAdmin(parsedRes.isAdmin);
-                } else {
-                    throw new Error(parsedRes.message);
+    // if(props.isLoggedIn){
+       
+            const fetchCustomerData = async () => {
+                const settings = {
+                    credentials: "include"
+                }    
+                const response = await fetch(process.env.REACT_APP_SERVER_URL + `/customers/${props.currentCustomerId}`, settings);
+                const parsedRes = await response.json();            
+                try {
+                    if (response.ok) {
+                       
+                        setUserName(parsedRes.userName);
+                        setProducts(parsedRes.products);
+                        setIsAdmin(parsedRes.isAdmin);
+                    } else {
+                        throw new Error(parsedRes.message);
+                    }
+                } catch (err) {
+                    alert(err.message);
                 }
-            } catch (err) {
-                alert(err.message);
             }
-        }
-
-        fetchCustomerData();
-    }, [props.currentCustomerId])
+    
+            fetchCustomerData();
+       
+    // } 
+}, [props.currentCustomerId])
+   
 
        useEffect(  ()=>{
         const getProducts = async () => {  
@@ -62,12 +68,6 @@ const Products = props => {
         }
         getProducts();
        }, [])
-
-
-
-
-
-
 
 
        useEffect(  ()=>{
@@ -94,13 +94,6 @@ const Products = props => {
         getProducts();
        }, [])
     
-
-
-
-
-
-
-
 
 
 
@@ -213,27 +206,27 @@ const previewFiles=(file)=>{
 }    
 
 
-
     return (
         <div>
            
-                        <h2>Hi {userName}!</h2>
-                        <Logout logout={props.logout} />
-
-                        
-              { isAdmin && (  
-                    <div>
-                    <h1>Add A New Product</h1>
-                     <form onSubmit={submitProduct} encType='multipart/form-data'>
-                        <div>
-                          <label>Product Name</label>
-                          <input name="productName" onChange={updateData} value={productName} />
                        
+                       
+              { isAdmin && (  
+                    <div className="add-product-container">
+                    <h2 className="welcome">Welcome  {userName}</h2>
+                        {/* <Logout logout={props.logout} /> */}
+                        <div className="add-product-title">
+                        <h1 >Add A New Product</h1> 
                         </div>
-                        <div>
-                          <label>Product Image</label>
-                          <input type="file" name="image" id="fileInput"  onChange={handleProductImageUpload} value={fileInputState} />
-                          <select onChange={(e)=>setBrand(e.target.value)} required>
+                    {/* <h1>Add A New Product</h1> */}
+                     <form onSubmit={submitProduct} encType='multipart/form-data'>
+                        <div className="product-content">
+                          <label className="product-label label-name">Product Name</label>
+                          <input name="productName" className="input-name" onChange={updateData} value={productName} />
+                        </div>
+                        <div className="product-content">
+                        <label className="product-label label-brand">Product Brand</label>
+                          <select className="input-name" onChange={(e)=>setBrand(e.target.value)} required>
                             <option value="">Select Brand</option>
                             <option value="iphone">iPhone</option>
                             <option value="samsung">Samsung</option>
@@ -241,26 +234,62 @@ const previewFiles=(file)=>{
                             <option value="xiomi">Xiomi</option>
                           </select>
                         </div>
-                        <div>
-                          <label>Price</label>
-                          <input name="price" onChange={updateData} value={price} />
+                        
+                        <div className="product-content">
+                          <label className="product-label label-price">Price</label>
+                          <input name="price" className="input-name" onChange={updateData} value={price} />
                         </div>
-                        <div>
-                          <label>Description</label>
-                          <input name="productDescription" onChange={updateData} value={productDescription} />
+                        <div className="product-content">
+                          <label className="product-label label-des">Description</label>
+                          <input name="productDescription" className="input-name" onChange={updateData} value={productDescription} />
                         </div> 
-                        <button>Submit Product</button>
+                        <div className="product-content">
+                          <label className="product-label label-img">Product Image</label>
+                          <input className="input-name input-img" type="file" name="image" id="fileInput"  onChange={handleProductImageUpload} value={fileInputState} />
+                          
+                        </div>
+                        <button className="submit-product">Submit Product</button>
                      </form>
                      {previewSource && (
-                        <img src={previewSource} alt="chosen"  style={{ height: '300px' }} />
+                        <img className="upload-img" src={previewSource} alt="chosen"  style={{ height: '300px' }} />
                      )}
                     </div>
         )} 
             <div className="contentContiner">
 
-                <h2>Current Products</h2>
+                <h2 className="product-header">CURRENT PRODUCTS</h2>
                 <ul className="General">
                 {
+                        product1.map(product => {
+                            return <li className="product" key={product._id} id={product._id}> 
+                            <img className="productImg" src={product.productImage.avatar} alt="productPhoto" /><br></br>
+                            <div className="ProdactData">
+                            <div className="productName">{product.productName}</div>
+                            <div className="productDescription">{product.productDescription}</div>
+                            <div className="productPrice">$ {product.price}</div>
+                            <div className="productName"><button   onClick={ ()=> props.handleClick(product) }>Add to cart <i className="fas header-cart-icon fa-cart-plus"></i> </button>
+                            </div>
+                   </div>   
+                   </li>
+               })
+           }
+           <ToastContainer
+position="bottom-left"
+autoClose={1000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+
+theme="colored"
+/>
+                            
+                </ul>
+                {/* <ul className="General">
+{
                         product1.map(product => {
                             return <li className="product" key={product._id} id={product._id}> 
                             <img className="productImg" src={product.productImage.avatar} alt="productPhoto" /><br></br>
@@ -301,7 +330,7 @@ pauseOnFocusLoss
 draggable
 pauseOnHover
                     />
-                </ul>
+</ul> */}
             </div>
             
             

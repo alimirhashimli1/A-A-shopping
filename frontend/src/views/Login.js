@@ -111,7 +111,7 @@ const Login = props => {
       <div className="contentContiner">
 <h2>Current Products</h2>
 <ul className="General">
-{
+                {
                         product1.map(product => {
                             return <li className="product" key={product._id} id={product._id}> 
                             <img className="productImg" src={product.productImage.avatar} alt="productPhoto" /><br></br>
@@ -119,31 +119,15 @@ const Login = props => {
                             <div className="productName">{product.productName}</div>
                             <div className="productDescription">{product.productDescription}</div>
                             <div className="productPrice">$ {product.price}</div>
-                            <div className="productName"><button  onClick={  ()=>{
-    toast.success(`${product.productName} Added to Card`, {
-        position: "bottom-left",
-autoClose: 5000,
-hideProgressBar: false,
-closeOnClick: true,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
-});
-}}>Add to card </button>
-                           
+                            <div className="productName"><button   onClick={ ()=> props.handleClick(product) }>Add to cart </button>
                             </div>
-                   
-                           
-
-                
-                            </div>
-                           
-                            </li>
-                        })
-                    }
-                    <ToastContainer 
-                    position="bottom-left"
-autoClose={5000}
+                   </div>   
+                   </li>
+               })
+           }
+           <ToastContainer
+position="bottom-left"
+autoClose={1000}
 hideProgressBar={false}
 newestOnTop={false}
 closeOnClick
@@ -151,8 +135,11 @@ rtl={false}
 pauseOnFocusLoss
 draggable
 pauseOnHover
-                    />
-</ul>
+
+theme="colored"
+/>
+                            
+                </ul>
 </div>
 </div>
 
