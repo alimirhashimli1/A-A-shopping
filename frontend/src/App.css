@@ -13,7 +13,14 @@
   --grey-color: #DCDCDC;
   --green-color: green;
   --black-color: black;
+  --border-radius: 6px;
 }
 .body{
   font-family: 'Uchen', serif;
+}
+
+main {
+  min-height: 80vh;
+  padding: 20px 40px;
+
 }
