@@ -45,6 +45,13 @@ const Products = props => {
        
     // } 
 }, [props.currentCustomerId])
+
+
+
+// useEffect(()=>{
+//     localStorage.setItem("cart", JSON.stringify(props.cart));
+// }, [props.cart])
+
    
 
        useEffect(  ()=>{
@@ -116,6 +123,21 @@ const Products = props => {
         }
     }
 
+    // useEffect(()=>{
+        
+    //     const cartData = JSON.parse(localStorage.getItem("cart"));
+    //     if (cartData && cartData.token && cartData.id && cartData.expiry) {
+    //         const tokenCartExpiry = new Date(cartData.expiry);
+    //         const now = new Date();
+    //         if (tokenCartExpiry > now) {
+    //             props.login(cartData.token, cartData.id)
+    //         } else {
+    //             props.logout();
+    //         }
+    //     } else {
+    //         props.logout();
+    //     }
+    // }, [])
 
     const handleProductImageUpload = event =>{
         const file =event.target.files[0];
@@ -127,6 +149,7 @@ const Products = props => {
 
 const submitProduct = async event => {
         event.preventDefault();
+        
       if(!selectedFile) return;
 const reader = new FileReader()
  reader.readAsDataURL(selectedFile)
@@ -141,15 +164,64 @@ const reader = new FileReader()
 
 const uploadImage = async (base64EncodedImage)=>{
    
-    try {
-        await fetch(process.env.REACT_APP_SERVER_URL + "/products", {
+    // try {
+    //     await fetch(process.env.REACT_APP_SERVER_URL + "/products", {
+    //         method: "POST",
+    //         body: JSON.stringify({productName, price, productDescription, brand, data: base64EncodedImage}),
+    //         headers: { 'Content-Type': 'application/json'}
+    //     })
+
+
+
+
+
+
+
+
+        const response =  await fetch(process.env.REACT_APP_SERVER_URL + "/products", {
             method: "POST",
             body: JSON.stringify({productName, price, productDescription, brand, data: base64EncodedImage}),
             headers: { 'Content-Type': 'application/json'}
         })
-        setPreviewSource("")
-        setFileInputState('');
-            setPreviewSource('');
+
+        console.log("response", response)
+        const parsedRes = await response.json();
+        console.log("parsedRes", parsedRes)
+
+        try {
+            if (response.ok) {
+      
+              const now = new Date();
+              const tokenExpiry = new Date(now.getTime() + 1000 * 60 * 60);
+      
+             
+              localStorage.setItem("cart", JSON.stringify({ token: parsedRes.token, id: parsedRes.id, expiry: tokenExpiry.toISOString() }));
+            // localStorage.setItem("data", JSON.stringify(props.cart))
+              props.login(parsedRes.token, parsedRes.id);
+             
+            } else {
+              throw new Error(parsedRes.message);
+            }
+
+
+
+// console.log("response : ", response)
+
+        //LocalStorage
+        // const parsedRes = await response.json();
+        // const now = new Date();
+        // const tokenExpiry = new Date(now.getTime() + 1000 * 60 * 60);
+        // localStorage.setItem("data", JSON.stringify({ token: parsedRes.token, id: parsedRes.id, expiry: tokenExpiry.toISOString() }));
+        // console.log("parsedRes : ", parsedRes)
+        // props.login(parsedRes.token, parsedRes.id);
+
+
+
+
+
+        // setPreviewSource("")
+        // setFileInputState('');
+        //     setPreviewSource('');
     } catch (error) {
         console.error(error)
     }
@@ -211,21 +283,21 @@ const previewFiles=(file)=>{
            
                        
                        
-              { isAdmin && (  
-                    <div className="add-product-container">
+              { isAdmin && (
+                <div>  
+                 
                     <h2 className="welcome">Welcome  {userName}</h2>
-                        {/* <Logout logout={props.logout} /> */}
-                        <div className="add-product-title">
-                        <h1 >Add A New Product</h1> 
-                        </div>
-                    {/* <h1>Add A New Product</h1> */}
-                     <form onSubmit={submitProduct} encType='multipart/form-data'>
+                    <div className="add-product-title">
+                        <h1>ADD A NEW PRODUCTS</h1> 
+                    </div>
+                    <div className="add-product-container">
+                    <form onSubmit={submitProduct} encType='multipart/form-data'>
                         <div className="product-content">
                           <label className="product-label label-name">Product Name</label>
                           <input name="productName" className="input-name" onChange={updateData} value={productName} />
                         </div>
                         <div className="product-content">
-                        <label className="product-label label-brand">Product Brand</label>
+                          <label className="product-label label-brand">Product Brand</label>
                           <select className="input-name" onChange={(e)=>setBrand(e.target.value)} required>
                             <option value="">Select Brand</option>
                             <option value="iphone">iPhone</option>
@@ -234,7 +306,6 @@ const previewFiles=(file)=>{
                             <option value="xiomi">Xiomi</option>
                           </select>
                         </div>
-                        
                         <div className="product-content">
                           <label className="product-label label-price">Price</label>
                           <input name="price" className="input-name" onChange={updateData} value={price} />
@@ -249,10 +320,11 @@ const previewFiles=(file)=>{
                           
                         </div>
                         <button className="submit-product">Submit Product</button>
-                     </form>
-                     {previewSource && (
+                    </form>
+                    {previewSource && (
                         <img className="upload-img" src={previewSource} alt="chosen"  style={{ height: '300px' }} />
                      )}
+                    </div>
                     </div>
         )} 
             <div className="contentContiner">
@@ -288,49 +360,7 @@ theme="colored"
 />
                             
                 </ul>
-                {/* <ul className="General">
-{
-                        product1.map(product => {
-                            return <li className="product" key={product._id} id={product._id}> 
-                            <img className="productImg" src={product.productImage.avatar} alt="productPhoto" /><br></br>
-                            <div className="ProdactData">
-                            <div className="productName">{product.productName}</div>
-                            <div className="productDescription">{product.productDescription}</div>
-                            <div className="productPrice">$ {product.price}</div>
-                            <div className="productName"><button  onClick={  ()=>{
-    toast.success(`${product.productName} Added to Card`, {
-        position: "bottom-left",
-autoClose: 5000,
-hideProgressBar: false,
-closeOnClick: true,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
-});
-}}>Add to card </button>
-                           
-                            </div>
-                   
-                           
-
                 
-                            </div>
-                           
-                            </li>
-                        })
-                    }
-                    <ToastContainer 
-                    position="bottom-left"
-autoClose={5000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-                    />
-</ul> */}
             </div>
             
             

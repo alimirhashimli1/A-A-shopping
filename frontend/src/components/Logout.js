@@ -1,6 +1,11 @@
+import React from "react";
+import Carousel from "../views/Carousel";
 const Logout = props => {
     return (
-        <button onClick={props.logout}>Log out</button>
+      <div>
+      {props.logout}
+       <Carousel />
+      </div>
     );
 }
 
