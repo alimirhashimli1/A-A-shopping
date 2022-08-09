@@ -28,9 +28,6 @@ export const registerCustomer = async(req, res, next) => {
     if(foundEmail){
         return next(createError(412, "Email address has already been used to create an account. Please try a different email address"));
     }
-
-
-
         const newCustomer = new Customer({
             userName:userName,
             emailAddress: emailAddress,

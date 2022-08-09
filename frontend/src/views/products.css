@@ -12,25 +12,33 @@ font-family: 'Uchen', serif;
 font-size: 2rem;
 font-weight: 300;
 text-align: center;
-margin-top: 20px;
+width: 30%;
+margin: auto;
+margin-top: 1px;
 
 }
 .add-product-title{
-width: 275px;
+width: 22%;
 margin: auto;
-margin-top: 20px;
-border-bottom: 2px solid rgb(192, 189, 189);
+margin-top: 5px;
+}
+
+.add-product-title h1{
+  text-align: center;
+  font-family: 'Uchen', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  border-bottom: 2px solid var(--grey-color);
 }
 .add-product-container{
-   
-    width: 50%;
+    width: 45%;
     margin: auto;
-    height: 350px;
-    border: 2px solid rgb(202, 198, 198);
+    height: 380px;
+    border: 2px solid var(--dimgrey-color);
     display: flex;
     justify-content: space-between;
     top: 30px;
-    padding: 20px;
+    padding: 40px;
     border-radius: 15px;
     margin-top: 50px;
     
@@ -66,17 +74,20 @@ margin-right: 60px;
   
 }
 .upload-img{
-  height: 300px;
-  width: 300px;
+  height: 250px;
+  width: 250px;
   margin-bottom: 30px;
   border: 1px solid var(--grey-color);
   border-radius: 9px;
+  padding: 30px 0;
 }
 .submit-product{
-  margin-top: 20px;
+  margin-top: 50px;
   padding: 10px;
-  margin-left: 100px;
-  
+  margin-left: 110px;
+  border: none;
+  background-color: var(--green-color);
+  color: var(--white-color);
   border-radius: 5px;
   width: 140px;
 }
@@ -88,6 +99,16 @@ margin-right: 60px;
     
   
   }
+  .productContiner{
+    width: 80%;
+    margin: auto;
+  }
+  .product-header{
+    font-size: 2rem;
+    font-family: 'Uchen', serif;
+    font-weight: 300;
+    
+  }
   
   .General {
     display: flex;
@@ -98,17 +119,8 @@ margin-right: 60px;
   
   
   }
-.productContiner{
-    width: 80%;
-    margin: auto;
-  }
-  .product-header{
-    font-size: 2.2rem;
-    font-family: 'Uchen', serif;
-    font-weight: 300;
-    
-  }
-  .products{
+
+  /* .products{
    
     display: flex;
     justify-content: center;
@@ -116,32 +128,39 @@ margin-right: 60px;
     flex-wrap: wrap;
     margin-top: 2rem;
     list-style: none;
-  }
+  } */
   .product{
    
-    width: 19%;
-    max-width: 100%;
-    height: 370px;
-    margin: .5rem;
-    padding: 1rem;
+    width: 16.6%;
+    /* max-width: 100%; */
+    height: 380px;
+    margin: 1.5rem;
+    padding: .2rem;
     border-radius: 15px;
     box-shadow: -5px -5px 10px rgba(255, 255, 255, 0.5), 1px 2px 5px 3px rgba(94, 104, 121, 0.3);
+    /* border: 1px solid var(--dimgrey-color); */
   }
   .productImg{
     
-    width: 50%;
+    /* width: 90%; */
+    width: 200px;
     margin: auto;
-    margin-top: 1rem;
-    margin-left: 5%;
-    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+    margin-left: 9%;
+    margin-bottom: .5rem;
     
   }
   .ProdactData{
   margin-left: 10%;
   }
   .productName{
-  font-size: 1.2rem;
-  font-weight: 900;
+  font-size: 1.3rem;
+  font-family: 'PT Serif', serif;
+  
+  }
+  .productDescription{
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
   }
   .productPrice{
     font-size: 1.2rem;
@@ -154,15 +173,21 @@ margin-right: 60px;
     border-radius: 10px;
     font-size: 16px;
     font-weight: 500;
-    margin-top: 1.5rem;
+    margin-top: .9rem;
     border: none;
     outline: none;
     cursor: pointer;
-    background-color: var(--main-color);
+    background-color: var( --main-color);
     color: var(--white-color);
     letter-spacing: 1.15px;
+    transition: all .7s ease;
   }
-  
+
+  .ProdactData button:hover{
+    background-color: #333333;
+    color:#bfbfbf;
+
+  }
   
   
   

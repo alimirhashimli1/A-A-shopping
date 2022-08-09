@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import "./Login.css"
 
 const Login = props => {
   const [emailAddress, setEmailAddress] = useState("");
@@ -71,8 +72,14 @@ const Login = props => {
 
     try {
       if (response.ok) {
+
+        const now = new Date();
+        const tokenExpiry = new Date(now.getTime() + 1000 * 60 * 60);
+
+       
+        localStorage.setItem("data", JSON.stringify({ token: parsedRes.token, id: parsedRes.id, expiry: tokenExpiry.toISOString() }));
         props.login(parsedRes.token, parsedRes.id);
-        // props.setShowLogin(false)
+       
       } else {
         throw new Error(parsedRes.message);
       }
@@ -88,27 +95,33 @@ const Login = props => {
   }
 
   return (
-    <div>
-      <h1>Login</h1>
+    
+    
+    <section className="login-main">
+<h1 className="login-title">Login</h1>
+
+
+<div className="login-container">
+      
 
       <form onSubmit={attemptLogin}>
-        <div>
-          <label>Email Address</label>
-          <input name="emailAddress" onChange={updateData} value={emailAddress} />
+        <div className="email-login">
+          <label className="login-label">Email Address</label>
+          <input className="login-email" name="emailAddress" onChange={updateData} value={emailAddress} />
         </div>
         <div>
-          <label>Password</label>
-          <input name="password" onChange={updateData} value={password} />
+          <label className="login-label">Password</label>
+          <input className="login-password" name="password" onChange={updateData} value={password} />
         </div>
 
-        <button>Sign In</button>
+        <button className="login-signin">Sign In</button>
       </form>
 
-      <button onClick={updateShowLogin}>First Sign Up</button>
+      <button className="login-signup" onClick={updateShowLogin}>Sign Up</button>
 
 
       <div>
-      <div className="contentContiner">
+      {/* <div className="contentContiner">
 <h2>Current Products</h2>
 <ul className="General">
                 {
@@ -140,12 +153,14 @@ theme="colored"
 />
                             
                 </ul>
-</div>
+</div> */}
 </div>
 
 
 
     </div>
+    </section>
+    
   )
 }
 
