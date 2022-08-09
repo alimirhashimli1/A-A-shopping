@@ -4,9 +4,9 @@ import Login from "./views/Login";
 import Products from "./views/Products";
 import Contact from "./views/Contact";
 import About from "./views/About";
-import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import Carousel from "./views/Carousel";
-import Footer from "./views/Footer";
+import Footer from "./components/Footer";
 import Card from "./components/Card";
 import Header from "./components/Header";
 import { ToastContainer, toast } from 'react-toastify';
