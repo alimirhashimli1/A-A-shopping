@@ -13,6 +13,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./App.css";
 import Logout from "./components/Logout";
+import CheckoutSuccess from "./components/CheckoutSuccess";
+import { style } from "react-toastify";
 
 const App = () => {
     const [ isLoggedIn, setIsLoggedIn ] = useState(false);
@@ -21,7 +23,13 @@ const App = () => {
     const [ token, setToken ] = useState(false);
     const [show, setShow]= useState(true);
     const [ cart, setCart]= useState([]);
+
+
+
+
     const handleClick = (product) => {
+       
+        
         const ProductExist = cart.find((item) => item._id === product._id)
         if(ProductExist){
             setCart(cart.map(item => item._id === product._id
@@ -31,15 +39,17 @@ const App = () => {
         }else{
                 setCart([...cart, {...product, quantity: 1}]);
             }
-            toast.success(`${product.productName} Added to Card`, {
+            toast.success(`${product.productName} Added to Cart`, {
                 position: "bottom-left",
-          autoClose: 1000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          });
+autoClose: 1000,
+hideProgressBar: false,
+closeOnClick: true,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+});
+
+        
           <ToastContainer
           position="bottom-left"
           autoClose={1000}
@@ -50,8 +60,11 @@ const App = () => {
           pauseOnFocusLoss
           draggable
           pauseOnHover
-          theme="colored"
           />
+
+
+      
+
           setShow(true)
       };
       const  handelAddProduct = (product) =>{
@@ -87,8 +100,11 @@ const App = () => {
       const clearCard = ()=>{
         setCart([])
       }
+
+
     useEffect(() => {
         const data = JSON.parse(localStorage.getItem("data"));
+        const cartData = JSON.parse(localStorage.getItem("cart"));
         if (data && data.token && data.id && data.expiry) {
             const tokenExpiry = new Date(data.expiry);
             const now = new Date();
@@ -101,11 +117,19 @@ const App = () => {
             logout();
         }
     }, [])
+
+
+    
+
+
+
     const login = (token, id) => {
         setToken(token);
         setCurrentCustomerId(id);
         setIsLoggedIn(true);
     }
+
+
     const logout = () => {
         localStorage.removeItem("data");
         setToken(false);
@@ -117,24 +141,32 @@ const App = () => {
     <>
     <Router>
     <header>
-    <Header cart={cart} setShow={setShow} size={cart.length} />
+    <Header cart={cart} setShow={setShow} size={cart.length} isLoggedIn={isLoggedIn} currentCustomerId={currentCustomerId} logout={logout} />
     </header>
         <main>
+    
             <Routes>
                 <Route path="/" exact element={<Carousel />}/>
-                {/* <CartProvider> */}
-                <Route path="/products"  element={ show ? (<Products currentCustomerId={currentCustomerId} isLoggedIn={isLoggedIn} login={login} handleClick={handleClick} token={token} logout={logout} />)
-                : (<Card cart={cart} setCart={setCart} clearCard={clearCard}  handleChange={handleChange} handleDeleteProduct={handleDeleteProduct} handelAddProduct={handelAddProduct} />)}/>
-                {/* </CartProvider> */}
+                <Route path="/products"  element={ show ? (<Products currentCustomerId={currentCustomerId} isLoggedIn={isLoggedIn} login={login} handleClick={handleClick} token={token} cart={cart} logout={logout} />)
+                : (<Card cart={cart} currentCustomerId={currentCustomerId} setCart={setCart} clearCard={clearCard}  handleChange={handleChange} handleDeleteProduct={handleDeleteProduct} handelAddProduct={handelAddProduct} /> 
+                )   
+                }/>
+                <Route path="/checkout-success"  element={<CheckoutSuccess />}/> 
                 <Route path="/contact" exact element={<Contact/>}/>
                 <Route path="/about" exact element={<About/>}/>
-                {/* <Route path="/login" exact element={
-                    !isLoggedIn ? showLogin ? (<Login currentCustomerId={currentCustomerId} token={token} handleClick={handleClick} logout={logout} setShowLogin={setShowLogin} showLogin={showLogin} login={login}/>) : (<Register setShowLogin={setShowLogin}/>) : <Products currentCustomerId={currentCustomerId} token={token} logout={logout} />}
-                /> */}
-                <Route path="/login" exact element={!isLoggedIn ? showLogin ? (<Login currentCustomerId={currentCustomerId} token={token} handleClick={handleClick}  login={login} logout={logout} setShowLogin={setShowLogin} showLogin={showLogin} />)
-                    : <Register setShowLogin={setShowLogin} /> : <Products handleClick={handleClick} currentCustomerId={currentCustomerId} token={token} logout={logout} /> } />
-                    {/* // : <Products currentCustomerId={currentCustomerId} token={token} logout={logout} />} */}
-                 <Route path="/logout" exact element={<Logout logout={logout}  />}/>
+                <Route path="/checkout-success"  element={<CheckoutSuccess currentCustomerId={currentCustomerId} />}/> 
+                <Route path="/logout" exact element={<Logout logout={logout}  />}/>
+                <Route path="/card" exact element={<Card  cart={cart} currentCustomerId={currentCustomerId} setCart={setCart} clearCard={clearCard}  handleChange={handleChange} handleDeleteProduct={handleDeleteProduct} handelAddProduct={handelAddProduct} />}/>
+
+                {/* <Route path="/login" exact element={!isLoggedIn ? showLogin ? (<Login currentCustomerId={currentCustomerId} token={token} handleClick={handleClick}  login={login} logout={logout} setShowLogin={setShowLogin} showLogin={showLogin} />)
+                    : <Register setShowLogin={setShowLogin} login={login} /> : <Products handleClick={handleClick} currentCustomerId={currentCustomerId} token={token} logout={logout} /> } /> */}
+
+
+                    <Route path="/login" exact element={!isLoggedIn ? showLogin ? (<Login currentCustomerId={currentCustomerId} token={token} handleClick={handleClick}  login={login} logout={logout} setShowLogin={setShowLogin} showLogin={showLogin} />)
+                    : <Register setShowLogin={setShowLogin} login={login} /> : <Products handleClick={handleClick} currentCustomerId={currentCustomerId} token={token} logout={logout} /> } />
+                  
+                
+                 {/* <Route path="*" exact element={<NotFound />}/> */}
             </Routes>
         </main>
         <footer>

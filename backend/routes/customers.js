@@ -7,7 +7,7 @@ import authorizeCustomer from "../middleware/authorizeCustomer.js";
 const router = express.Router();
 
 
-router.use(authorizeCustomer);
+// router.use(authorizeCustomer);
 
 router.get("/:id", getCustomerData);    
 router.patch("/:id/products", requiredValues(["id"]), checkValidation, updateProducts);  

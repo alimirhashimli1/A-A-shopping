@@ -10,12 +10,12 @@ export const productsPost = async (req, res, next) => {
     
     const {productName, price, productDescription, brand } = req.body;
     
-        try {
+        
             const fileStr = req.body.data;
             const uplodResponse = await cloudinary.uploader.upload(fileStr, { upload_preset: 'aashopping' } )
       
         
-        let product = new Product({
+        let newProduct = new Product({
             productName: productName,
             price: price,
             productDescription: productDescription,
@@ -24,30 +24,30 @@ export const productsPost = async (req, res, next) => {
             {avatar: uplodResponse.secure_url,
             cloudinary_id: uplodResponse.public_id,}
            });
- 
-           await product.save();
-            res.json(product);
+           try {
+           await newProduct.save();
+            //res.json(newProduct);
  
     
         } catch (error) {
-            console.log(error)
-            res.status(500).json({err: 'Something went wrong'})
-            
+           
+            return next(createError(500, "Something went wrong"));
         }
 
 
-    //     let newToken;
+        let newToken;
 
-    //     try {
-    //         newToken = jwt.sign({ id: newCustomer.id }, process.env.SECRET_KEY, { expiresIn: "1h" } )
+        try {
+            newToken = jwt.sign({ id: newProduct.id }, process.env.SECRET_KEY, { expiresIn: "1h" } )
+            res.cookie("dataCookie", newToken, { httpOnly: true, sameSite: "Strict" });
     //         res.cookie("dataCookie", newToken, { httpOnly: true, sameSite: "Strict" });
-    //     } catch  {
-    //         return next(createError(500, "Signup could not be completed. Please try again"));
+        } catch  {
+            return next(createError(500, "Signup could not be completed. Please try again"));
 
-    //     }
+        }
 
 
-    // res.status(201).json({id: product._id, token: newToken})  
+    res.status(201).json({id: newProduct._id, token: newToken})  
 }
 
 

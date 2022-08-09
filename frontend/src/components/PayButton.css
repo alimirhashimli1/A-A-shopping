@@ -1,0 +1,24 @@
+.pay{
+    background-color: var(--second-color);
+    color: var(--white-color);
+    padding: 10px;
+    font-size: 1.3rem;
+    width: 200px;
+    margin-left: 82%;
+    margin-top: 40px;
+    
+    border: none;
+    border-radius: 8px;
+    transition: all .7s;
+
+}
+
+.pay-icon{
+    margin-left: 10px;
+}
+
+
+.pay:hover{
+    background-color: var(--fourth-color) ;
+    color: var(--darkWhite-color);
+}
