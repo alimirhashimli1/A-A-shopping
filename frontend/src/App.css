@@ -6,6 +6,8 @@
 }
 
 :root{
+  --main-color: #4b70e2;
+
   --third-color: #4b70e2;
   --second-color: DodgerBlue;
   --fourth-color: #0066cc;
@@ -31,7 +33,6 @@
   --lime1-color: #00cc00;
   --darkgrey-color: #4d4d4d;
   --darkWhite-color: #e6e6e6;
-
 }
 .body{
   font-family: 'Uchen', serif;
