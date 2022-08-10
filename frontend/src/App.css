@@ -7,13 +7,12 @@
 
 :root{
   --main-color: #4b70e2;
-  /* --main-color: blue; */
+
   --white-color: white;
   --red-color: red;
   --grey-color: #DCDCDC;
   --green-color: green;
   --black-color: black;
-  --border-radius: 6px;
 }
 .body{
   font-family: 'Uchen', serif;
