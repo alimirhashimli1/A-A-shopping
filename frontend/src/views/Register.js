@@ -42,6 +42,9 @@ const Register = props => {
 
     try {
       if (response.ok) {
+        const now = new Date();
+        const tokenExpiry = new Date(now.getTime() + 1000 * 60 * 60); 
+        localStorage.setItem("data", JSON.stringify({ token: parsedRes.token, id: parsedRes.id, expiry: tokenExpiry.toISOString() }));
         props.login(parsedRes.token, parsedRes.id);
       } else {
         throw new Error(parsedRes.message);

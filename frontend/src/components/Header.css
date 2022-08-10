@@ -1,3 +1,4 @@
+
 .main-navbar{
     width: 100%;
     position: fixed;
@@ -50,6 +51,74 @@
   
 
 
+.down-arrow{
+  visibility:hidden;
+
+}
+.down-arrow-active{
+  visibility: visible;
+}
+
+.drop-down{
+  position: relative;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.drop-down-menu{
+  display: none;
+}
+.navbar-right-items .drop-down:hover .drop-down-menu{
+  display: block;
+
+  position: absolute;
+  left: 20px;
+  top: 100%;
+  background-color: var(--main-color);
+  border-radius: 7px;
+  
+}
+
+
+.navbar-right-items .drop-down:hover .drop-down-menu ul{
+  display: block;
+  margin: 10px;
+  padding: 5px;
+  list-style: none;
+  /* border: 2px solid var(--white-color); */
+  border-radius: 7px;
+}
+.navbar-right-items .drop-down:hover .drop-down-menu ul li a{
+  text-decoration: none;
+  color: var(--white-color);
+  padding: 15px;
+}
+
+
+
+
+
+
+
+  .navbar-right-items {
+    flex: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    text-decoration: none;
+    text-align: left;
+    cursor: pointer;
+
+font-family: 'Uchen', serif;
+font-weight: 400;
+font-size: 1.2rem;
+/* margin-left: 100px; */
+
+
+
+
+
 
   .shopping-logo{
     color: var(--darkslategrey-color);
@@ -59,6 +128,7 @@
   .shopping-logo:hover{
     color: var(--white-color);
   }
+
   .item-link{
     text-decoration: none;
     color: var(--white-color);
@@ -73,5 +143,27 @@
   }
   .my-shopping-logo{
     font-family: 'Great Vibes', cursive;
+    }
+  .cart .cart-shopping-icon {
+    font-size: 2rem;
+    color: var(--white-color);
   }
+  .cart .cart-quantity {
+    visibility: visible;
+    padding: 0 8px;
+    background-color: var(--orangered-color);
+    color: var(--white-color);
+    font-size: .8rem;
+    border-radius: 50%;
+    position: relative;
+    top: -15px;
+  }
+  .cart .cart-quantity-hidden {
+    visibility: hidden;
+  }
+
+  .header-cart-icon{
+    font-size: 1.3rem;
+    color: var(--white-color);
+}
 

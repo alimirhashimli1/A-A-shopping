@@ -8,11 +8,31 @@
 :root{
   --main-color: #4b70e2;
 
+  --third-color: #4b70e2;
+  --second-color: DodgerBlue;
+  --fourth-color: #0066cc;
   --white-color: white;
   --red-color: red;
-  --grey-color: #DCDCDC;
+  --grey-color: grey;
   --green-color: green;
   --black-color: black;
+   --dimgrey-color: dimgray;
+  --gainsboro-color: 	gainsboro;
+  --lightseagreen-color: lightseagreen;
+  --orangered-color: orangered;
+  --lightgrey-color: #E5E7E9 ;
+  --limegreen-color: limegreen;
+  --MediumSpringGreen-color: MediumSpringGreen;
+  --PaleGreen-color: PaleGreen;
+  --SpringGreen-color: SpringGreen;
+  --DodgerBlue-color: DodgerBlue;
+  --darkslategrey-color: #737373;
+  --blue-color: blue;
+  --main-color: black;
+  --lime-color: #00e600;
+  --lime1-color: #00cc00;
+  --darkgrey-color: #4d4d4d;
+  --darkWhite-color: #e6e6e6;
 }
 .body{
   font-family: 'Uchen', serif;
@@ -21,5 +41,8 @@
 main {
   min-height: 80vh;
   padding: 20px 40px;
-
+  margin-top: 120px;
+margin-bottom: 220px;
 }
+ 
+
