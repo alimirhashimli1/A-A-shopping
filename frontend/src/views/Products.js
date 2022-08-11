@@ -53,6 +53,10 @@ const Products = props => {
 // }, [props.cart])
 
    
+useEffect(()=>{
+    localStorage.setItem("cart", JSON.stringify(props.cart))
+}, [props.cart])
+
 
        useEffect(  ()=>{
         const getProducts = async () => {  
@@ -88,7 +92,7 @@ const Products = props => {
                 const parsedRes = await response.json();
                 try {
                     if (response.ok) {
-                        console.log("parsedRes UserName1", parsedRes);
+                        console.log("parsedRes", parsedRes);
                         setProducts(parsedRes.products);
                        
                     } else {
@@ -103,6 +107,12 @@ const Products = props => {
     
 
 
+    //    useEffect(() => {
+    //     const cartData = localStorage.getItem('cartData')
+    // setCart(cartData)
+      
+    //   }, [])
+    
 
     const updateData = event => {
         switch (event.target.name) {
@@ -172,16 +182,11 @@ const uploadImage = async (base64EncodedImage)=>{
     //     })
 
 
-
-
-
-
-
-
         const response =  await fetch(process.env.REACT_APP_SERVER_URL + "/products", {
             method: "POST",
             body: JSON.stringify({productName, price, productDescription, brand, data: base64EncodedImage}),
-            headers: { 'Content-Type': 'application/json'}
+            headers: { 'Content-Type': 'application/json'},
+            credentials: "include"
         })
 
         console.log("response", response)
@@ -195,9 +200,10 @@ const uploadImage = async (base64EncodedImage)=>{
               const tokenExpiry = new Date(now.getTime() + 1000 * 60 * 60);
       
              
-              localStorage.setItem("cart", JSON.stringify({ token: parsedRes.token, id: parsedRes.id, expiry: tokenExpiry.toISOString() }));
-            // localStorage.setItem("data", JSON.stringify(props.cart))
+              localStorage.setItem("data", JSON.stringify({ token: parsedRes.token, id: parsedRes.id, expiry: tokenExpiry.toISOString() }));
+
               props.login(parsedRes.token, parsedRes.id);
+              console.log('parsedRes.token', parsedRes.token)
              
             } else {
               throw new Error(parsedRes.message);
@@ -205,23 +211,13 @@ const uploadImage = async (base64EncodedImage)=>{
 
 
 
-// console.log("response : ", response)
-
-        //LocalStorage
-        // const parsedRes = await response.json();
-        // const now = new Date();
-        // const tokenExpiry = new Date(now.getTime() + 1000 * 60 * 60);
-        // localStorage.setItem("data", JSON.stringify({ token: parsedRes.token, id: parsedRes.id, expiry: tokenExpiry.toISOString() }));
-        // console.log("parsedRes : ", parsedRes)
-        // props.login(parsedRes.token, parsedRes.id);
 
 
 
 
-
-        // setPreviewSource("")
-        // setFileInputState('');
-        //     setPreviewSource('');
+        setPreviewSource("")
+        setFileInputState('');
+            setPreviewSource('');
     } catch (error) {
         console.error(error)
     }

@@ -49,7 +49,7 @@
     font-size: 2rem;
     margin-bottom: 45px;
   }
-  button{
+   .button-link{
     font-size: 1.6rem;
     z-index: 2;
     position: absolute;
@@ -61,7 +61,7 @@
   overflow-x: hidden;
   }
 
-  button::after {
+  .button-link::after {
     content: "";
     background-color: rgb(255, 255, 255, 0.5);
     position: absolute;
@@ -71,13 +71,13 @@
     height: 100%;
     transition: 0.3s ease;
   }
-  button:hover{
+  .button-link:hover{
     outline: 2px solid rgb(75, 112, 226);
   }
 
-  button:hover::after {
+  .button-link:hover::after {
     left: 0em;
-  }
+  } 
   
   .service{
     width: 100%;

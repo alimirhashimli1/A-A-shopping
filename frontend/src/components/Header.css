@@ -14,7 +14,6 @@
     }
   
   
-  
     .nav-box {
      
       width: 90%;
@@ -96,10 +95,6 @@
 
 
 
-
-
-
-
   .navbar-right-items {
     flex: 25%;
     display: flex;
@@ -115,7 +110,7 @@ font-weight: 400;
 font-size: 1.2rem;
 /* margin-left: 100px; */
 
-
+  }
 
 
 

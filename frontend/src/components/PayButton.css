@@ -1,5 +1,5 @@
 .pay{
-    background-color: var(--second-color);
+    background-color: #0000b3;
     color: var(--white-color);
     padding: 10px;
     font-size: 1.3rem;
@@ -19,6 +19,6 @@
 
 
 .pay:hover{
-    background-color: var(--fourth-color) ;
+    background-color: #0000ff ;
     color: var(--darkWhite-color);
 }

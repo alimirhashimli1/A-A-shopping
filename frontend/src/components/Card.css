@@ -86,16 +86,16 @@ article {
   .total-price button{
     padding: 8px 15px;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: .5rem;
     letter-spacing: 2px;
-    border-radius: 3px;
+    border-radius: 5px;
     border: none;
     background-color: var(--gainsboro-color);
     color: var(--black-color);
   }
   .total-price button:hover{
-    background-color: var(--red-color);
-    color: var(--white-color);
+    background-color: #cc0000;
+    color: green;
   }
   
   .total-price span{
@@ -136,9 +136,13 @@ article {
     text-align: center;
     padding: 10px 5px;
     border-radius: 5px;
-    background-color: var(--red-color);
+    background-color: #cc0000;
     margin-top: -50px;
     color: var(--white-color);
     font-size: 1.3rem;
+    transition: all .7s ease;
    
+  }
+  .clear-cart-button:hover{
+    background-color: #ff3333;
   }

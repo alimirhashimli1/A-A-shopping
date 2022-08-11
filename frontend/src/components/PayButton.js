@@ -5,7 +5,7 @@ import axios from "axios";
  
 
 
-const PayButton =({cart, currentCustomerId})=> {
+const PayButton =({cart, currentCustomerId, token})=> {
      
     const handleCheckout=()=>{
         axios.post(`${url}/stripe/create-checkout-session`, {
@@ -20,7 +20,12 @@ const PayButton =({cart, currentCustomerId})=> {
             console.log(err.message)
 
         })
-        localStorage.setItem('data', JSON.stringify(cart))
+        const now = new Date();
+        const tokenExpiry = new Date(now.getTime() + 1000 * 60 * 60);
+
+       
+        localStorage.setItem("data", JSON.stringify({ cart, expiry: tokenExpiry.toISOString() }));
+       
 
     }
   return (

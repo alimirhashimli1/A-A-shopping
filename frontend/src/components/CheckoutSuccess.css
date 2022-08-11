@@ -3,10 +3,117 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 3rem;
     text-align: center;
-    margin-top: 200px;
+    margin-top: 50px;
+    
 }
 
 .checkout-icon{
     color: green;
     font-size: 1.rem;
 }
+
+.order-detail-title{
+  margin-left: 33%;
+  margin-top: 100px;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  font-family: 'Cormorant Garamond', serif;
+  
+  
+}
+
+.cart_box-checkout{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 23%;
+    margin-left: 33%;
+    margin-top: 20px;
+    border-bottom: 1px solid var(--grey-color);
+    padding-bottom: 10px;
+  }
+.cart_box-checkout .cart_img-checkout {
+    width: 50px;
+    height: 50px;
+   
+    padding: 5px 1px;
+    border-radius: 7px;
+  }
+  .cart_box-checkout div:nth-child(2) button {
+    padding: 5px 10px;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  .cart_img-checkout {
+    display: flex;
+    width: 400px;
+  
+  }
+  
+  .cart_img-checkout p {
+    
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  .cart-product-name{
+    font-weight: bold;
+  }
+  .cart_img-checkout .img-desc{
+    display: block;
+
+  }
+
+  .cart-product-name-checkout{
+width: 100px;
+margin: 0 70px;
+
+  }
+
+
+
+.cart-quantity-checkout{
+color: green;
+margin-left: 60px;
+}
+
+
+  .total-price button{
+    padding: 8px 15px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    border-radius: 3px;
+    border: none;
+    background-color: var(--gainsboro-color);
+    color: var(--black-color);
+  }
+  .total-price button:hover{
+    background-color: var(--red-color);
+    color: var(--white-color);
+  }
+  
+  .total-price-checkout span{
+    /* color: var(--DodgerBlue-color); */
+    /* color: var(--white-color); */
+
+    display: inline-block;
+   
+    margin-right: 50px;
+    margin-top: 50px;
+    font-weight: bold;
+  }
+  .sub-total-checkout {
+    margin-top: 10px;
+    margin-left: 46%;
+  
+  }
+  .sub-total-title-checkout{
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .sub-total-price-checkout{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: green;
+  }
