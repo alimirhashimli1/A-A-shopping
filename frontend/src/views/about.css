@@ -3,7 +3,6 @@
   .about{
     width: 100%;
     padding: 100px 0px;
-    /* background-color: #191919; */
   }
   .about img{
     height: 500px;
@@ -71,6 +70,7 @@
     height: 100%;
     transition: 0.3s ease;
   }
+
   .button-link:hover{
     outline: 2px solid rgb(75, 112, 226);
   }
@@ -129,7 +129,7 @@
     line-height: 27px;
     margin-bottom: 25px;
   }
-  .card .button{
+  .card .button-link{
     background-color:var(--main-color);
     color: white;
     text-decoration: none;
@@ -139,7 +139,7 @@
     border-radius: 30px;
     transition: .4s; 
   }
-  .card .button:hover{
+  .card .button-link:hover{
     background-color: transparent;
     border: 2px solid var(--main-color);
     cursor: pointer;
