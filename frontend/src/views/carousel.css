@@ -1,4 +1,4 @@
-.slider {
+/* .slider {
     position: relative;
     height: 70rem;
     padding: 0;
@@ -54,8 +54,7 @@
 
     opacity: 1;
     transition-duration: 1s ease;
-    /* transform: translateY(500%); */
-
+    
   }
   
 
@@ -143,4 +142,4 @@
     color: rgb(75, 112, 226);
 
   }
-
+ */

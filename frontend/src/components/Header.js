@@ -1,11 +1,44 @@
 
 import React, {useEffect, useState} from 'react'
+import {Link} from "react-router-dom"
+import Classnames from "classnames"
 import {Link} from "react-router-dom";
 import Classnames from "classnames";
 import './Header.css'
 
 function Header({setShow, cart, isLoggedIn, currentCustomerId, logout}) {
   const totalAmount = cart.map(item => item.quantity)
+const totalQuantity = totalAmount.reduce(function(totalAmount, b){
+return totalAmount+b
+}, 0)
+
+const [userName, setUserName] = useState("");
+
+useEffect(() => {
+ 
+  const fetchCustomerData = async () => {
+      const settings = {
+          credentials: "include"
+      }    
+      const response = await fetch(process.env.REACT_APP_SERVER_URL + `/customers/${currentCustomerId}`, settings);
+      const parsedRes = await response.json();            
+      try {
+          if (response.ok) {
+             
+              setUserName(parsedRes.userName);
+          } else {
+              throw new Error(parsedRes.message);
+          }
+      } catch (err) {
+          alert(err.message);
+      }
+  }
+  fetchCustomerData();
+}, [currentCustomerId])
+
+
+
+
   const totalQuantity = totalAmount.reduce(function(totalAmount, b){
  return totalAmount+b
   }, 0)
@@ -36,7 +69,7 @@ function Header({setShow, cart, isLoggedIn, currentCustomerId, logout}) {
  }, [currentCustomerId])
 return (
     <section className='main-navbar'>
-<nav className="nav-bar">
+      <nav className="nav-bar">
           <div className='nav-box'>
           <span className="my_shop"><Link className='item-link my-shopping-logo' to="/"><span className='shopping-logo'>A&A</span> Shopping</Link></span>
           <ul className='navbar-items'>
@@ -47,6 +80,7 @@ return (
                     <li><Link className='item-link' to="/logout">Team</Link></li>
                    
          </ul>
+          
          <ul className='navbar-right-items'>
             <li className='drop-down'>
            

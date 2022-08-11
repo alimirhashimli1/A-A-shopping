@@ -1,16 +1,16 @@
 
 import React, { useState, useEffect } from "react";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faTrashArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import './Card.css'
 import PayButton from "./PayButton";
-const Card = ({ cart, currentCustomerId, setCart, handelAddProduct, handleDeleteProduct, clearCard }) => {
+const Card = ({ cart, currentCustomerId, setCart, handelAddProduct, handleDeleteProduct, clearCard, token, login, logout }) => {
 
 
-  // const handleRemove = (id) => {
-  //   const cartdele = cart.filter((item) => item.id !== id);
-  //   setCart(arr);
-  // };
+  const handleRemove = (product) => {
+    const cartDelete = cart.filter((item) => item._id !== product._id);
+    setCart(cartDelete);
+  };
 
 
 const totalPrice = cart.reduce((price, item)=> price + item.quantity * item.price, 0)
@@ -46,7 +46,7 @@ const totalPrice = cart.reduce((price, item)=> price + item.quantity * item.pric
          
           <div className="total-price">
             <span>$ {item.quantity * item.price}</span>
-            <button onClick={() => handleDeleteProduct(item)}><FontAwesomeIcon icon={faTrashArrowUp} /> </button>
+            <button onClick={() => handleRemove(item)}><FontAwesomeIcon icon={faTrashCan} /> </button>
           </div>
         </div>
       ))}

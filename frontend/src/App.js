@@ -4,7 +4,7 @@ import Login from "./views/Login";
 import Products from "./views/Products";
 import Contact from "./views/Contact";
 import About from "./views/About";
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"
 import Carousel from "./views/Carousel";
 import Footer from "./components/Footer";
 import Card from "./components/Card";
@@ -152,10 +152,10 @@ progress: undefined,
                 : (<Card cart={cart} currentCustomerId={currentCustomerId} setCart={setCart} clearCard={clearCard}  handleChange={handleChange} handleDeleteProduct={handleDeleteProduct} handelAddProduct={handelAddProduct} /> 
                 )   
                 }/>
-                <Route path="/checkout-success"  element={<CheckoutSuccess />}/> 
+                {/* <Route path="/checkout-success"  element={<CheckoutSuccess />}/>  */}
                 <Route path="/contact" exact element={<Contact/>}/>
                 <Route path="/about" exact element={<About/>}/>
-                <Route path="/checkout-success"  element={<CheckoutSuccess currentCustomerId={currentCustomerId} />}/> 
+                <Route path="/checkout-success"  element={<CheckoutSuccess  cart={cart} currentCustomerId={currentCustomerId} />}/> 
                 <Route path="/logout" exact element={<Logout logout={logout}  />}/>
                 <Route path="/card" exact element={<Card  cart={cart} currentCustomerId={currentCustomerId} setCart={setCart} clearCard={clearCard}  handleChange={handleChange} handleDeleteProduct={handleDeleteProduct} handelAddProduct={handelAddProduct} />}/>
 
