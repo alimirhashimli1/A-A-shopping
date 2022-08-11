@@ -18,6 +18,7 @@ const Products = props => {
     const [product1, setProduct1] = useState([]);
     const [fileInputState, setFileInputState] = useState('');
 
+
     useEffect(() => {
     // if(props.isLoggedIn){
        
@@ -48,9 +49,9 @@ const Products = props => {
 
 
 
-// useEffect(()=>{
-//     localStorage.setItem("cart", JSON.stringify(props.cart));
-// }, [props.cart])
+useEffect(()=>{
+    localStorage.setItem("cart", JSON.stringify(props.cart))
+}, [props.cart])
 
    
 useEffect(()=>{

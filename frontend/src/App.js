@@ -22,7 +22,6 @@ const App = () => {
     const [ showLogin, setShowLogin ] = useState(true);
     const [ token, setToken ] = useState(false);
     const [show, setShow]= useState(true);
-    // const [ cart, setCart]= useState([]);
     const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]")
     const [ cart, setCart]= useState(cartFromLocalStorage);
 
@@ -30,7 +29,7 @@ const App = () => {
 
 
     const handleClick = (product) => {
-       
+    //    localStorage.setItem("cartData", JSON.stringify({cart}))
         
         const ProductExist = cart.find((item) => item._id === product._id)
         if(ProductExist){

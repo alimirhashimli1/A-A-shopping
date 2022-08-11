@@ -2,6 +2,8 @@
 import React, {useEffect, useState} from 'react'
 import {Link} from "react-router-dom"
 import Classnames from "classnames"
+import {Link} from "react-router-dom";
+import Classnames from "classnames";
 import './Header.css'
 
 function Header({setShow, cart, isLoggedIn, currentCustomerId, logout}) {
@@ -37,6 +39,34 @@ useEffect(() => {
 
 
 
+  const totalQuantity = totalAmount.reduce(function(totalAmount, b){
+ return totalAmount+b
+  }, 0)
+ 
+  const [userName, setUserName] = useState("");
+ 
+ 
+  useEffect(() => {
+  
+           const fetchCustomerData = async () => {
+               const settings = {
+                   credentials: "include"
+               }    
+               const response = await fetch(process.env.REACT_APP_SERVER_URL + `/customers/${currentCustomerId}`, settings);
+               const parsedRes = await response.json();            
+               try {
+                   if (response.ok) {
+                      
+                       setUserName(parsedRes.userName);
+                   } else {
+                       throw new Error(parsedRes.message);
+                   }
+               } catch (err) {
+                   alert(err.message);
+               }
+           }
+           fetchCustomerData();
+ }, [currentCustomerId])
 return (
     <section className='main-navbar'>
       <nav className="nav-bar">
@@ -85,7 +115,7 @@ return (
                 </span>
             </li>
 
-</ul>
+        </ul>
            
         </div>
          
