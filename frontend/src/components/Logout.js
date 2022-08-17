@@ -1,10 +1,10 @@
 import React from "react";
-import Carousel from "../views/Carousel";
+import Landing from "../views/Landing";
 const Logout = props => {
     return (
       <div>
       {props.logout}
-       <Carousel />
+       <Landing />
       </div>
     );
 }
