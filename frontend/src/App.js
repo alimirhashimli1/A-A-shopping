@@ -3,10 +3,11 @@ import Register from "./views/Register";
 import Login from "./views/Login";
 import Products from "./views/Products";
 import Contact from "./views/Contact";
+import ContactMessage from "./views/ContactMessage";
 import About from "./views/About";
 import PayButton from "./components/PayButton"
 import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"
-import Carousel from "./views/Carousel";
+import Landing from "./views/Landing";
 import Footer from "./components/Footer";
 import Card from "./components/Card";
 import Header from "./components/Header";
@@ -16,6 +17,7 @@ import "./App.css";
 import Logout from "./components/Logout";
 import CheckoutSuccess from "./components/CheckoutSuccess";
 import { style } from "react-toastify";
+import Carousel from "./views/Carousel"
 
 const App = () => {
     const [ isLoggedIn, setIsLoggedIn ] = useState(false);
@@ -23,13 +25,22 @@ const App = () => {
     const [ showLogin, setShowLogin ] = useState(true);
     const [ token, setToken ] = useState(false);
     const [show, setShow]= useState(true);
+    const [message, setMessage]= useState(false)
+
     const [LoginFirst, setLoginFirst] = useState(true)
    const [ cart, setCart]= useState([]);
     // const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]")
     // const [ cart, setCart]= useState(cartFromLocalStorage);
-    const [open, setOpen]= useState(false)
+    const [open, setOpen]= useState(false);
+    const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]")
+    // const [ cart, setCart]= useState(cartFromLocalStorage);
+    // const [message, setMessage] = useState(false)
 
 
+    const messageClick = () => {
+        setMessage(true)
+      }
+    
 
 
     const handleClick = (product) => {
@@ -154,12 +165,22 @@ progress: undefined,
         <main>
     
             <Routes>
+
                 <Route path="/" exact element={<Carousel />}/>
                 <Route path="/products"  element={ show ? (<Products currentCustomerId={currentCustomerId} open={open} setOpen={setOpen} isLoggedIn={isLoggedIn} login={login} handleClick={handleClick} token={token} cart={cart} logout={logout} />)
                 : (<Card cart={cart} open={open} setOpen={setOpen} isLoggedIn={isLoggedIn} currentCustomerId={currentCustomerId} setCart={setCart} clearCard={clearCard}  handleChange={handleChange} handleDeleteProduct={handleDeleteProduct} handelAddProduct={handelAddProduct}  /> 
                 )   
                 }/>
                 <Route path="/contact" exact element={<Contact/>}/>
+
+                <Route path="/" exact element={<Landing />}/>
+                <Route path="/products"  element={ show ? (<Products currentCustomerId={currentCustomerId} isLoggedIn={isLoggedIn} login={login} handleClick={handleClick} token={token} cart={cart} logout={logout} />)
+                : (<Card cart={cart} currentCustomerId={currentCustomerId} setCart={setCart} clearCard={clearCard}  handleChange={handleChange} handleDeleteProduct={handleDeleteProduct} handelAddProduct={handelAddProduct} /> 
+                )   
+                }/>
+                {/* <Route path="/checkout-success"  element={<CheckoutSuccess />}/>  */}
+                <Route path="/contact" exact element={message ? <ContactMessage setMessage={setMessage}/> : <Contact messageClick={messageClick}/>}/>
+
                 <Route path="/about" exact element={<About/>}/>
                 <Route path="/checkout-success"  element={<CheckoutSuccess setCart={setCart} open={open} setOpen={setOpen} cart={cart} currentCustomerId={currentCustomerId} />}/> 
                 <Route path="/logout" exact element={<Logout logout={logout}  />}/>
