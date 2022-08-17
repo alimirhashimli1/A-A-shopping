@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Logout from "../components/Logout";
 import { ToastContainer, toast } from 'react-toastify';
+import Classnames from "classnames"
 import 'react-toastify/dist/ReactToastify.css';
 import './products.css'
 
@@ -17,6 +17,8 @@ const Products = props => {
     const [isAdmin, setIsAdmin] = useState(false);
     const [product1, setProduct1] = useState([]);
     const [fileInputState, setFileInputState] = useState('');
+    // const [openWelcome, setOpenWelcome]= useState(false)
+    // const [open, setOpen]= useState(false)
 
 
     useEffect(() => {
@@ -44,16 +46,10 @@ const Products = props => {
     
             fetchCustomerData();
        
-    // } 
+   
 }, [props.currentCustomerId])
 
 
-
-useEffect(()=>{
-    localStorage.setItem("cart", JSON.stringify(props.cart))
-}, [props.cart])
-
-   
 useEffect(()=>{
     localStorage.setItem("cart", JSON.stringify(props.cart))
 }, [props.cart])
@@ -107,12 +103,6 @@ useEffect(()=>{
        }, [])
     
 
-
-    //    useEffect(() => {
-    //     const cartData = localStorage.getItem('cartData')
-    // setCart(cartData)
-      
-    //   }, [])
     
 
     const updateData = event => {
@@ -133,22 +123,6 @@ useEffect(()=>{
                 break;
         }
     }
-
-    // useEffect(()=>{
-        
-    //     const cartData = JSON.parse(localStorage.getItem("cart"));
-    //     if (cartData && cartData.token && cartData.id && cartData.expiry) {
-    //         const tokenCartExpiry = new Date(cartData.expiry);
-    //         const now = new Date();
-    //         if (tokenCartExpiry > now) {
-    //             props.login(cartData.token, cartData.id)
-    //         } else {
-    //             props.logout();
-    //         }
-    //     } else {
-    //         props.logout();
-    //     }
-    // }, [])
 
     const handleProductImageUpload = event =>{
         const file =event.target.files[0];
@@ -175,13 +149,6 @@ const reader = new FileReader()
 
 const uploadImage = async (base64EncodedImage)=>{
    
-    // try {
-    //     await fetch(process.env.REACT_APP_SERVER_URL + "/products", {
-    //         method: "POST",
-    //         body: JSON.stringify({productName, price, productDescription, brand, data: base64EncodedImage}),
-    //         headers: { 'Content-Type': 'application/json'}
-    //     })
-
 
         const response =  await fetch(process.env.REACT_APP_SERVER_URL + "/products", {
             method: "POST",
@@ -283,7 +250,7 @@ const previewFiles=(file)=>{
               { isAdmin && (
                 <div>  
                  
-                    <h2 className="welcome">Welcome  {userName}</h2>
+                    <h2 className={ Classnames('welcome',{'welcome-hide': props.open } )}  onClick={()=> props.setOpen(!props.open)}>Welcome  {userName}</h2>
                     <div className="add-product-title">
                         <h1>ADD A NEW PRODUCTS</h1> 
                     </div>
@@ -336,7 +303,7 @@ const previewFiles=(file)=>{
                             <div className="productName">{product.productName}</div>
                             <div className="productDescription">{product.productDescription}</div>
                             <div className="productPrice">$ {product.price}</div>
-                            <div className="productName"><button   onClick={ ()=> props.handleClick(product) }>Add to cart <i className="fas header-cart-icon fa-cart-plus"></i> </button>
+                            <div className="productName"><button   onClick={ ()=> props.handleClick(product) }>Add to cart <i className="fas add-to-cart-icon fa-cart-plus"></i> </button>
                             </div>
                    </div>   
                    </li>

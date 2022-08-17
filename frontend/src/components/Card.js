@@ -4,7 +4,20 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import './Card.css'
 import PayButton from "./PayButton";
-const Card = ({ cart, currentCustomerId, setCart, handelAddProduct, handleDeleteProduct, clearCard, token, login, logout }) => {
+import Classnames from "classnames"
+const Card = ({ cart, open, setOpen, currentCustomerId, setCart, handelAddProduct, handleDeleteProduct, clearCard, isLoggedIn }) => {
+
+
+   const cartShopping = JSON.parse(localStorage.getItem("cartData") || "[]");
+
+   const cartInformation = cartShopping.cart
+  // console.log('cartShopping', cartShopping)
+  //   console.log('cart', cart)
+
+  // const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]")
+  // const [ cart, setCart]= useState(cartFromLocalStorage);
+
+
 
 
   const handleRemove = (product) => {
@@ -17,7 +30,8 @@ const totalPrice = cart.reduce((price, item)=> price + item.quantity * item.pric
   return (
     <article>
 
-    <h2 className="shopping-cart-header">Shopping Cart</h2>
+    <h2 className={ Classnames('shopping-cart-header',{'shopping-cart-header-hide': open } )}  onClick={()=> setOpen(!open)}>Shopping Cart</h2>
+    
     <div className="cart-title">
       <h3 >PRODUCT</h3>
       <h3 className="cart-title-price">PRICE</h3>
@@ -41,12 +55,12 @@ const totalPrice = cart.reduce((price, item)=> price + item.quantity * item.pric
           <span className="dec-quantity" onClick={() => handleDeleteProduct(item)}>  -   </span>
             
             <span>{item.quantity}</span>
-            <span onClick={() => handelAddProduct(item)}>  +</span>
+            <span  onClick={() => handelAddProduct(item)}>  +</span>
           </div>
          
           <div className="total-price">
-            <span>$ {item.quantity * item.price}</span>
-            <button onClick={() => handleRemove(item)}><FontAwesomeIcon icon={faTrashCan} /> </button>
+            <span className="total-price-span">$ {item.quantity * item.price}</span>
+            <button onClick={() => handleRemove(item)}><FontAwesomeIcon className="trash-icon" icon={faTrashCan} /> </button>
           </div>
         </div>
       ))}
@@ -55,7 +69,7 @@ const totalPrice = cart.reduce((price, item)=> price + item.quantity * item.pric
         <span className="sub-total-price">$  {totalPrice}</span>
       </div>
       
-        <PayButton cart ={cart} currentCustomerId={currentCustomerId} />
+        <PayButton cart ={cart} isLoggedIn = {isLoggedIn} currentCustomerId={currentCustomerId} />
       
 
 
@@ -63,7 +77,7 @@ const totalPrice = cart.reduce((price, item)=> price + item.quantity * item.pric
 
 <div className="clear-card">
   {cart.length >=1 &&(
-    <button className="clear-cart-button" onClick={clearCard}>Clear Cart</button>
+    <button className="clear-cart-button" onClick={clearCard}>Clear Cart <i class="fa-solid fa-trash"></i></button>
   )}
 </div>
     </article>

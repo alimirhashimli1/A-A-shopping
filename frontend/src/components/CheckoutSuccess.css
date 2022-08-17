@@ -1,34 +1,57 @@
 .checkout-order{
-    color: green;
+    color: #006600;
     font-family: 'Cormorant Garamond', serif;
     font-size: 3rem;
     text-align: center;
     margin-top: 50px;
-    
 }
-
+.checkout-order-hide{
+  color: #006600;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 50px;
+}
+.login-name-checkout{
+  color: #800000;
+}
 .checkout-icon{
     color: green;
     font-size: 1.rem;
 }
 
 .order-detail-title{
-  margin-left: 33%;
-  margin-top: 100px;
-  margin-bottom: 20px;
+  margin-left: 23%;
+  margin-top: 70px;
+  margin-bottom: 10px;
   font-size: 1.2rem;
   font-family: 'Cormorant Garamond', serif;
   
   
 }
+.shipping-info1{
+  margin-left: 420px;
+  color: #cc0000;
+}
+
+.payment-detail{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 70%;
+  margin: auto;
+}
+.products-detail-checkout{
+  width: 30%;
+}
 
 .cart_box-checkout{
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    width: 23%;
+    align-items: center;
+    width: 100%;
     margin-left: 33%;
-    margin-top: 20px;
+    margin-top: 0px;
     border-bottom: 1px solid var(--grey-color);
     padding-bottom: 10px;
   }
@@ -105,7 +128,8 @@ margin-left: 60px;
   }
   .sub-total-checkout {
     margin-top: 10px;
-    margin-left: 46%;
+    width: 230px;
+    margin-left: 290px;
   
   }
   .sub-total-title-checkout{
@@ -117,3 +141,108 @@ margin-left: 60px;
     font-weight: bold;
     color: green;
   }
+
+
+  .shipping-detail{
+    width: 30%;
+    margin:auto;
+    text-align: left;
+    margin-top: -60px;
+   
+  }
+  .shipping-tital{
+    color: black;
+    font-family: 'Uchen', serif;
+  }
+  .shipping-detail-border{
+   margin-top: 30px;
+    padding: 28px;
+    border: 1px solid grey;
+    border-radius: 5px;
+   
+  }
+      /* font-family: 'Uchen', serif; */
+    /* font-family: 'Cormorant Garamond', serif; */
+/* shopping font-family: 'Festive', cursive; */
+/* shoppingfont-family: 'Great Vibes', cursive; */
+/* font-family: 'Italianno', cursive; */
+/* font-family: 'Nanum Myeongjo', serif; */
+.shipping-info{
+  font-family: 'Uchen', serif;
+  line-height: 1.5;
+  color: #000080;
+}
+.shipping-details-info{
+  color: #800000;
+  margin-left: 10px;
+}
+
+@media only screen and (max-width: 540px) {
+  .checkout-order{
+    font-size: 1.5rem;
+    margin-top: 0px;
+    transition: all .5s ease;
+  }
+.checkout-order-hide{
+  font-size: 1.5rem;
+  margin-top: 250px;
+  transition: all .4s ease;
+}
+
+
+
+
+  .order-detail-title{
+    margin-left: 5%;
+    margin-top: 40px;
+  }
+  .shipping-info1{
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .payment-detail{
+    display: flex;
+   flex-flow: column;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 50px;
+  }
+  .products-detail-checkout{
+    width: 100%;
+  }
+  .cart_box-checkout{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 0px;
+    border-bottom: 1px solid var(--grey-color);
+    padding-bottom: 10px;
+  }
+  .sub-total-checkout {
+    margin-top: 10px;
+    width: 130px;
+    margin-left: 250px;
+  }
+  .sub-total-title-checkout{
+    font-size: 1rem; 
+  }
+  .sub-total-price-checkout{
+    font-size: 1rem;
+  }
+
+  
+
+  .shipping-detail{
+    width: 90%;
+    margin:auto;
+    text-align: left;
+    margin-top: 30px;
+    
+   
+  }
+
+}
+

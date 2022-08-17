@@ -13,6 +13,11 @@ const About = () => {
 			<div className="about-text">
 				<div className="about-h2-container">
 				<h2>ABOUT <span>US</span> </h2>
+
+				<h5>Developer <span> Designer</span></h5>
+				<p>I am a front-end web developer. I can provide clean code and pixel perfect design. I also make the website more & more interactive with web animations.I can provide clean code and pixel perfect design. I also make the website more & more interactive with web animations.A responsive design makes your website accessible to all users, regardless of their device.</p>
+				<button type="button">CONTACT US</button>
+
 				</div>
 				<p>We are a commercial website called A&A shopping. We can provide clean code and pixel perfect design. We also make the website more  more interactive with web animations.We can provide clean code and pixel perfect design. We also make the website more  more interactive with web animations.A responsive design makes your website accessible to all users, regardless of their device.totam voluptatibus quam dolore nostrum. Voluptatum atque molestias blanditiis perferendis inventore necessitatibus eos placeat!
 				Adipisci, nisi! Rerum atque error repellendus quasi deleniti ipsam debitis praesentium eius! Id minima natus quas voluptates a itaque suscipit enim quod ad, temporibus, dolorem quaerat repellendus laboriosam sed sunt!
@@ -21,6 +26,7 @@ const About = () => {
 				Inventore omnis, iste fuga aliquid et vitae sit numquam saepe a sunt nulla ullam consectetur officiis, quo quasi eveniet mollitia illum nobis quidem ab doloribus non libero. Nihil, esse laboriosam?
 				Laboriosam a quasi perspiciatis suscipit accusantium aliquid delectus odio, ad, sit aperiam assumenda dolore voluptatibus, necessitatibus facilis fugiat? Rerum perferendis explicabo dolor provident laudantium corrupti sapiente nobis aut deleniti? Voluptatem.</p>
 				<button className="about-button" type="button"><a href="/contact">CONTACT US</a></button>
+
 			</div>
 		</div>
 	</section>

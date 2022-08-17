@@ -47,13 +47,13 @@ export const getLoginProductData = async (req, res, next) => {
     try {
         foundProduct = await loginProduct.find({});
     } catch {
-        return next(createError(500, "Couldn't query database. Please try again"));
+        return next(createErr(500, "Couldn't query database. Please try again"));
     }
     if (foundProduct) {
         
         res.json(foundProduct);
      } else {
-        next(createError(404, "User could not be found"));
+        next(createErr(404, "User could not be found"));
     }
 }
 

@@ -1,4 +1,8 @@
+
+
+
  .slider {
+
     position: relative;
     height: 70vh;
     display: flex;
@@ -129,5 +133,8 @@
   
   .for-more:hover.for-more p {
     color: rgb(75, 112, 226);
+
+  }
+
 
   }  */

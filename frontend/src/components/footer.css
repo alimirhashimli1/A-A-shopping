@@ -224,5 +224,8 @@ footer{
 	.footer-distributed .footer-center i{
 		margin-left: 0;
 	}
+	.footer-right{
+		margin-left: -70px;
+	}
 
 }
