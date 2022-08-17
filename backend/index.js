@@ -13,6 +13,7 @@ import registerRouter from "./routes/register.js"
 import loginRouter from "./routes/login.js"
 import customersRouter from "./routes/customers.js";
 import productsRouter from "./routes/products.js";
+import orderRouter from "./routes/order.js"
 import contactRouter from "./routes/contact.js"
 import stripeRouter from "./routes/stripe.js"
 import multer from "multer";
@@ -48,7 +49,7 @@ app.use(cors({
 app.use(cookieParser());
 
 
-app.use(express.json({ limit: '50mb' }));
+app.use(express.json({ limit: '250mb' }));
 
 app.use(express.urlencoded({extended: true, limit: "250mb"}))
 app.use(morgan("tiny"));
@@ -59,6 +60,7 @@ app.use("/register", registerRouter);
 app.use("/login", loginRouter);
 app.use("/customers", customersRouter);
 app.use("/products", productsRouter);
+app.use("/order", orderRouter);
 app.use("/api/stripe", stripeRouter)
 
 

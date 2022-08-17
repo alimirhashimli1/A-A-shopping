@@ -10,11 +10,20 @@ const stripe = Stripe(process.env.STRIPE__SECRET_KEY)
 
 const router = express.Router()
   router.post('/create-checkout-session', async (req, res) => {
+    console.log("req.body.userId", req.body.userId)
 const customer = await stripe.customers.create({
+ 
   metadata:{
     userId: req.body.userId,
-  }
-})
+  },
+  })
+
+
+
+
+console.log('customer =: ', customer.metadata.userId)
+
+const customerMetaId = customer.metadata.userId;
 
 const line_items = req.body.cart.map(item =>{
   return{
@@ -22,7 +31,8 @@ const line_items = req.body.cart.map(item =>{
       currency: 'usd',
       product_data: {
         name: item.productName,
-        images: [item.productImage.avatar.url],
+        //images: [item.productImage.avatar.url],
+        images: [item.productImage.avatar],
         description: item.productDescription,
         metadata:{
           id: item._id
@@ -89,7 +99,9 @@ const line_items = req.body.cart.map(item =>{
       phone_number_collection: {
         enabled: true,
       },
-      customer: customer.id,
+       customer: customer.id,
+      // customer: 
+
       line_items,
       mode: 'payment',
       success_url: `${process.env.CLIENT_URL}/checkout-success`,
@@ -108,16 +120,17 @@ const createOrder = async(customer, data, lineItems)=>{
     userId: customer.metadata.userId,
     customerId: data.customer,
     paymentIntentId: data.payment_intent,
-    // products: Items,
-    products: lineItems,
+    products: lineItems.data,
     subtotal: data.amount_subtotal,
     total: data.amount_total,
     shipping: data.customer_details,
-    payment_status: data.payment_status
+    payment_status: data.payment_status,
+    // created_at: Date,
 
   })
+  console.log('newOrder', newOrder)
   try{
-    savedOrder = await newOrder.save()
+    const savedOrder = await newOrder.save()
     console.log("order Saved : ", savedOrder)
 
   }catch(err){
@@ -168,15 +181,16 @@ stripe.customers.retrieve(data.customer)
       data.id,
       {  },
       function(err, lineItems) {
-      console.log( lineItems)
+     
       createOrder(customer, data, lineItems )
+      console.log('lineItems', lineItems)
       }
     );
 
 
 
 
-createOrder(customer, data)
+// createOrder(customer, data)
 
   }
 ).catch(err => console.log(err.message))

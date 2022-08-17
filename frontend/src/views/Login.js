@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import "./Login.css"
+import PayButton from "../components/PayButton"
 
 const Login = props => {
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
-  const [product1, setProduct1] = useState([]);
-
+ 
 
     
   useEffect(  ()=>{
@@ -21,7 +19,9 @@ const Login = props => {
             const parsedRes = await response.json();
             try {
                 if (response.ok) {
-                    setProduct1(parsedRes);
+                  if(props.cart){
+          <PayButton cart ={props.cart} isLoggedIn = {props.isLoggedIn} currentCustomerId={props.currentCustomerId} />
+                  }
                    
                 } else {
                     throw new Error(parsedRes.message);
@@ -73,12 +73,15 @@ const Login = props => {
     try {
       if (response.ok) {
 
+
         const now = new Date();
         const tokenExpiry = new Date(now.getTime() + 1000 * 60 * 60);
 
        
         localStorage.setItem("data", JSON.stringify({ token: parsedRes.token, id: parsedRes.id, expiry: tokenExpiry.toISOString() }));
         props.login(parsedRes.token, parsedRes.id);
+
+        
        
       } else {
         throw new Error(parsedRes.message);
@@ -121,43 +124,8 @@ const Login = props => {
 
 
       <div>
-      {/* <div className="contentContiner">
-<h2>Current Products</h2>
-<ul className="General">
-                {
-                        product1.map(product => {
-                            return <li className="product" key={product._id} id={product._id}> 
-                            <img className="productImg" src={product.productImage.avatar} alt="productPhoto" /><br></br>
-                            <div className="ProdactData">
-                            <div className="productName">{product.productName}</div>
-                            <div className="productDescription">{product.productDescription}</div>
-                            <div className="productPrice">$ {product.price}</div>
-                            <div className="productName"><button   onClick={ ()=> props.handleClick(product) }>Add to cart </button>
-                            </div>
-                   </div>   
-                   </li>
-               })
-           }
-           <ToastContainer
-position="bottom-left"
-autoClose={1000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-
-theme="colored"
-/>
-                            
-                </ul>
-</div> */}
+      
 </div>
-
-
-
     </div>
     </section>
     
