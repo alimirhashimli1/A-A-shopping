@@ -1,25 +1,15 @@
-/* .slider {
+ .slider {
     position: relative;
-    height: 70rem;
-    padding: 0;
-    width: 100%;
-    margin-bottom: 10vh;
+    height: 70vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
   }
 
   .image {
     width:100%;
-    
-    height: 100%;
-    margin-top: 100px;
+    height: 80%;
     border-radius: 10px;
-  }
-  .icon-back-left:hover, .icon-back-right:hover {
-    background: linear-gradient(90deg, rgba(214,214,214,1) 0%, rgba(255,255,255,1) 0%, rgba(214,214,214,1) 25%, rgba(227,227,227,1) 50%, rgba(255,255,255,1) 75%, rgba(214,214,214,1) 100%);   
   }
 
   .right-arrow {
@@ -76,7 +66,7 @@
     transition-duration: 1s;
 
   }
-
+/* 
   .dot-container {
     bottom: 70rem;
     z-index: 1;
@@ -115,7 +105,6 @@
   .for-more::after {
     content: "";
     background-color: rgb(255, 255, 255, 0.5);
-    ;
     position: absolute;
     left: -10em;
     top: 0;
@@ -141,5 +130,4 @@
   .for-more:hover.for-more p {
     color: rgb(75, 112, 226);
 
-  }
- */
+  }  */

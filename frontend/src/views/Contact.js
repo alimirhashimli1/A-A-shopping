@@ -1,7 +1,9 @@
-import React from 'react'
 import emailjs from "emailjs-com"
+import "./contact.css"
+import { useState } from "react"
 
-const Contact = () => {
+const Contact = ({message, messageClick}) => {
+
 
     const submitMessage = event => {
         event.preventDefault()
@@ -11,33 +13,32 @@ const Contact = () => {
         }).catch(err => console.log(err))
     }
 
+ 
 
   return (
-      <form onSubmit={submitMessage}>
-        <h1>SEND YOUR MESSAGE</h1>
-        <div>
-          <label>First Name</label>
-          <input name="firstName"/>
-        </div>
-        <div>
-          <label>Last Name</label>
-          <input name="lastName"/>
-        </div>
-        <div>
-          <label>Email</label>
-          <input name="email"/>
-        </div>
-        <div>
-          <label>Phone Number</label>
-          <input name="phoneNumber"/>
-        </div>
-        <div>
-          <label>Message</label>
-          <textarea name="message" type="text"/>
-        </div>
+    <>
+    <div className="contact-container">   
 
-        <button>Submit</button>
-    </form>
+    <div className="contact-section">
+     
+    <div class="contact-info">
+        <div><i className="fas fa-map-marker-alt"></i>Address, City, Country</div>
+        <div><i className="fas fa-envelope"></i>contact@email.com</div>
+        <div><i className="fas fa-phone"></i>+00 0000 000 000</div>
+        <div><i className="fas fa-clock"></i>Mon - Fri 8:00 AM to 5:00 PM</div>
+      </div>
+      <div className="contact-form">
+        <h2 className="contact-form-title">Contact Us</h2>
+        <form className="contact" onSubmit={submitMessage}>
+          <input type="text" name="name" className="text-box" placeholder="Your Name" required/>
+          <input type="email" name="email" className="text-box" placeholder="Your Email" required/>
+          <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+          <button onClick={messageClick} type="submit" name="submit" className="contact-button" value="Send">SEND</button>
+        </form>
+      </div>
+    </div>
+    </div>
+    </>
   )
 }
 

@@ -1,24 +1,39 @@
-const slides = [
+  export const sliderItems = [
     {
-      image:
-        'https://images.unsplash.com/photo-1546768292-fb12f6c92568?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
+      id: 1,
+      img: "https://m.media-amazon.com/images/I/61HnuJc8WHL._AC_SL1500_.jpg",
+      
+      title: "iPHONE 13 PRO",
+      desc: "BUY THIS 256GB STORAGE PHONE ONLY WITH 1219 EUR.",
     },
     {
-      image:
-        'https://images.unsplash.com/photo-1501446529957-6226bd447c46?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1489&q=80'
+      id: 2,
+      img: "https://files.refurbed.com/pi/apple-iphone-8-1559740359.jpg",
+      title: "iPHONE 8",
+      desc: "30% OFF FOR YOUR DESIRE'S INSIDE COMES HERE. THIS WILL IMPLEMENT TO YOUR WILL",
     },
     {
-      image:
-        'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80'
+      id: 3,
+      img: "https://i.pinimg.com/originals/62/68/37/62683739c5f99fa8318591de75dc3236.jpg",
+      desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR iPHONE 11.",
+      title: "iPHONE 11 PRO",
     },
-    {
-      image:
-        'https://images.unsplash.com/photo-1475189778702-5ec9941484ae?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1351&q=80'
-    },
-    {
-      image:
-        'https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80'
-    }
   ];
 
-  export default slides
+  export const categories = [
+    {
+      id: 1,
+      img: "https://files.refurbed.com/pi/apple-iphone-8-1559740359.jpg",
+      title: "MY PHONE!",
+    },
+    {
+      id: 2,
+      img: "https://files.refurbed.com/pi/apple-iphone-8-1559740359.jpg",
+      title: "MY PHONE",
+    },
+    {
+      id: 3,
+      img: "https://files.refurbed.com/pi/apple-iphone-8-1559740359.jpg",
+      title: "MY PHONE",
+    },
+  ];

@@ -2,8 +2,6 @@
 import React, {useEffect, useState} from 'react'
 import {Link} from "react-router-dom"
 import Classnames from "classnames"
-import {Link} from "react-router-dom";
-import Classnames from "classnames";
 import './Header.css'
 
 function Header({setShow, cart, isLoggedIn, currentCustomerId, logout}) {
@@ -39,13 +37,7 @@ useEffect(() => {
 
 
 
-  const totalQuantity = totalAmount.reduce(function(totalAmount, b){
- return totalAmount+b
-  }, 0)
- 
-  const [userName, setUserName] = useState("");
- 
- 
+
   useEffect(() => {
   
            const fetchCustomerData = async () => {
