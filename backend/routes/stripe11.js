@@ -122,7 +122,7 @@ let eventType;
 
   if(endpointSecret){
 
-  
+  stripe.com/docs/api/checkout/sessions/line_items
   let event;
 
   try {
@@ -158,10 +158,24 @@ let eventType;
 
 
 if(eventType === 'checkout.session.completed'){
-stripe.customer.retrieve(data.customer).then(
-  (customer)=>{
-console.log(customer)
-console.log('data: ', data)
+stripe.customer
+.retrieve(data.customer)
+.then((customer)=>{
+// console.log(customer)
+// console.log('data: ', data)
+
+stripe.checkout.sessions.listLineItems(
+ data.id,
+  { },
+  function(err, lineItems) {
+    // asynchronously called
+    console.log('lineItems', lineItems)
+    createOrder(customer, data, lineItems);
+  }
+);
+
+
+
   }
 ).catch(err => console.log(err.message))
 }

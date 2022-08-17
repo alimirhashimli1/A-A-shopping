@@ -1,6 +1,6 @@
 .pay{
     background-color: #0000b3;
-    color: var(--white-color);
+    color: #fff;
     padding: 10px;
     font-size: 1.3rem;
     width: 200px;
@@ -12,13 +12,82 @@
     transition: all .7s;
 
 }
-
+.pay:hover{
+    background-color: #3333ff ;
+    color: #8c8c8c;
+}
 .pay-icon{
+    margin-left: 0px;
+}
+
+
+
+
+.pay1{
+    background-color: #006600;
+    color: #fff;
+    padding: 10px;
+    font-size: 1.3rem;
+    width: 200px;
+    margin-left: 82%;
+    margin-top: 40px;
+    
+    border: none;
+    border-radius: 8px;
+    transition: all .7s;
+
+}
+.pay2{
+    color: #fff;
+    text-decoration: none;
+    transition:  0.7s ease;
+}
+.pay2 i{
     margin-left: 10px;
 }
-
-
-.pay:hover{
-    background-color: #0000ff ;
-    color: var(--darkWhite-color);
+.pay1:hover .pay2{
+   
+    color: #b4b4b4;
 }
+.pay1:hover{
+    background-color: #009900;
+}
+
+
+
+/* 
+ */
+
+/* 
+.payButton-item{
+    color: var(--white-color);
+    transition:  0.7s ease;
+  }
+  .payButton-item:hover{
+    color: var(--darkslategrey-color);
+  }
+   */
+
+   @media only screen and (max-width: 540px) {
+
+    .pay{
+      
+        font-size: .9rem;
+        width: 120px;
+        margin-left: 70%;
+        margin-top: 20px;
+        border-radius: 5px;
+      
+    }
+
+.pay1{
+    
+    font-size: .9rem;
+    width: 120px;
+    margin-left: 70%;
+    margin-top: 20px;
+    border-radius: 5px;
+    
+
+}
+   }

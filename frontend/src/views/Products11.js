@@ -48,9 +48,9 @@ const Products = props => {
 
 
 
-// useEffect(()=>{
-//     localStorage.setItem("cart", JSON.stringify(props.cart));
-// }, [props.cart])
+useEffect(()=>{
+    localStorage.setItem("cartData", JSON.stringify(props.cart));
+}, [props.cart])
 
    
 

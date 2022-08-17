@@ -12,11 +12,11 @@
       background-color: var(--main-color);
       
     }
-  
+   
   
     .nav-box {
      
-      width: 90%;
+      width: 100%;
       margin: auto;
       display: flex;
       justify-content: space-between;
@@ -24,6 +24,18 @@
       background-color: var(--main-color);
       
   
+    }
+    .drop-down-main{
+        flex: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+
+
+
+        
     }
     .navbar-items{
       flex: 50%;
@@ -39,7 +51,23 @@
   
     }
   
+    .drop-down .drop-down-menu .nav-item .drop-item{
+      color: blue;
+    }
   
+  
+  .drop-item{
+    color: blue;
+    transition:  0.7s ease;
+  }
+  .drop-item:hover{
+    color: blue;
+  }
+  .nav-item{
+    color: blueviolet;
+  }
+
+
   
   .item-link{
     transition:  0.7s ease;
@@ -48,7 +76,15 @@
     color: var(--darkslategrey-color);
   }
   
-
+  
+  
+  .item-link1{
+    transition:  0.7s ease;
+  }
+  .item-link1:hover{
+    color: var(--darkslategrey-color);
+  }
+  
 
 .down-arrow{
   visibility:hidden;
@@ -112,7 +148,13 @@ font-size: 1.2rem;
 
   }
 
-
+  .item-link1{
+    text-decoration: none;
+    color: var(--white-color);
+    padding: 0 30px;
+    text-transform:capitalize;
+    
+  }
 
 
   .shopping-logo{
@@ -120,21 +162,23 @@ font-size: 1.2rem;
     font-family: 'Great Vibes', cursive;
     transition: 0.7s ease;
   }
+  
   .shopping-logo:hover{
     color: var(--white-color);
   }
-
   .item-link{
     text-decoration: none;
     color: var(--white-color);
     padding: 0 30px;
-    
+    text-transform: uppercase ;
+    font-size: .9rem;
   }
-  .my_shop {
+  .my_shop-header {
     flex: 20%;
     font-size: 1.5rem;
     font-weight: bold;
     cursor: pointer;
+    margin-left: 100px;
   }
   .my-shopping-logo{
     font-family: 'Great Vibes', cursive;
@@ -142,6 +186,10 @@ font-size: 1.2rem;
   .cart .cart-shopping-icon {
     font-size: 2rem;
     color: var(--white-color);
+    transition:  0.7s ease;
+  }
+  .cart .cart-shopping-icon:hover {
+    color: var(--darkslategrey-color);
   }
   .cart .cart-quantity {
     visibility: visible;
@@ -160,5 +208,86 @@ font-size: 1.2rem;
   .header-cart-icon{
     font-size: 1.3rem;
     color: var(--white-color);
+    transition:  0.7s ease;
+}
+.header-cart-icon:hover{
+    color: var(--darkslategrey-color);
 }
 
+@media only screen and (max-width: 540px) {
+    nav{
+height: 45px;
+    }
+    .drop-down-main{
+     
+        flex-flow: column nowrap;
+        position: fixed;
+        transform: translateY(-100%);
+        top: 0;
+        right: 0;
+        padding-top: 50px;
+        padding-left: 200px;
+        height: 300px;
+        width: 100%;
+        background-color: #000;
+        transition: transform 0.3s ease-in
+
+    
+    } 
+    .drop-down-main-hide{
+      transform: translateY(0);
+      transition: transform 0.4s ease;
+    }
+    .navbar-right-items{
+        margin-top: -20px;
+    }
+    .nav-box{
+        padding-top: 5px;
+    }
+    
+    
+    .navbar-items{
+        flex-flow: column;
+        margin-right: -150px;
+    }
+    .navbar-right-items{
+        flex-flow: column;
+        margin-right: -150px;
+    }
+    
+    .my-shopping-logo{
+        font-size: .9rem;
+     
+       
+        
+
+    }
+
+
+
+  .my_shop-header {
+    flex: 50%;
+    font-size: .9rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 130px;
+    z-index: 20;
+  }
+  .my-shopping-logo{
+    font-family: 'Great Vibes', cursive;
+    }
+
+
+    .header-cart-icon{
+        font-size: 1rem;
+        
+    }
+
+
+    .item-link{
+        font-size: .9rem;
+      }
+
+}
