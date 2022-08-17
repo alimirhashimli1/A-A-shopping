@@ -23,10 +23,10 @@ const App = () => {
     const [ showLogin, setShowLogin ] = useState(true);
     const [ token, setToken ] = useState(false);
     const [show, setShow]= useState(true);
-    const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]")
-    const [ cart, setCart]= useState(cartFromLocalStorage);
+    // const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]")
+    // const [ cart, setCart]= useState(cartFromLocalStorage);
     const [message, setMessage] = useState(false)
-
+    const [cart, setCart] = useState([])
     const messageClick = () => {
         setMessage(true)
       }
@@ -110,7 +110,7 @@ progress: undefined,
 
     useEffect(() => {
         const data = JSON.parse(localStorage.getItem("data"));
-        const cartData = JSON.parse(localStorage.getItem("cart"));
+        // const cartData = JSON.parse(localStorage.getItem("cart"));
         if (data && data.token && data.id && data.expiry) {
             const tokenExpiry = new Date(data.expiry);
             const now = new Date();
