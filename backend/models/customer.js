@@ -9,6 +9,7 @@ const customerSchema = new Schema({
   isAdmin: { type: Boolean, required: true },
   products: [ { type: mongoose.Types.ObjectId, required: true, ref: "Product" } ]
 }, { timestamps: true });
+
 customerSchema.pre("save", async function(next) {
     if (!this.isAdmin) {
         this.isAdmin = false;

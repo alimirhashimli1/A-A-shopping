@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "./Register.css"
 const Register = props => {
   const [userName, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -59,27 +59,29 @@ const Register = props => {
   }
 
   return (
-    <div>
-      <h1>Register</h1>
+    <div className="">
+      <h1 className="register-header">Register</h1>
+<div className="register-frame">
+<form className="register-form" onSubmit={registerUser}>
+        <div>
+          <label className="register-label">User Name</label>
+          <input className="register-input register-input-user-name " name="userName" onChange={updateData} value={userName} minLength={3} maxLength={15} />
+        </div>
+        <div>
+          <label className="register-label">Password</label>
+          <input className="register-input register-input-password" name="password" onChange={updateData} value={password} />
+        </div>
+        <div>
+          <label className="register-label">Email Address</label>
+          <input className="register-input" name="emailAddress" onChange={updateData} value={emailAddress} />
+        </div>
 
-      <form onSubmit={registerUser}>
-        <div>
-          <label>User Name</label>
-          <input name="userName" onChange={updateData} value={userName} minLength={3} maxLength={15} />
-        </div>
-        <div>
-          <label>Password</label>
-          <input name="password" onChange={updateData} value={password} />
-        </div>
-        <div>
-          <label>Email Address</label>
-          <input name="emailAddress" onChange={updateData} value={emailAddress} />
-        </div>
-
-        <button>Sign Up</button>
+        <button className='register-signin'>Sign Up</button>
       </form>
 
-      <button onClick={updateShowLogin}>Account Is There</button>
+      <button className="register-signup" onClick={updateShowLogin}>Account Is There</button>
+</div>
+     
     </div>
   )
 }
