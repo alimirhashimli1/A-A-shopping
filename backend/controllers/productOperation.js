@@ -116,34 +116,3 @@ export const updateProducts = async (req, res, next) => {
     }
 }
 
-
-export const deleteProduct = async (req, res, next) => {
-    const customerId = req.params.id;
-    const productId = req.params.productId;
-
-    let updatedCustomer;
-
-    try {
-        updatedCustomer = await Customer.findByIdAndUpdate(customerId, { $pull: { products: productId }}, { new: true, runValidators: true })
-    } catch {
-        return next(createError(500, "Product Could not be Deleted"));
-    }
-
-    await updatedCustomer.populate("products"); 
-
-    res.json({ products: updatedCustomer.products });
-}
-
-
-
-
-export const deleteProducts = async (req, res, next) => {
-    const customerId = req.params.id;
-    let updatedCustomer;
-    try {
-        updatedCustomer = await Customer.findByIdAndUpdate(customerId, { products: [] }, { new: true, runValidators: true })
-    } catch {
-        return next(createError(500, "Could delete the products"));
-    }
-    res.json(updatedCustomer.products);
-}
