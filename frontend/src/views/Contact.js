@@ -20,15 +20,16 @@ const Contact = ({message, messageClick}) => {
     <div className="contact-container">   
 
     <div className="contact-section">
-     
+     {/* FONTS */}
     <div class="contact-info">
         <div><i className="fas fa-map-marker-alt"></i>Address, City, Country</div>
         <div><i className="fas fa-envelope"></i>contact@email.com</div>
         <div><i className="fas fa-phone"></i>+00 0000 000 000</div>
         <div><i className="fas fa-clock"></i>Mon - Fri 8:00 AM to 5:00 PM</div>
       </div>
+      {/* MESSAGE */}
       <div className="contact-form">
-        <h2 className="contact-form-title">Contact Us</h2>
+        <h2 className="contact-form-title">CONTACT  <span>US</span></h2>
         <form className="contact" onSubmit={submitMessage}>
           <input type="text" name="name" className="text-box" placeholder="Your Name" required/>
           <input type="email" name="email" className="text-box" placeholder="Your Email" required/>

@@ -249,7 +249,7 @@ const previewFiles=(file)=>{
                        
               { isAdmin && (
                 <div>  
-                 
+                 {/* BRAND SELECTION & UPLOAD */}
                     <h2 className={ Classnames('welcome',{'welcome-hide': props.open } )}  onClick={()=> props.setOpen(!props.open)}>Welcome  {userName}</h2>
                     <div className="add-product-title">
                         <h1>ADD A NEW PRODUCTS</h1> 
@@ -292,7 +292,7 @@ const previewFiles=(file)=>{
                     </div>
         )} 
             <div className="contentContiner">
-
+                        {/* CURRENT PRODUCTS */}
                 <h2 className="product-header">CURRENT PRODUCTS</h2>
                 <ul className="General">
                 {

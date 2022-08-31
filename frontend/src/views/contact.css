@@ -1,6 +1,6 @@
 .contact-container{
     min-height: 100vh;
-    background: url(https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1474&q=80) no-repeat;
+    background: linear-gradient(rgba(255,255,255,.5), rgba(255, 255, 255, 0.9)), url(https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-model-unselect-gallery-1-202207?wid=5120&hei=2880&fmt=p-jpg&qlt=95&.v=1654893619853) no-repeat ;
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -15,7 +15,7 @@
   }
   
   .contact-info{
-    color: #fff;
+    color: #000;
     max-width: 500px;
     line-height: 65px;
     padding-left: 50px;
@@ -38,13 +38,19 @@
   }
   
   .contact-form-title{
-    color: #fff;
+    color: #000;
     text-align: center;
     font-size: 5em;
     text-transform: uppercase;
     margin-bottom: 30px;
   }
 
+  .contact-form-title span {
+    color: gray;
+		font-size: 75px;
+		text-transform: capitalize;
+		margin-bottom: 20px;
+  }
 
   .contact-form-message {
     color: #fff;
@@ -53,7 +59,7 @@
   }
   
   .contact-form .text-box{
-    background: rgb(87, 87, 87);
+    background: gray;
     color: #fff;
     border: none;
     width: calc(50% - 10px);
@@ -79,7 +85,7 @@
 
 
   .contact-form textarea{
-    background: rgb(87, 87, 87);
+    background: gray;
     color: #fff;
     border: none;
     width: 100%;

@@ -4,6 +4,7 @@ import Products from "./views/Products";
 import Contact from "./views/Contact";
 import ContactMessage from "./views/ContactMessage";
 import About from "./views/About";
+import Team from "./views/Team";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import Landing from "./views/Landing";
 import Footer from "./components/Footer";
@@ -27,11 +28,9 @@ const App = () => {
     const [message, setMessage] = useState(false)
     const [cart, setCart] = useState([])
     const [LoginFirst, setLoginFirst] = useState(true)
-   const [ cart, setCart]= useState([]);
     // const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]")
     // const [ cart, setCart]= useState(cartFromLocalStorage);
     const [open, setOpen]= useState(false);
-     const [message, setMessage] = useState(false)
 
 
     const messageClick = () => {
@@ -160,7 +159,7 @@ progress: undefined,
     <Router>
     <header>
     <Header cart={cart} open={open} setOpen={setOpen} setShow={setShow} size={cart.length} isLoggedIn={isLoggedIn} currentCustomerId={currentCustomerId} logout={logout} />
-    </header>
+    </header>Contact
         <main>
     
             <Routes>
@@ -181,6 +180,7 @@ progress: undefined,
                 <Route path="/contact" exact element={message ? <ContactMessage setMessage={setMessage}/> : <Contact messageClick={messageClick}/>}/>
 
                 <Route path="/about" exact element={<About/>}/>
+                <Route path="/team" exact element={<Team/>}/>
                 <Route path="/checkout-success"  element={<CheckoutSuccess setCart={setCart} open={open} setOpen={setOpen} cart={cart} currentCustomerId={currentCustomerId} />}/> 
                 <Route path="/logout" exact element={<Logout logout={logout}  />}/>
                 

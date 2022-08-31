@@ -6,17 +6,16 @@ import about from "../assets/about-photo.jpg"
 const About = () => {
   return (
     <>
-
+	<div className="about-container">
       <section className="about">
 		<div className="main">
       <img src={shopping} alt="" />
 			<div className="about-text">
+				{/* ABOUT */}
 				<div className="about-h2-container">
 				<h2>ABOUT <span>US</span> </h2>
 
-				<h5>Developer <span> Designer</span></h5>
-				<p>I am a front-end web developer. I can provide clean code and pixel perfect design. I also make the website more & more interactive with web animations.I can provide clean code and pixel perfect design. I also make the website more & more interactive with web animations.A responsive design makes your website accessible to all users, regardless of their device.</p>
-				<button type="button">CONTACT US</button>
+				
 
 				</div>
 				<p>We are a commercial website called A&A shopping. We can provide clean code and pixel perfect design. We also make the website more  more interactive with web animations.We can provide clean code and pixel perfect design. We also make the website more  more interactive with web animations.A responsive design makes your website accessible to all users, regardless of their device.totam voluptatibus quam dolore nostrum. Voluptatum atque molestias blanditiis perferendis inventore necessitatibus eos placeat!
@@ -33,6 +32,7 @@ const About = () => {
 	<section className="about">
 		<div className="main">
 			<div className="about-text">
+				{/* HISTORY */}
 			<div className="about-h2-container">
 				<h2><span>OUR</span>  HISTORY </h2>
 				</div>
@@ -49,6 +49,7 @@ const About = () => {
       <img src={about} alt="" />
 		</div>
 	</section>
+	</div>
 
 	{/* <div className="service">
 		<div className="title">
