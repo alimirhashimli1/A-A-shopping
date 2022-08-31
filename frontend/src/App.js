@@ -4,7 +4,6 @@ import Products from "./views/Products";
 import Contact from "./views/Contact";
 import ContactMessage from "./views/ContactMessage";
 import About from "./views/About";
-import Team from "./views/Team";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import Landing from "./views/Landing";
 import Footer from "./components/Footer";
