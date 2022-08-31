@@ -24,6 +24,7 @@ const Slider = () => {
 
   return (
     <>
+    {/* CAROUSEL */}
     <div className="landing-container">
         <div className="landing-arrow landing-left">
             <FaArrowLeft className="landing-arrow-button" onClick={prevSlide}/>
@@ -61,6 +62,7 @@ const Slider = () => {
         )}
       </div>
     </div>
+        {/* CATEGORIES */}
     <div className="landing-category">
         {
           categories.map(item => {

@@ -39,10 +39,10 @@
 }
 
 main {
-  min-height: 80vh;
-  padding: 20px 40px;
+  /* min-height: 80vh;
+  padding: 20px 40px;*/
   margin-top: 120px;
-margin-bottom: 220px;
+margin-bottom: 220px; 
 }
  
 

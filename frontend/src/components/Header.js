@@ -81,7 +81,7 @@ return (
                     <li className='nav-item'><Link className='item-link' to="/contact">Contact</Link></li>
                     <li className='nav-item'><Link className='item-link' to="/about">About</Link></li>
                     
-                    <li className='nav-item'><Link className='item-link' to="/logout">Team</Link></li>
+                    <li className='nav-item'><Link className='item-link' to="/team">Team</Link></li>
                    
          </ul>
           
