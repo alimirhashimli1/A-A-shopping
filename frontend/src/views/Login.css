@@ -51,10 +51,6 @@
     font-size: 1.1rem;
     border: 1px solid var(--grey-color);
     color: var(--white-color);
-    transition: all .7s ease;
-}
-.login-signin:hover{
-    color: rgb(172, 172, 172);
 }
 .login-signup{
     width: 100%;
@@ -67,10 +63,6 @@
     font-size: 1.1rem;
     border: 1px solid var(--grey-color);
     color: var(--white-color);
-    transition: all .7s ease;
-}
-.login-signup:hover{
-    color: rgb(172, 172, 172);
 }
 @media only screen and (max-width: 540px) {
     .login-main{

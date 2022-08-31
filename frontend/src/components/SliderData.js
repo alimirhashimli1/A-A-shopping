@@ -1,14 +1,14 @@
   export const sliderItems = [
     {
       id: 1,
-      img: "https://m.media-amazon.com/images/I/61sDyXAepuL._SX522_.jpg",
+      img: "https://m.media-amazon.com/images/I/61HnuJc8WHL._AC_SL1500_.jpg",
       
       title: "iPHONE 13 PRO",
       desc: "BUY THIS 256GB STORAGE PHONE ONLY WITH 1219 EUR.",
     },
     {
       id: 2,
-      img: "https://m.media-amazon.com/images/I/61eDXs9QFNL._SX522_.jpg",
+      img: "https://files.refurbed.com/pi/apple-iphone-8-1559740359.jpg",
       title: "iPHONE 8",
       desc: "30% OFF FOR YOUR DESIRE'S INSIDE COMES HERE. THIS WILL IMPLEMENT TO YOUR WILL",
     },

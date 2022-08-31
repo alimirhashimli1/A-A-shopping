@@ -13,7 +13,7 @@
   margin-top: 50px;
 }
 .login-name-checkout{
-  color: black;
+  color: #800000;
 }
 .checkout-icon{
     color: green;
@@ -24,14 +24,14 @@
   margin-left: 23%;
   margin-top: 70px;
   margin-bottom: 10px;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-family: 'Cormorant Garamond', serif;
   
   
 }
 .shipping-info1{
   margin-left: 420px;
-  color: #800000;
+  color: #cc0000;
 }
 
 .payment-detail{
@@ -144,10 +144,10 @@ margin-left: 60px;
 
 
   .shipping-detail{
-    width: 25%;
+    width: 30%;
     margin:auto;
     text-align: left;
-    margin-top: -40px;
+    margin-top: -60px;
    
   }
   .shipping-tital{
@@ -156,7 +156,7 @@ margin-left: 60px;
   }
   .shipping-detail-border{
    margin-top: 30px;
-    padding: 20px;
+    padding: 28px;
     border: 1px solid grey;
     border-radius: 5px;
    
@@ -170,17 +170,11 @@ margin-left: 60px;
 .shipping-info{
   font-family: 'Uchen', serif;
   line-height: 1.5;
-  /* color: #000080;
-   */
-   color: black;
-   font-size: .9rem;
-   font-weight: bold;
+  color: #000080;
 }
 .shipping-details-info{
-  color: #800000; 
+  color: #800000;
   margin-left: 10px;
-  font-weight: lighter;
-  
 }
 
 @media only screen and (max-width: 540px) {
@@ -201,7 +195,6 @@ margin-left: 60px;
   .order-detail-title{
     margin-left: 5%;
     margin-top: 40px;
-    
   }
   .shipping-info1{
     margin-left: 20px;
