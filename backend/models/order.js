@@ -6,6 +6,8 @@ const orderSchema = new Schema(
   {
     userId: { type: String },
     customerId: { type: String },
+    name: { type: String },
+    email: { type: String },
     paymentIntentId: { type: String },
     products: [
       { productId: { type: String }, quantity: { type: Number, default: 1 } },

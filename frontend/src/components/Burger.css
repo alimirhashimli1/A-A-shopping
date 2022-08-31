@@ -1,7 +1,5 @@
 .burger{
-     
     width: 2rem;
-   
     height: 2rem;
     position: fixed;
     top: 10px;
@@ -11,17 +9,12 @@
     flex-flow: column nowrap;
     align-items: center;
     display: none;
-    z-index: 20;
-   
-   
-    
-
+    z-index: 20;  
 }
-.bar{
+.burger .bar{
     width: 1.8rem;
     height: 0.25rem;
     margin: 4px auto;
-   
     background-color: #fff;
     border-radius: 10px;
     transform-origin: 3px;
@@ -39,7 +32,7 @@
 .bar:nth-child(3){
     transform: rotate(0);
 }
-.bar-hidden{
+.burger .bar-hidden{
     width: 1.8rem;
     height: 0.25rem;
     background-color: #fff;
@@ -59,7 +52,24 @@
 }
 
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 900px) {
+    
+    .burger{
+     
+       
+        display: block;
+       
+       
+       
+        
+    
+    }
+}
+
+
+
+
+@media only screen and (max-width: 540px) {
     
     .burger{
      

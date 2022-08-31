@@ -12,9 +12,10 @@ const router = express.Router()
   router.post('/create-checkout-session', async (req, res) => {
     console.log("req.body.userId", req.body.userId)
 const customer = await stripe.customers.create({
- 
+  // email:'sssss@yahoo.com',
   metadata:{
     userId: req.body.userId,
+    
   },
   })
 
@@ -31,7 +32,6 @@ const line_items = req.body.cart.map(item =>{
       currency: 'usd',
       product_data: {
         name: item.productName,
-        //images: [item.productImage.avatar.url],
         images: [item.productImage.avatar],
         description: item.productDescription,
         metadata:{
@@ -52,6 +52,7 @@ const line_items = req.body.cart.map(item =>{
       shipping_address_collection: {
         allowed_countries: ['US', 'CA', 'DE'],
       },
+     
       shipping_options: [
         {
           shipping_rate_data: {
@@ -99,7 +100,7 @@ const line_items = req.body.cart.map(item =>{
       phone_number_collection: {
         enabled: true,
       },
-       customer: customer.id,
+        customer: customer.id,
       // customer: 
 
       line_items,
@@ -115,10 +116,14 @@ const line_items = req.body.cart.map(item =>{
 
 
 const createOrder = async(customer, data, lineItems)=>{
-
+  console.log('createOrderlineItems', lineItems)
+  console.log('createOrdercustomer', customer)
+  console.log('createOrderdata', data)
   const newOrder = new Order({
     userId: customer.metadata.userId,
     customerId: data.customer,
+    name: data.shipping.name,
+    email: data.customer_details.email,
     paymentIntentId: data.payment_intent,
     products: lineItems.data,
     subtotal: data.amount_subtotal,
@@ -157,7 +162,7 @@ let eventType;
 
   try {
     event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
-    console.log("WebHook Succeed")
+    console.log("WebHook Succeed", event)
   } catch (err) {
     console.log(`WebHook Error: ${err.message}`)
     res.status(400).send(`Webhook Error: ${err.message}`);
@@ -170,13 +175,16 @@ eventType = event.type;
 }else{
 data = req.body.data.object;
 eventType = req.body.type;
+console.log('webHookData', data)
 }
 
 
 if(eventType === "checkout.session.completed"){
 stripe.customers.retrieve(data.customer)
 .then((customer)=>{
-    
+  // console.log('lineItems', lineItems)
+  // console.log('customer', customer)
+  // console.log('data', data)
      stripe.checkout.sessions.listLineItems(
       data.id,
       {  },
@@ -184,6 +192,8 @@ stripe.customers.retrieve(data.customer)
      
       createOrder(customer, data, lineItems )
       console.log('lineItems', lineItems)
+      console.log('customer', customer)
+      console.log('data', data)
       }
     );
 

@@ -40,29 +40,6 @@ useEffect(() => {
 
 
 
-
-  useEffect(() => {
-  
-           const fetchCustomerData = async () => {
-               const settings = {
-                   credentials: "include"
-               }    
-               const response = await fetch(process.env.REACT_APP_SERVER_URL + `/customers/${currentCustomerId}`, settings);
-               const parsedRes = await response.json();            
-               try {
-                   if (response.ok) {
-                      
-                       setUserName(parsedRes.userName);
-                   } else {
-                       throw new Error(parsedRes.message);
-                   }
-               } catch (err) {
-                   alert(err.message);
-               }
-           }
-           fetchCustomerData();
- }, [currentCustomerId])
-
 return (
     <section className='main-navbar'>
       <nav className="nav-bar">
@@ -81,7 +58,7 @@ return (
                     <li className='nav-item'><Link className='item-link' to="/contact">Contact</Link></li>
                     <li className='nav-item'><Link className='item-link' to="/about">About</Link></li>
                     
-                    <li className='nav-item'><Link className='item-link' to="/logout">Team</Link></li>
+                    <li className='nav-item'><Link className='item-link' to="/team">Team</Link></li>
                    
          </ul>
           
