@@ -14,27 +14,27 @@
     },
     {
       id: 3,
-      img: "https://m.media-amazon.com/images/I/61jLiCovxVL._SX522_.jpg",
-      desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR iPHONE 11.",
-      title: "iPHONE 11 PRO",
+      img: "https://med.greatecno.com/263827/ipad-pro-12-9-wi-fi-128gb-5-gen-silber.jpg",
+      desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR iPad Pro 12,9.",
+      title: "iPAD PRO 12,9",
     },
   ];
 
+  
   export const categories = [
     {
       id: 1,
-      img: "https://m.media-amazon.com/images/I/61AwGDDZd3L._SX522_.jpg",
-      title: "Apple iPhone!",
+      img: "https://m.media-amazon.com/images/I/61D84NtVgVL.jpg",
+      title: "PHONE",
     },
     {
       id: 2,
-      // img: "https://res.cloudinary.com/dnuo2xdss/image/upload/v1660728461/aashopping/j7qox900z4pwe5zoxzqp.jpg",
-      img: "https://m.media-amazon.com/images/I/61WvrP9Fz-L._SL1500_.jpg",
-      title: "Apple Laptop",
+      img: "https://www.lidl.de/assets/104aa5a28265dfe2e98e602336de3e55.jpeg",
+      title: "TABLET",
     },
     {
       id: 3,
-      img: "https://m.media-amazon.com/images/I/61y9K3gDOqL._SX679_.jpg",
-      title: "Apple iPad",
+      img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-space-gray-select-201810?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1633027804000",
+      title: "LAPTOP",
     },
   ];

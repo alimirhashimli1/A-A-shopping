@@ -5,6 +5,7 @@ import Contact from "./views/Contact";
 import Team from "./views/Team";
 import ContactMessage from "./views/ContactMessage";
 import About from "./views/About";
+import Team from "./views/Team";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import Landing from "./views/Landing";
 import Footer from "./components/Footer";
@@ -167,7 +168,7 @@ const  handelAddProduct = (product) =>{
     <Router>
     <header>
     <Header cart={cart} open={open} setOpen={setOpen} setShow={setShow} size={cart.length} isLoggedIn={isLoggedIn} currentCustomerId={currentCustomerId} logout={logout} />
-    </header>
+    </header>Contact
         <main>
     
             <Routes>
@@ -176,6 +177,7 @@ const  handelAddProduct = (product) =>{
                 : (<Card cart={cart} open={open} setOpen={setOpen} isLoggedIn={isLoggedIn} currentCustomerId={currentCustomerId} setCart={setCart} clearCard={clearCard}  handleChange={handleChange} handleDeleteProduct={handleDeleteProduct} handelAddProduct={handelAddProduct}  /> 
                 )  }/>
                 <Route path="/about" exact element={<About/>}/>
+                <Route path="/team" exact element={<Team/>}/>
                 <Route path="/checkout-success"  element={<CheckoutSuccess setCart={setCart} open={open} setOpen={setOpen} cart={cart} currentCustomerId={currentCustomerId} />}/> 
                 <Route path="/logout" exact element={<Logout logout={logout}  />}/>
                 <Route path="/contact" exact element={message ? <ContactMessage setMessage={setMessage}/> : <Contact messageClick={messageClick}/>}/>

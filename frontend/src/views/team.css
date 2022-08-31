@@ -1,0 +1,417 @@
+
+ 
+  /* Team Section */
+
+
+  /* .team-cover-section {
+    margin-top: 120px;
+    min-height: 100vh;
+  } */
+
+	.section-title {
+		
+		color: #000;
+		font-size: 75px;
+		text-transform: capitalize;
+		margin-bottom: 20px;
+		text-align: center;
+	}
+
+	.section-title  span{
+		color: gray;
+		font-size: 75px;
+		text-transform: capitalize;
+		margin-bottom: 20px;
+	  }
+
+	  .team-article-container {
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(rgba(255,255,255,.5), rgba(255, 255, 255, 0.9)), url(https://www.apple.com/v/mac-mini/n/images/overview/hero__x8ruukomx2au_large_2x.jpg) no-repeat ;
+		  background-size: cover;
+		  display: flex;
+		  flex-direction: column;
+		  justify-content: center;
+		  align-items: center;
+	  }
+
+	.section-text {
+		letter-spacing: 0.7px;
+		line-height: 28px;
+		text-align: justify;
+		font-size: 2rem;
+		margin-bottom: 45px;
+		padding: 20px;
+	}
+
+  .team-container {
+    display: flex;
+    justify-content: center;
+
+}
+  .team-section{
+    position: relative;
+    width: 95%;
+    background-color: #d3d1cc;
+    padding: 25px 0;
+    z-index: 10;
+    margin-bottom: 20px;
+  }
+  .team-img{
+    position: relative;
+    width: 90%;
+    height: 500px;
+    margin: auto;
+  }
+  .team-img img{
+    width: 100%;
+    height: 100%;
+  }
+  .team-center{
+    margin-left: 2%;
+   
+  }
+  .team-img-icon{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    /* background-color: rgba(0,0,0,0.5); */
+  }
+  .team-img-icon a{
+   
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin-left: auto;
+    background-color: rgba(0,0,0,0.8);
+    color: #fff;
+    text-align: center;
+    padding-top: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s;
+  }
+  .team-img-desc{
+    text-align: center;
+    margin-top: 20px;
+    padding-bottom: 40px;
+  }
+  .team-img-desc h3{
+    color: #000;
+    transition: color 0.5s;;
+  }
+  .team-img-desc p{
+    color: gray;
+    padding-top: 15px;
+    transition:  color 0.5s;
+  }
+  .top-to-bottom-effect{
+    position: relative;
+  }
+  .top-to-bottom-effect::after{
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 100%;
+    background-color: rgba(0,0,0,0.8);
+    transition: height 0.5s; 
+    z-index: -1;
+  }
+  .top-to-bottom-effect:hover::after{
+    height: 100%;
+  }
+  .team-section:hover .team-img-desc h3{
+    color: #fff;
+  }
+  .team-section:hover .team-img-desc p{
+    color: #fff
+  }
+  .team-section:hover .team-img-icon a{
+    opacity: 1;
+    visibility: visible ;
+  }
+    
+    
+
+/* Footer Section */
+.footer{
+    padding: 10px 0;
+    text-align: center;
+    margin-top: 50px;
+    background-color:rgb(151, 165, 168);
+    opacity: .7;
+  }
+  .footer ul{
+    list-style: none;
+  }
+  .footer ul li{
+    display: inline-block;
+  }
+  .footer ul li a{
+    display: block;
+    background-color: #1462bb;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    border-radius: 50%;
+  }
+  .footer ul li a i{
+    line-height: 40px;
+  }
+  footer p{
+    margin-top: 20px;
+    text-transform: uppercase;
+    color: rgb(2, 2, 2);
+  }
+  
+  
+   
+
+
+@media only screen and (max-width: 768px) {
+    .header-content .menu {
+        display: none;
+    }
+
+    .header-content ul li a {
+        display: block;
+        padding: 15px;
+    }
+
+    .header-content .menu {
+        max-height: 0;
+        transition: max-height 1s;
+    }
+
+    .header-content .menu-icon {
+        padding: 28px 20px;
+        position: relative;
+        float: right;
+        cursor: pointer;
+    }
+
+    .header-content .menu-icon .nav-icon {
+        background: #333;
+        display: block;
+        height: 2px;
+        width: 18px;
+        position: relative;
+        transition: background .5s ease-out;
+    }
+
+    .header-content .menu-icon .nav-icon::after {
+        position: absolute;
+        content: "";
+        background: #333;
+        display: block;
+        height: 100%;
+        width: 100%;
+        transition: all .5s ease-out;
+        top: -5px;
+    }
+
+    .header-content .menu-icon .nav-icon::before {
+        position: absolute;
+        content: "";
+        background: #333;
+        display: block;
+        height: 100%;
+        width: 100%;
+        transition: all .5s ease-out;
+        top: 5px;
+    }
+
+    .header-content .menu-btn {
+        display: none;
+    }
+
+    .header-content .menu-btn:checked~.menu {
+        display: block;
+        position: absolute;
+        width: 80%;
+        width: 150px;
+        right: 0;
+        padding: 10px;
+        top: 150%;
+        background: #fff;
+        max-height: 740px;
+        border: 1px solid var(--mainColor);
+    }
+
+    .header-content ul li a::after {
+        content: "";
+        position: absolute;
+        border-width: 0 0 2px 0;
+        border-color: var(--mainColor);
+        border-style: solid;
+        width: 40%;
+        height: 91%;
+        top: 0;
+        left: 15px;
+        transition: transform 0.4s;
+        transform: scale3d(0, 1, 0);
+    }
+
+    .header-content ul li a:hover::after {
+        transform: scale3d(1, 1, 1);
+        transition-delay: 0.1s;
+        transform-origin: left;
+    }
+
+    .header-content ul li a::before {
+        content: "";
+        position: absolute;
+        border-width: 0;
+        border-color: var(--mainColor);
+        border-style: solid;
+        width: 98%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        transition: transform 0.3s;
+        transform: scale3d(1, 0, 1);
+
+    }
+
+    .header-content ul li a:hover::before {
+        transform: scale3d(1, 1, 1);
+
+    }
+
+    .product-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .team-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    
+    }
+}
+
+
+@media only screen and (max-width: 500px) {
+    .header-content .menu {
+        display: none;
+    }
+
+    .header-content ul li a {
+        display: block;
+        padding: 15px;
+    }
+
+    .header-content .menu {
+        max-height: 0;
+        transition: max-height 1s;
+    }
+
+    .header-content .menu-icon {
+        padding: 28px 20px;
+        position: relative;
+        float: right;
+        cursor: pointer;
+    }
+
+    .header-content .menu-icon .nav-icon {
+        background: #333;
+        display: block;
+        height: 2px;
+        width: 18px;
+        position: relative;
+        transition: background .5s ease-out;
+    }
+
+    .header-content .menu-icon .nav-icon::after {
+        position: absolute;
+        content: "";
+        background: #333;
+        display: block;
+        height: 100%;
+        width: 100%;
+        transition: all .5s ease-out;
+        top: -5px;
+    }
+
+    .header-content .menu-icon .nav-icon::before {
+        position: absolute;
+        content: "";
+        background: #333;
+        display: block;
+        height: 100%;
+        width: 100%;
+        transition: all .5s ease-out;
+        top: 5px;
+    }
+
+    .header-content .menu-btn {
+        display: none;
+    }
+
+    .header-content .menu-btn:checked~.menu {
+        display: block;
+        position: absolute;
+        width: 80%;
+        width: 150px;
+        right: 0;
+        padding: 10px;
+        top: 150%;
+        background: #fff;
+        max-height: 740px;
+        border: 1px solid var(--mainColor);
+    }
+
+    .header-content ul li a::after {
+        content: "";
+        position: absolute;
+        border-width: 0 0 2px 0;
+        border-color: var(--mainColor);
+        border-style: solid;
+        width: 40%;
+        height: 91%;
+        top: 0;
+        left: 15px;
+        transition: transform 0.4s;
+        transform: scale3d(0, 1, 0);
+    }
+
+    .header-content ul li a:hover::after {
+        transform: scale3d(1, 1, 1);
+        transition-delay: 0.1s;
+        transform-origin: left;
+    }
+
+    .header-content ul li a::before {
+        content: "";
+        position: absolute;
+        border-width: 0;
+        border-color: var(--mainColor);
+        border-style: solid;
+        width: 98%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        transition: transform 0.3s;
+        transform: scale3d(1, 0, 1);
+
+    }
+
+    .header-content ul li a:hover::before {
+        transform: scale3d(1, 1, 1);
+
+    }
+
+    .product-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .team-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
