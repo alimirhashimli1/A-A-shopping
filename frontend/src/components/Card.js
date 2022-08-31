@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import './Card.css'
@@ -8,9 +8,18 @@ import Classnames from "classnames"
 const Card = ({ cart, open, setOpen, currentCustomerId, setCart, handelAddProduct, handleDeleteProduct, clearCard, isLoggedIn }) => {
 
 
-   const cartShopping = JSON.parse(localStorage.getItem("cart") || "[]");
+   const cartShopping = JSON.parse(localStorage.getItem("cartData") || "[]");
 
    const cartInformation = cartShopping.cart
+  // console.log('cartShopping', cartShopping)
+  //   console.log('cart', cart)
+
+  // const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]")
+  // const [ cart, setCart]= useState(cartFromLocalStorage);
+
+
+
+
   const handleRemove = (product) => {
     const cartDelete = cart.filter((item) => item._id !== product._id);
     setCart(cartDelete);

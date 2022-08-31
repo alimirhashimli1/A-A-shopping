@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Login from "./views/Login";
 import Products from "./views/Products";
 import Contact from "./views/Contact";
-import Team from "./views/Team";
 import ContactMessage from "./views/ContactMessage";
 import About from "./views/About";
 import Team from "./views/Team";
@@ -10,14 +9,13 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import Landing from "./views/Landing";
 import Footer from "./components/Footer";
 import Card from "./components/Card";
-import Register from "./views/Register"
 import Header from "./components/Header";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./App.css";
 import Logout from "./components/Logout";
 import CheckoutSuccess from "./components/CheckoutSuccess";
-
+// import Carousel from "./views/Carousel"
 
 const App = () => {
     const [ isLoggedIn, setIsLoggedIn ] = useState(false);
@@ -25,33 +23,25 @@ const App = () => {
     const [ showLogin, setShowLogin ] = useState(true);
     const [ token, setToken ] = useState(false);
     const [show, setShow]= useState(true);
-// const [ cart, setCart]= useState([]);
-    const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") )|| []
-    console.log('cartFromLocalStorage', cartFromLocalStorage)
-    const [ cart, setCart]= useState(cartFromLocalStorage);
-    console.log('cartAfter' , cart)
-    const [open, setOpen]= useState(false)
+    // const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]")
+    // const [ cart, setCart]= useState(cartFromLocalStorage);
     const [message, setMessage] = useState(false)
+    const [cart, setCart] = useState([])
+    const [LoginFirst, setLoginFirst] = useState(true)
+    // const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]")
+    // const [ cart, setCart]= useState(cartFromLocalStorage);
+    const [open, setOpen]= useState(false);
 
 
     const messageClick = () => {
         setMessage(true)
       }
+    
 
-      useEffect(()=>{
-  
-        // if(props.cart)
-       // const cartDT = localStorage.setItem("cart", JSON.stringify(props.cart))
-    
-        console.log('cartinfo', cart)
-    localStorage.setItem("cart", JSON.stringify(cart))
-        // else if 
-    
-    }, [cart])
-    
 
     const handleClick = (product) => {
        
+        
         const ProductExist = cart.find((item) => item._id === product._id)
         if(ProductExist){
             setCart(cart.map(item => item._id === product._id
@@ -89,7 +79,7 @@ progress: undefined,
 
           setShow(true)
       };
-const  handelAddProduct = (product) =>{
+      const  handelAddProduct = (product) =>{
         const ProductExist = cart.find((item) => item._id === product._id)
         if(ProductExist){
             setCart(cart.map((item) => item._id === product._id
@@ -126,11 +116,12 @@ const  handelAddProduct = (product) =>{
 
     useEffect(() => {
         const data = JSON.parse(localStorage.getItem("data"));
+        // const cartData = JSON.parse(localStorage.getItem("cart"));
+        //const cartData = JSON.parse(localStorage.getItem("cart"));
         if (data && data.token && data.id && data.expiry) {
             const tokenExpiry = new Date(data.expiry);
             const now = new Date();
             if (tokenExpiry > now) {
-                console.log('DataId', data.id)
                 login(data.token, data.id)
             } else {
                 logout();
@@ -172,27 +163,36 @@ const  handelAddProduct = (product) =>{
         <main>
     
             <Routes>
-                <Route path="/" exact element={<Landing />}/>
+
+               
                 <Route path="/products"  element={ show ? (<Products currentCustomerId={currentCustomerId} open={open} setOpen={setOpen} isLoggedIn={isLoggedIn} login={login} handleClick={handleClick} token={token} cart={cart} logout={logout} />)
                 : (<Card cart={cart} open={open} setOpen={setOpen} isLoggedIn={isLoggedIn} currentCustomerId={currentCustomerId} setCart={setCart} clearCard={clearCard}  handleChange={handleChange} handleDeleteProduct={handleDeleteProduct} handelAddProduct={handelAddProduct}  /> 
-                )  }/>
+                )   
+                }/>
+                <Route path="/contact" exact element={<Contact/>}/>
+
+                <Route path="/" exact element={<Landing />}/>
+                <Route path="/products"  element={ show ? (<Products currentCustomerId={currentCustomerId} isLoggedIn={isLoggedIn} login={login} handleClick={handleClick} token={token} cart={cart} logout={logout} />)
+                : (<Card cart={cart} currentCustomerId={currentCustomerId} setCart={setCart} clearCard={clearCard}  handleChange={handleChange} handleDeleteProduct={handleDeleteProduct} handelAddProduct={handelAddProduct} /> 
+                )   
+                }/>
+               
+                <Route path="/contact" exact element={message ? <ContactMessage setMessage={setMessage}/> : <Contact messageClick={messageClick}/>}/>
+
                 <Route path="/about" exact element={<About/>}/>
                 <Route path="/team" exact element={<Team/>}/>
                 <Route path="/checkout-success"  element={<CheckoutSuccess setCart={setCart} open={open} setOpen={setOpen} cart={cart} currentCustomerId={currentCustomerId} />}/> 
                 <Route path="/logout" exact element={<Logout logout={logout}  />}/>
-                <Route path="/contact" exact element={message ? <ContactMessage setMessage={setMessage}/> : <Contact messageClick={messageClick}/>}/>
+                
                 <Route path="/card" exact element={<Card  cart={cart} isLoggedIn={isLoggedIn} currentCustomerId={currentCustomerId} setCart={setCart} clearCard={clearCard}  handleChange={handleChange} handleDeleteProduct={handleDeleteProduct} handelAddProduct={handelAddProduct} />}/>
                 
                 <Route path="/login" exact element={!isLoggedIn && showLogin ? (<Login currentCustomerId={currentCustomerId} cart={cart} token={token} handleClick={handleClick}  login={login} logout={logout} setShowLogin={setShowLogin} showLogin={showLogin} />)
-                :!isLoggedIn && !showLogin ? (<Register currentCustomerId={currentCustomerId} cart={cart} token={token} handleClick={handleClick}  login={login} logout={logout} setShowLogin={setShowLogin} showLogin={showLogin} />) 
-                 : show ? (<Products handleClick={handleClick} currentCustomerId={currentCustomerId} open={open} setOpen={setOpen}  isLoggedIn={isLoggedIn} login={login} token={token} logout={logout} />)
+                 : show ? (<Products handleClick={handleClick} currentCustomerId={currentCustomerId} open={open} setOpen={setOpen} token={token} logout={logout} />)
                  :  (<Card cart={cart} open={open} setOpen={setOpen} isLoggedIn={isLoggedIn} currentCustomerId={currentCustomerId} setCart={setCart} clearCard={clearCard}  handleChange={handleChange} handleDeleteProduct={handleDeleteProduct} handelAddProduct={handelAddProduct}  /> 
                 ) 
                     } />
 
-                <Route path="/team" exact element={<Team />} />
-             
-          
+
 
 
 

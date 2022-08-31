@@ -114,7 +114,7 @@ const Login = props => {
         </div>
         <div>
           <label className="login-label">Password</label>
-          <input className="login-password" name="password" type="password" onChange={updateData} value={password} />
+          <input className="login-password" name="password" onChange={updateData} value={password} />
         </div>
 
         <button className="login-signin">Sign In</button>

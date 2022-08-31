@@ -5,15 +5,13 @@ import Product from "../models/product.js";
 export const getCustomerData = async (req, res, next) => {
     const customerId = req.params.id;
     let foundCustomer; 
-    console.log('customerId', customerId)
+    
     try {
         foundCustomer = await Customer.findById(customerId);
     } catch {
         return next(createError(500, "Couldn't query database. Please try again"));
     }
-    console.log('foundCustomer', foundCustomer)
     if (foundCustomer) {
-        
         await foundCustomer.populate("products", {
             _id: 1,
             productName: 1,
@@ -37,7 +35,7 @@ export const getCustomerData = async (req, res, next) => {
 
         res.json(customerData);
      } else {
-        next(createError(404, "User300 could not be found"));
+        next(createError(404, "User could not be found"));
     }
 }
 
@@ -89,7 +87,6 @@ export const getProductData1 = async (req, res, next) => {
 export const updateProducts = async (req, res, next) => {
     const productId = req.body.id;    
     const customerId = req.params.id;   
-    
     let foundCustomer;
     try {
         foundCustomer = await Customer.findById(customerId);
@@ -120,4 +117,33 @@ export const updateProducts = async (req, res, next) => {
 }
 
 
+export const deleteProduct = async (req, res, next) => {
+    const customerId = req.params.id;
+    const productId = req.params.productId;
 
+    let updatedCustomer;
+
+    try {
+        updatedCustomer = await Customer.findByIdAndUpdate(customerId, { $pull: { products: productId }}, { new: true, runValidators: true })
+    } catch {
+        return next(createError(500, "Product Could not be Deleted"));
+    }
+
+    await updatedCustomer.populate("products"); 
+
+    res.json({ products: updatedCustomer.products });
+}
+
+
+
+
+export const deleteProducts = async (req, res, next) => {
+    const customerId = req.params.id;
+    let updatedCustomer;
+    try {
+        updatedCustomer = await Customer.findByIdAndUpdate(customerId, { products: [] }, { new: true, runValidators: true })
+    } catch {
+        return next(createError(500, "Could delete the products"));
+    }
+    res.json(updatedCustomer.products);
+}
