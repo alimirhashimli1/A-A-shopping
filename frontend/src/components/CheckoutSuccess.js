@@ -7,6 +7,7 @@ const CheckoutSuccess = ({cart, open, setOpen, currentCustomerId,setCart }) => {
   const [shipping, setShipping] = useState("");
   const [orderNumber, setOrderNumber]= useState("");
   const [address, setAddress]= useState("");
+  const [shippingName, setShippingName] = useState("");
 
   useEffect(() => {
    
@@ -48,8 +49,10 @@ useEffect(() => {
            
             console.log("shipping parsedRes", parsedRes)
              const shipping = parsedRes[0].shipping
-            const orderNumber = parsedRes[0].customerId
+            const orderNumber = parsedRes[0].paymentIntentId
             const address = parsedRes[0].shipping.address
+            const shippingName = parsedRes[0]
+
             console.log("setShipping", shipping)
             console.log("orderNumber", orderNumber)
             console.log("Address", address)
@@ -61,7 +64,10 @@ useEffect(() => {
             
             
 console.log('shipping1', shipping)
-            
+console.log("setShipping", shipping)
+            console.log("orderNumber", orderNumber)
+            console.log("Address", address)
+            console.log('shippingName', shippingName)
             
              
           } else {
@@ -118,7 +124,7 @@ const totalPrice = cartInformation.reduce((price, item)=> price + item.quantity 
       </div>
 
       <div className='shipping-detail'>
-      <h2 className='shipping-tital'>Shipping Details</h2>
+      <h2 className='shipping-tital'>Shipping Detail:</h2>
       {
               
                   <div  className='shipping-detail-border'>

@@ -47,7 +47,10 @@ export const productsPost = async (req, res, next) => {
         }
 
 
-    res.status(201).json({id: newProduct._id, token: newToken})  
+    //res.status(201).json({id: newProduct._id, token: newToken})  
+    // res.json({id: newProduct._id, token: newToken}) 
+    res.json({product: newProduct, token: newToken})  
+    
 }
 
 
@@ -72,10 +75,60 @@ export const getProductData = async (req, res, next) => {
     }
     if (foundProduct) {
         
+
         res.json(foundProduct);
      } else {
         next(createError(404, "User could not be found"));
     }
+}
+
+
+
+// export const deleteProduct = async (req, res, next) => {
+//     const userId = req.params.id;
+//     const albumId = req.params.albumId;
+
+//     let updatedUser;
+
+//     try {
+//         // findByIdAndUpdate = change part of the document
+//         // findByIdAndRemove = delete the full document!
+//         // * Task 15 update: now we want to pull the item from the user's "albums" array which is EQUAL TO the albumId received in the request URL's params
+//         updatedUser = await User.findByIdAndUpdate(userId, { $pull: { albums: albumId }}, { new: true, runValidators: true })
+//     } catch {
+//         return next(createError(500, "User could not be updated. Please try again"));
+//     }
+
+//     await updatedUser.populate("albums"); 
+
+//     res.json({ albums: updatedUser.albums });
+// }
+
+
+
+export const deleteSelectedProduct = async (req, res, next) => {
+    const customerId = req.params.id;
+    const productId = req.params.productId;
+  
+    console.log('customerId', customerId)
+    console.log('productId', productId)
+
+    let productDeleted;
+
+    try {
+        // updatedCustomer = await Product.findByIdAndUpdate(productId, { $pull: { id: productId }}, { new: true, runValidators: true })
+        productDeleted =  await Product.findByIdAndRemove(productId)
+    } catch {
+        return next(createError(500, "Product Could not be Deleted"));
+    }
+ console.log('productDeleted', productDeleted)
+    //await updatedCustomer.populate("products"); 
+    // await productDeleted.populate("products")
+    //console.log('updatedCustomer55 :', updatedCustomer._id.toString())
+    // res.json({ message: "Your Product has been successfully deleted!" });
+    //res.json({ id: updatedCustomer._id.toString() });
+   // updatedCustomer55 : new ObjectId("6308b4cb73f0e1c54792edc3")
+   res.json({ product: productDeleted });
 }
 
 

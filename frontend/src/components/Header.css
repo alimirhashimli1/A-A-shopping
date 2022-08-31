@@ -1,293 +1,494 @@
 
 .main-navbar{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 11;
+  
+}
+nav {
     width: 100%;
-    position: fixed;
-    top: 0;
-    z-index: 10;
+    height: 60px;
+    /* background-color: var(--main-color); */
+   
     
   }
-  nav {
-      width: 100%;
-      height: 60px;
-      background-color: var(--main-color);
-      
-    }
+ 
+
+  .nav-box {
    
-  
-    .nav-box {
-     
-      width: 100%;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: var(--main-color);
-      
-  
-    }
-    .drop-down-main{
-        flex: 80%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-
-
-
-
-        
-    }
-    .navbar-items{
-      flex: 50%;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+     background-color: var(--main-color); 
+    /* background: rgb(0,0,0); */
+    /* background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(13,13,61,1) 41%, rgba(20,19,71,1) 65%, rgba(0,0,0,1) 100%);
+    
+ */
+  }
+  .drop-down-main{
+      flex: 80%;
       display: flex;
       justify-content: center;
       align-items: center;
-      list-style: none;
-      text-decoration: none;
-  font-family: 'Uchen', serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  
-  
-    }
-  
-    .drop-down .drop-down-menu .nav-item .drop-item{
-      color: blue;
-    }
-  
-  
-  .drop-item{
-    color: blue;
-    transition:  0.7s ease;
+     
+
+
+
+
+      
   }
-  .drop-item:hover{
-    color: blue;
-  }
-  .nav-item{
-    color: blueviolet;
-  }
-
-
-  
-  .item-link{
-    transition:  0.7s ease;
-  }
-  .item-link:hover{
-    color: var(--darkslategrey-color);
-  }
-  
-  
-  
-  .item-link1{
-    transition:  0.7s ease;
-  }
-  .item-link1:hover{
-    color: var(--darkslategrey-color);
-  }
-  
-
-.down-arrow{
-  visibility:hidden;
-
-}
-.down-arrow-active{
-  visibility: visible;
-}
-
-.drop-down{
-  position: relative;
-  font-size: 1rem;
-  font-weight: 700;
-}
-
-.drop-down-menu{
-  display: none;
-}
-.navbar-right-items .drop-down:hover .drop-down-menu{
-  display: block;
-
-  position: absolute;
-  left: 20px;
-  top: 100%;
-  background-color: var(--main-color);
-  border-radius: 7px;
-  
-}
-
-
-.navbar-right-items .drop-down:hover .drop-down-menu ul{
-  display: block;
-  margin: 10px;
-  padding: 5px;
-  list-style: none;
-  /* border: 2px solid var(--white-color); */
-  border-radius: 7px;
-}
-.navbar-right-items .drop-down:hover .drop-down-menu ul li a{
-  text-decoration: none;
-  color: var(--white-color);
-  padding: 15px;
-}
-
-
-
-  .navbar-right-items {
-    flex: 25%;
+  .navbar-items{
+    flex: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
     list-style: none;
     text-decoration: none;
-    text-align: left;
-    cursor: pointer;
+font-family: 'Uchen', serif;
+font-size: 1.1rem;
+font-weight: 700;
+
+
+  }
+
+  .drop-down .drop-down-menu .nav-item .drop-item{
+    color: blue;
+  }
+
+
+.drop-item{
+  color: blue;
+  font-size: .9rem;
+  transition:  0.7s ease;
+}
+.drop-item:hover{
+  color: blue;
+}
+.nav-item{
+  color: blueviolet;
+}
+
+
+.item-link{
+ color: white;
+  transition: color 0.7s ease;
+}
+.item-link:hover{
+  color: var(--darkslategrey-color);
+}
+
+
+
+.item-link1{
+  transition:  0.7s ease;
+}
+.item-link1:hover{
+  color: var(--darkslategrey-color);
+}
+
+
+.down-arrow{
+visibility:hidden;
+
+}
+.down-arrow-active{
+visibility: visible;
+}
+
+.drop-down{
+position: relative;
+font-size: 1rem;
+font-weight: 700;
+}
+
+.drop-down-menu{
+display: none;
+}
+.navbar-right-items .drop-down:hover .drop-down-menu{
+display: block;
+
+position: absolute;
+left: 20px;
+top: 100%;
+background-color: var(--main-color);
+border-radius: 7px;
+color: white;
+z-index: 50;
+
+
+}
+
+
+.navbar-right-items .drop-down:hover .drop-down-menu ul{
+display: block;
+margin: 10px;
+padding: 5px;
+list-style: none;
+/* border: 2px solid var(--white-color); */
+border-radius: 7px;
+}
+.navbar-right-items .drop-down:hover .drop-down-menu ul li a{
+text-decoration: none;
+color: var(--white-color);
+padding: 15px;
+}
+
+
+
+.navbar-right-items {
+  flex: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  text-decoration: none;
+  text-align: right;
+  cursor: pointer;
+  margin-left: 180px;
+  
 
 font-family: 'Uchen', serif;
 font-weight: 400;
 font-size: 1.2rem;
 /* margin-left: 100px; */
 
-  }
+}
 
-  .item-link1{
-    text-decoration: none;
-    color: var(--white-color);
-    padding: 0 30px;
-    text-transform:capitalize;
-    
-  }
-
-
-  .shopping-logo{
-    color: var(--darkslategrey-color);
-    font-family: 'Great Vibes', cursive;
-    transition: 0.7s ease;
-  }
+.item-link1{
+  text-decoration: none;
+  color: var(--white-color);
+  padding: 0 30px;
+  text-transform:capitalize;
+  font-size: .9rem;
   
-  .shopping-logo:hover{
-    color: var(--white-color);
-  }
-  .item-link{
-    text-decoration: none;
-    color: var(--white-color);
-    padding: 0 30px;
-    text-transform: uppercase ;
-    font-size: .9rem;
-  }
-  .my_shop-header {
-    flex: 20%;
-    font-size: 1.5rem;
-    font-weight: bold;
-    cursor: pointer;
-    margin-left: 100px;
-  }
-  .my-shopping-logo{
-    font-family: 'Great Vibes', cursive;
-    }
-  .cart .cart-shopping-icon {
-    font-size: 2rem;
-    color: var(--white-color);
-    transition:  0.7s ease;
-  }
-  .cart .cart-shopping-icon:hover {
-    color: var(--darkslategrey-color);
-  }
-  .cart .cart-quantity {
-    visibility: visible;
-    padding: 0 8px;
-    background-color: var(--orangered-color);
-    color: var(--white-color);
-    font-size: .8rem;
-    border-radius: 50%;
-    position: relative;
-    top: -15px;
-  }
-  .cart .cart-quantity-hidden {
-    visibility: hidden;
-  }
+}
 
-  .header-cart-icon{
-    font-size: 1.3rem;
-    color: var(--white-color);
-    transition:  0.7s ease;
+
+.shopping-logo{
+  color: var(--darkslategrey-color);
+  font-family: 'Great Vibes', cursive;
+  transition: 0.7s ease;
+}
+
+.shopping-logo:hover{
+  color: var(--white-color);
+}
+.item-link{
+  text-decoration: none;
+  color: var(--white-color);
+  padding: 0 30px;
+  /* text-transform: uppercase ; */
+  font-size: .9rem;
+}
+.my_shop-header {
+  flex: 20%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 100px;
+  transition: all .7s ease;
+}
+.my-shopping-logo:hover .shopping-logo{
+  color: white;
+}
+.my-shopping-logo{
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.5rem;
+  transition: all .7s ease;
+  }
+.cart .cart-shopping-icon {
+  font-size: 2rem;
+  color: var(--white-color);
+  transition:  0.7s ease;
+}
+.cart .cart-shopping-icon:hover {
+  color: var(--darkslategrey-color);
+}
+.cart .cart-quantity {
+  visibility: visible;
+  padding: 0 8px;
+  background-color: var(--orangered-color);
+  color: var(--white-color);
+  font-size: .8rem;
+  border-radius: 50%;
+  position: relative;
+  top: -15px;
+}
+.cart .cart-quantity-hidden {
+  visibility: hidden;
+}
+
+.header-cart-icon{
+  font-size: 1.3rem;
+  color: var(--white-color);
+  transition:  0.7s ease;
 }
 .header-cart-icon:hover{
-    color: var(--darkslategrey-color);
+  color: var(--darkslategrey-color);
+}
+@media only screen and (max-width: 1250px) {
+.my_shop-header {
+  flex: 5%;
+  font-size: 1.3rem;
+  margin-left: 50px;
+}
+.navbar-items{
+  flex: 5%;
+}
+.item-link{
+  padding: 0 10px;
+  font-size: .9rem;
 }
 
-@media only screen and (max-width: 540px) {
-    nav{
-height: 45px;
-    }
-    .drop-down-main{
-     
-        flex-flow: column nowrap;
-        position: fixed;
-        transform: translateY(-100%);
-        top: 0;
-        right: 0;
-        padding-top: 50px;
-        padding-left: 200px;
-        height: 300px;
-        width: 100%;
-        background-color: #000;
-        transition: transform 0.3s ease-in
+}
 
-    
-    } 
-    .drop-down-main-hide{
-      transform: translateY(0);
-      transition: transform 0.4s ease;
-    }
-    .navbar-right-items{
-        margin-top: -20px;
-    }
-    .nav-box{
-        padding-top: 5px;
-    }
-    
-    
-    .navbar-items{
-        flex-flow: column;
-        margin-right: -150px;
-    }
-    .navbar-right-items{
-        flex-flow: column;
-        margin-right: -150px;
-    }
-    
-    .my-shopping-logo{
-        font-size: .9rem;
-     
-       
-        
+@media only screen and (max-width: 1100px) {
 
-    }
+
+.my_shop-header {
+  
+  margin-left: 0px;
+}
+
+
+.navbar-right-items {
+  flex: 5%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  list-style: none;
+  text-decoration: none;
+  text-align: right;
+  cursor: pointer;
+  margin-left: 180px;
+  
+
+font-family: 'Uchen', serif;
+font-weight: 400;
+font-size: 1.2rem;
+
+}
 
 
 
-  .my_shop-header {
-    flex: 50%;
-    font-size: .9rem;
-    font-weight: bold;
-    cursor: pointer;
-    margin-left: 10px;
-    margin-top: 10px;
-    width: 130px;
-    z-index: 20;
+}
+
+
+@media only screen and (max-width: 900px) {
+.main-navbar{
+  height: 50px;
+  width: 100%;
+  background-color: black;
+}
+  nav{
+    width: 100%;
+    height: 55px;
+    padding: 15px 0;
+    background-color: #000;
   }
+
+
+  .drop-down-main{
+   
+      flex-flow: column nowrap;
+      position: fixed;
+      transform: translateY(-100%);
+      top: 0;
+      right: 0;
+      padding-top: 50px;
+      padding-left: 200px;
+      height: 300px;
+      width: 100%;
+      background-color: #000;
+      transition: transform 0.3s ease-in
+
+  
+  } 
+  .drop-down-main-hide{
+    transform: translateY(0);
+    transition: transform 0.4s ease;
+  }
+ 
+  .nav-box{
+      padding-top: 5px;
+  }
+  
+  
+  .navbar-items{
+      flex-flow: column;
+      margin-right: -150px;
+  }
+  .navbar-right-items{
+      flex-flow: column;
+      margin-right: 30px;
+
+      flex: 15%;
+      
+  
+  }
+  .drop-down{
+    position: relative;
+    font-size: .9rem;
+    font-weight: 700;
+    width: 200px;
+    margin-right: 40px;
+  }
+  .drop-down-menu{
+   
+    margin-left: 25px;
+   
+    
+  }
+  
   .my-shopping-logo{
-    font-family: 'Great Vibes', cursive;
+      font-size: 1.2rem;
+   
+     
+      
+
+  }
+
+
+
+.my_shop-header {
+  flex: 50%;
+  font-size: .9rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-top: 0px;
+  width: 130px;
+  z-index: 20;
+}
+.my-shopping-logo{
+  font-family: 'Great Vibes', cursive;
+  }
+
+
+  .header-cart-icon{
+      font-size: 1rem;
+      
+  }
+
+
+  .item-link{
+      font-size: .9rem;
     }
 
+}
 
-    .header-cart-icon{
-        font-size: 1rem;
-        
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 540px) {
+.main-navbar{
+  height: 50px;
+  width: 100%;
+  background-color: black;
+}
+  nav{
+    width: 100%;
+height: 44px;
+padding: 15px 0;
+background-color: #000;
+  }
+
+
+  .drop-down-main{
+   
+      flex-flow: column nowrap;
+      position: fixed;
+      transform: translateY(-100%);
+      top: 0;
+      right: 0;
+      padding-top: 50px;
+      padding-left: 200px;
+      height: 300px;
+      width: 100%;
+      background-color: #000;
+      transition: transform 0.3s ease-in
+
+  
+  } 
+  .drop-down-main-hide{
+    transform: translateY(0);
+    transition: transform 0.4s ease;
+  }
+ 
+  .nav-box{
+      padding-top: 5px;
+  }
+  
+  
+  .navbar-items{
+      flex-flow: column;
+      margin-right: -150px;
+  }
+  .navbar-right-items{
+      flex-flow: column;
+      margin-right: 30px;
+
+      flex: 15%;
+      
+  
+  }
+  .drop-down{
+    position: relative;
+    font-size: .9rem;
+    font-weight: 700;
+    width: 200px;
+    margin-right: 40px;
+  }
+  .drop-down-menu{
+   
+    margin-left: 25px;
+   
+    
+  }
+  
+  .my-shopping-logo{
+      font-size: .9rem;
+   
+     
+      
+
+  }
+
+
+
+.my_shop-header {
+  flex: 50%;
+  font-size: .9rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-top: 0px;
+  width: 130px;
+  z-index: 20;
+}
+.my-shopping-logo{
+  font-family: 'Great Vibes', cursive;
+  }
+
+
+  .header-cart-icon{
+      font-size: 1rem;
+      
+  }
+
+
+  .item-link{
+      font-size: .9rem;
     }
-
-
-    .item-link{
-        font-size: .9rem;
-      }
 
 }
